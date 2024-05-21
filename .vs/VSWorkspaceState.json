@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "\\.github",
+    "\\.github\\ISSUE_TEMPLATE",
+    "\\common"
   ],
-  "SelectedNode": "\\C:\\Users\\yogiashi_kota\\Source\\Repos\\LAMP-F-team",
   "PreviewInSolutionExplorer": false
 }
