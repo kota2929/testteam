@@ -1,0 +1,10 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskLabel": "タスク-css",
+      "appliesTo": "css/",
+      "type": "launch"
+    }
+  ]
+}
