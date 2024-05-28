@@ -38,26 +38,52 @@ class cheader extends cnode {
 	public function display(){
 		$echo_str = <<< END_BLOCK
 
-<!doctype html>
-<html lang="ja">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PHPBase2サンプル</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="css/style.css">
-</head>
-<body>
-<!-- 全体コンテナ　-->
-<div class="container">
-<header class="d-flex justify-content-center py-3 border-dark border-bottom">
-<ul class="nav nav-pills">
-<li class="nav-item"><a href="index.php" class="nav-link link-success">メインメニュー</a></li>
-<li class="nav-item"><a href="prefecture_list.php" class="nav-link link-success">都道府県管理</a></li>
-<li class="nav-item"><a href="member_list.php" class="nav-link link-success">メンバー管理</a></li>
-<li class="nav-item"><a href="member_list_custom.php" class="nav-link link-success">メンバー管理（カスタムノード）</a></li>
-</ul>
-</header>
+		<!doctype html>
+		<html lang="en">
+		  <head>
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<title>ECサイト</title>
+			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+			<link rel="stylesheet" href="css/index.css">
+			<link rel="stylesheet" href="css/item-home.css">
+		  </head>
+		  <body>
+			<!-- ヘッダー -->
+			<header class="bg-light border-bottom">
+			  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<div class="container">
+				  <a class="navbar-brand" href="#">ブランドロゴ</a>
+				  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				  </button>
+				  <div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					  <li class="nav-item">
+						<a class="nav-link active" aria-current="page" href="#">ホーム</a>
+					  </li>
+					  <li class="nav-item">
+						<a class="nav-link" href="#">ショップ</a>
+					  </li>
+					  <li class="nav-item">
+						<a class="nav-link" href="#">ブログ</a>
+					  </li>
+					  <li class="nav-item">
+						<a class="nav-link" href="#">お問い合わせ</a>
+					  </li>
+					</ul>
+					<ul class="navbar-nav ms-3">
+					  <li class="nav-item">
+						<a class="nav-link" href="#"><i class="bi bi-person"></i> ユーザー</a>
+					  </li>
+					  <li class="nav-item">
+						<a class="nav-link" href="#"><i class="bi bi-cart"></i> カート</a>
+					  </li>
+					</ul>
+				  </div>
+				</div>
+			  </nav>
+			</header>
 END_BLOCK;
 		echo $echo_str;
 	}
