@@ -1,4 +1,4 @@
-<link rel="stylesheet" href = "../css/FAQ.css">
+<link rel="stylesheet" href = "css/FAQ.css">
 <?php
 /*!
 @file hinagata.php
@@ -7,7 +7,7 @@
 */
 
 //ライブラリをインクルード
-require_once("../common/libs.php");
+require_once("common/libs.php");
 
 $err_array = array();
 $err_flag = 0;

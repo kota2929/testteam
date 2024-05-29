@@ -19,6 +19,7 @@ main {
   width: 250px;
   background-color: #f8f9fa;
   border-right: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 26px;
 }
 .contents-block {
   flex: 1;

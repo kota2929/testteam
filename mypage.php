@@ -1,4 +1,4 @@
-<link rel="stylesheet" href = "../css/mypage.css">
+<link rel="stylesheet" href = "css/mypage.css">
 <?php
 /*!
 @file hinagata.php
@@ -7,7 +7,7 @@
 */
 
 //ライブラリをインクルード
-require_once("../common/libs.php");
+require_once("common/libs.php");
 
 $err_array = array();
 $err_flag = 0;
@@ -60,19 +60,19 @@ class cmain_node extends cnode {
         <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="mypage.html">
+              <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="mypage.php">
                 <svg class="bi"></svg>
                 会員情報
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="#">
+              <a class="nav-link d-flex align-items-center gap-2" href="rireki.php">
                 <svg class="bi"></svg>
                 注文履歴
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="#">
+              <a class="nav-link d-flex align-items-center gap-2" href="okini">
                 <svg class="bi"></svg>
                 お気に入り
               </a>
