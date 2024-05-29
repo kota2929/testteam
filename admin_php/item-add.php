@@ -53,6 +53,10 @@ class cmain_node extends cnode {
 ?>
 <!-- コンテンツ　-->
 <div class="contents">
+<<<<<<< HEAD
+<h5><strong>雛形ファイル</strong></h5>
+※このファイルは雛形ファイルです。
+=======
 	
     <!-- コンテンツ -->
     <main class="container mt-4">
@@ -69,6 +73,7 @@ class cmain_node extends cnode {
   <br>
   <br>
     </main>
+>>>>>>> origin/develop
 </div>
 <!-- /コンテンツ　-->
 <?php 

@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ECサイト</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link rel="stylesheet" href="css\index.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/item-home.css">
   </head>
   <body>
     <!-- ヘッダー -->
-    <header class="bg-light border-bottom">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
+    <header class="bg-light border-bottom ">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+        <div class="container nav-center">
           <a class="navbar-brand" href="#">ブランドロゴ</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -31,14 +32,17 @@
                 <a class="nav-link" href="#">お問い合わせ</a>
               </li>
             </ul>
-
             <ul class="navbar-nav ms-3">
               <li class="nav-item">
-                <a class="nav-link" href="#"><i class="bi bi-person"></i> ユーザー</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#"><i class="bi bi-cart"></i> カート</a>
-              </li>
+                <a class="nav-link" href="#">
+                    <img src="img/kkrn_icon_user_13.png" alt="商品名" class="user-img">
+                </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                  <img src="img\1223676.png" alt="商品名" class="kart-img">
+              </a>
+          </li>
             </ul>
           </div>
         </div>
@@ -46,40 +50,146 @@
     </header>
 
     <!-- コンテンツ -->
-    <main >
+    <main class="container">
       <section>
         <nav class="custom-nav">
           <ul>
-            <li><a href="">Genre</a>
+            <li><a href="#">Genre</a>
               <ul>
-                <li><a href="">きれいめ</a></li>
-                <li><a href="">カジュアル</a></li>
-                <li><a href="">ストリート</a></li>
+                <li><a href="#">きれいめ</a></li>
+                <li><a href="#">カジュアル</a></li>
+                <li><a href="#">ストリート</a></li>
               </ul>
             </li>
-            <li><a href="">Season</a>
+            <li><a href="#">Season</a>
               <ul>
-                <li><a href="">春</a></li>
-                <li><a href="">夏</a></li>
-                <li><a href="">秋</a></li>
-                <li><a href="">冬</a></li>
+                <li><a href="#">春</a></li>
+                <li><a href="#">夏</a></li>
+                <li><a href="#">秋</a></li>
+                <li><a href="#">冬</a></li>
               </ul>
             </li>
-            <li><a href="">color</a>
+            <li><a href="#">Color</a>
               <ul>
-                <li><a href="">白</a></li>
-                <li><a href="">黒</a></li>
-                <li><a href="">グレー</a></li>
-                <li><a href="">緑</a></li>
+                <li><a href="#">白</a></li>
+                <li><a href="#">黒</a></li>
+                <li><a href="#">グレー</a></li>
+                <li><a href="#">緑</a></li>
               </ul>
             </li>
           </ul>
         </nav>
       </section>
-      
-      
-  
-      <!-- 他のコンテンツがここに入ります -->
+
+      <div class="product-card-container row">
+
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="card-container">
+            <div class="card">
+              <a href="商品ページURL" class="card-link">
+                <img src="img/no-image.jpg" alt="商品名" class="card-img">
+                <div class="card-content">
+                  <h3 class="card-title">かっこいい服</h3>
+                  <div class="card-info">
+                    <p class="card-price">¥20,000</p>
+                          <button class="favorite-button" onclick="toggleFavorite(event, this)">★</button>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="card-container">
+            <div class="card">
+              <a href="商品ページURL" class="card-link">
+                <img src="img/no-image.jpg" alt="商品名" class="card-img">
+                <div class="card-content">
+                  <h3 class="card-title">かっこいい服</h3>
+                  <div class="card-info">
+                    <p class="card-price">¥20,000</p>
+                    <button class="favorite-button" onclick="toggleFavorite(event, this)">★</button>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="card-container">
+            <div class="card">
+              <a href="商品ページURL" class="card-link">
+                <img src="img/no-image.jpg" alt="商品名" class="card-img">
+                <div class="card-content">
+                  <h3 class="card-title">かっこいい服</h3>
+                  <div class="card-info">
+                    <p class="card-price">¥20,000</p>
+                    <button class="favorite-button" onclick="toggleFavorite(event, this)">★</button>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="card-container">
+            <div class="card">
+              <a href="商品ページURL" class="card-link">
+                <img src="img/no-image.jpg" alt="商品名" class="card-img">
+                <div class="card-content">
+                  <h3 class="card-title">かっこいい服</h3>
+                  <div class="card-info">
+                    <p class="card-price">¥20,000</p>
+                    <button class="favorite-button" onclick="toggleFavorite(event, this)">★</button>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="card-container">
+            <div class="card">
+              <a href="商品ページURL" class="card-link">
+                <img src="img/no-image.jpg" alt="商品名" class="card-img">
+                <div class="card-content">
+                  <h3 class="card-title">かっこいい服</h3>
+                  <div class="card-info">
+                    <p class="card-price">¥20,000</p>
+                    <button class="favorite-button" onclick="toggleFavorite(event, this)">★</button>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="card-container">
+            <div class="card">
+              <a href="商品ページURL" class="card-link">
+                <img src="img/no-image.jpg" alt="商品名" class="card-img">
+                <div class="card-content">
+                  <h3 class="card-title">かっこいい服</h3>
+                  <div class="card-info">
+                    <p class="card-price">¥20,000</p>
+                    <button class="favorite-button" onclick="toggleFavorite(event, this)">★</button>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        </div>
+
+        <!-- Repeat similar blocks for more products -->
+
+      </div>
     </main>
 
     <!-- フッター -->
@@ -131,8 +241,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
-    <script src="js\index.js"></script>
-  
+    <script src="js/index.js"></script>
+    <script src="js/item-home.js"></script>
   </body>
 </html>
-
