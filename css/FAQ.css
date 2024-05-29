@@ -1,0 +1,37 @@
+/* FAQ.css */
+.faq-title {
+    text-align: center;
+    margin: 60px 0 40px 0;
+  }
+  
+  .question_text {
+    font-size: 20px;
+    padding: 5px;
+    background-color: #000;
+    color: #fff;
+  }
+  
+  .answer_text {
+    margin: 20px;
+  }
+  
+  .contact_text_block {
+    margin: 40px;
+  }
+  
+  .contact_button_block {
+    margin: 40px;
+    text-align: center;
+  }
+  
+  .contact_button {
+    padding: 30px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #00D1FF;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+  
