@@ -6,7 +6,7 @@
 */
 
 //ライブラリをインクルード
-require_once("common/libs.php");
+require_once("../common/libs.php");
 
 $err_array = array();
 $err_flag = 0;
@@ -53,8 +53,30 @@ class cmain_node extends cnode {
 ?>
 <!-- コンテンツ　-->
 <div class="contents">
+<<<<<<< HEAD
 <h5><strong>雛形ファイル</strong></h5>
 ※このファイルは雛形ファイルです。
+=======
+    <main class="container mt-4">
+        <!--pageタイトル-->
+      <h1>商品の削除</h1>
+<br>
+
+<!--ボタン-->
+<br>
+<div class="center">
+  <p>
+    <a href="../商品管理/delete_comp.html" class="btn btn-outline-success">
+    商品を削除する
+	表の中の削除ボタンをクリックで表とデータがぺっと消える
+    </a>
+  </p>
+</div>
+  <br>
+  <br>
+    </main>
+
+>>>>>>> origin/develop
 </div>
 <!-- /コンテンツ　-->
 <?php 

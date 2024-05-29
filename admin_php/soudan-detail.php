@@ -6,7 +6,7 @@
 */
 
 //ライブラリをインクルード
-require_once("common/libs.php");
+require_once("../common/libs.php");
 
 $err_array = array();
 $err_flag = 0;
@@ -53,8 +53,32 @@ class cmain_node extends cnode {
 ?>
 <!-- コンテンツ　-->
 <div class="contents">
+<<<<<<< HEAD
 <h5><strong>雛形ファイル</strong></h5>
 ※このファイルは雛形ファイルです。
+=======
+	
+<main class="container mt-4">
+        <!--pageタイトル-->
+      <h1>相談詳細</h1>
+<br>
+      <div class="wide">
+質問内容
+      </div>
+<br>
+        <div class="wide">
+回答記入欄
+        </div>
+<br>
+        <div class="center">
+      <a href="soudan-fin.php" class="btn btn-outline-success">
+          回答送信
+      </a>
+        </div>
+<br>
+    </main>
+
+>>>>>>> origin/develop
 </div>
 <!-- /コンテンツ　-->
 <?php 

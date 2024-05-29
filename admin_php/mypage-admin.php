@@ -6,7 +6,7 @@
 */
 
 //ライブラリをインクルード
-require_once("common/libs.php");
+require_once("../common/libs.php");
 
 $err_array = array();
 $err_flag = 0;
@@ -53,8 +53,39 @@ class cmain_node extends cnode {
 ?>
 <!-- コンテンツ　-->
 <div class="contents">
+<<<<<<< HEAD
 <h5><strong>雛形ファイル</strong></h5>
 ※このファイルは雛形ファイルです。
+=======
+
+    <main class="container mt-4">
+        <!--pageタイトル-->
+      <h1>管理者マイページ</h1>
+      <!--ボタンの後ろ-->
+<div class="btn-back">
+    <!--機能選択ボタン-->
+    <a href="FAQ-admin.php" class="btn btn-outline-success">
+        FAQ登録
+    </a>
+    <a href="soudan-list.php" class="btn btn-outline-success">
+          相談閲覧
+    </a>
+    <a href="user-admin.php" class="btn btn-outline-success">
+        ユーザー管理
+    </a>
+    <a href="item-admin.php" class="btn btn-outline-success">
+        商品管理
+    </a>
+    <a href="order-admin.php" class="btn btn-outline-success">
+        注文管理
+    </a>
+
+</div>
+      <!-- ボタン8
+    FAQ/相談/ユーザー管理/商品管理/注文管理(注文詳細) -->
+    </main>
+
+>>>>>>> origin/develop
 </div>
 <!-- /コンテンツ　-->
 <?php 

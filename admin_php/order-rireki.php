@@ -6,7 +6,7 @@
 */
 
 //ライブラリをインクルード
-require_once("common/libs.php");
+require_once("../common/libs.php");
 
 $err_array = array();
 $err_flag = 0;
@@ -53,8 +53,28 @@ class cmain_node extends cnode {
 ?>
 <!-- コンテンツ　-->
 <div class="contents">
+<<<<<<< HEAD
 <h5><strong>雛形ファイル</strong></h5>
 ※このファイルは雛形ファイルです。
+=======
+	
+    <!-- コンテンツ -->
+    <main class="container mt-4">
+        <!--pageタイトル-->
+      <h1>注文詳細</h1>
+    <!--追加・削除ボタン-->
+<div class="center">
+    ユーザー名・商品名・個数・金額・配送方法(通常配送or日時指定)・郵便番号・支払方法
+  <br><br>
+  <a href="#" class="btn btn-outline-success" onclick="history.back(); return false;">
+      戻る
+  </a>
+  <br><br>
+</div>
+
+    </main>
+
+>>>>>>> origin/develop
 </div>
 <!-- /コンテンツ　-->
 <?php 

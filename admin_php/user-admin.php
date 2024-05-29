@@ -6,7 +6,7 @@
 */
 
 //ライブラリをインクルード
-require_once("common/libs.php");
+require_once("../common/libs.php");
 
 $err_array = array();
 $err_flag = 0;
@@ -53,8 +53,30 @@ class cmain_node extends cnode {
 ?>
 <!-- コンテンツ　-->
 <div class="contents">
+<<<<<<< HEAD
 <h5><strong>雛形ファイル</strong></h5>
 ※このファイルは雛形ファイルです。
+=======
+	
+<main class="container mt-4">
+        <!--pageタイトル-->
+      <h1>ユーザー管理</h1>
+<br>
+<!--テーブル-->
+<br>
+<p>ユーザー名　　｜ID　　　　　 ｜電話番号　｜会員状態　｜アカウント状態｜その他</p>
+<p>テストユーザー ｜test_user001   ｜080****0000｜通常会員　｜Not Banned　｜
+  <a href="../管理者側/user_more.html" class="btn btn-outline-success">
+  詳細ない
+  </a></p>
+<p>あいうえおかき  ｜test_aiue002  ｜070****0885｜プレミアム ｜Not Banned　　｜
+  <a href="../管理者側/user_more.html" class="btn btn-outline-success">
+  詳細ない
+  </a></p>
+<br>
+    </main>
+
+>>>>>>> origin/develop
 </div>
 <!-- /コンテンツ　-->
 <?php 

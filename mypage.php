@@ -1,3 +1,4 @@
+<link rel="stylesheet" href = "css/mypage.css">
 <?php
 /*!
 @file hinagata.php
@@ -53,8 +54,133 @@ class cmain_node extends cnode {
 ?>
 <!-- コンテンツ　-->
 <div class="contents">
-<h5><strong>雛形ファイル</strong></h5>
-※このファイルは雛形ファイルです。
+
+<main>
+      <div class="sidebar d-flex flex-column p-0 bg-body-tertiary">
+        <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="mypage.php">
+                <svg class="bi"></svg>
+                会員情報
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center gap-2" href="rireki.php">
+                <svg class="bi"></svg>
+                注文履歴
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center gap-2" href="okini">
+                <svg class="bi"></svg>
+                お気に入り
+              </a>
+            </li>
+          </ul>
+          <hr class="my-3">
+          <ul class="nav flex-column mb-auto">
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center gap-2" href="">
+                <svg class="bi"></svg>
+                ログアウト
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="contents-block">
+        <div class="content-area">
+          <h5><strong>会員登録情報</strong></h5>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th colspan="3">基本情報</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th><p>氏名</p></th>
+                <td>佐藤夢二</td>
+                <td><input type="button" value="編集"></td>
+              </tr>
+              <tr>
+                <th><p>郵便番号</p></th>
+                <td><p>〒XXX-XXXX<p></td>
+                  <td><input type="button" value="編集"></td>
+              </tr>
+              <tr>
+                <th><p>住所</p></th>
+                <td><p>福島県郡山市喜久田町XXXXXXXXX</p></td>
+                <td><input type="button" value="編集"></td>
+              </tr>
+              <tr>
+                <th><p>電話番号</p></th>
+                <td><p>090-XXXX-XXXX</p></td>
+                <td><input type="button" value="編集"></td>
+              </tr>
+              <tr>
+                <th><p>パスワード</p></th>
+                <td><p>*********</p></td>
+                <td><input type="button" value="編集"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="content-area">
+          <h5><strong>身体情報</strong></h5>
+          <table class="table table-bordered">
+            <thead>
+              <tr><th colspan="3">身体情報</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th><p>年齢</p></th>
+                <td><p>30</p></td>
+                <td><input type="button" value="編集"></td>
+              </tr>
+              <tr>
+                <th><p>身長</p></th>
+                <td><p>165cm<p></td>
+                <td><input type="button" value="編集"></td>
+              </tr>
+              <tr>
+                <th><p>体重</p></th>
+                <td><p>55kg</p></td>
+                <td><input type="button" value="編集"></td>
+              </tr>
+              <tr>
+                <th><p>ウエスト</p></th>
+                <td><p>80cm</p></td>
+                <td><input type="button" value="編集"></td>
+              </tr>
+              <tr>
+                <th><p>股下</p></th>
+                <td><p>秘密♡</p></td>
+                <td><input type="button" value="編集"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="content-area">
+          <h5><strong>クレジットカード情報</strong></h5>
+          <table class="table table-bordered">
+            <thead>
+              <tr><th colspan="4">クレジットカード情報</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th><p>カード番号</p></th>
+                <td><p>＊＊＊＊＊＊＊＊＊＊＊XXX</p></td>
+                <td><input type="button" value="編集"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
 </div>
 <!-- /コンテンツ　-->
 <?php 
