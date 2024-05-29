@@ -84,7 +84,6 @@
         font-size: 1.5rem;
         cursor: pointer;
         transition: color 0.5s ease;  /* 0.5秒かけて色が変わる */
-        margin-left: 50px;
       }
       
       .favorite-button:hover {

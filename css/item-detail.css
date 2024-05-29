@@ -7,8 +7,11 @@
   height: auto;
   border: 1px solid #ddd;
   border-radius: 4px;
-  margin-left: 50px;
   padding: 5px;
+}
+
+.img-zone{
+  margin-left: 50px;
 }
 
 .thumb-image.selected {
@@ -104,6 +107,7 @@
   border-color: #0056b3;
 }
 
+
 .favorite-button {
   background-color: transparent;
   border: none;
@@ -119,11 +123,11 @@
 .favorite-button {
   background-color: transparent;
   border: none;
-  font-size: 3rem;
+  font-size: 2rem;
   cursor: pointer;
+  width: 3rem;
+  height: 3rem;
   transition: color 0.5s ease;  /* 0.5秒かけて色が変わる */
-  margin-left: 50px;
-  margin-top: 40px;
 }
 
 .favorite-button:hover {

@@ -23,7 +23,7 @@ header {
 }
 
 .nav-center{
-  margin-top: 30px;
+  margin-top: 25px;
 }
 
 
@@ -87,9 +87,7 @@ nav > ul > li li > a {
 }
 
 @media screen and (min-width: 700px) {
-  nav {
-    margin-top: 50px;
-  }
+
   nav > ul {
     width: 80%;
     margin: auto;
@@ -106,11 +104,6 @@ nav > ul > li li > a {
     border-left: 1px solid #ccc;
     padding: 15px 0; /* パディングを増やす */
   }
-<<<<<<< HEAD
-  nav > ul > li:first-child > a {
-    border-top: none;
-    border-left: none;
-=======
   nav > ul > li:first-child > a{border-top: 1px solid #ccc;}
   nav > ul > li > ul {
     display: none;
@@ -144,7 +137,6 @@ nav > ul > li li > a {
       border-top: none;
       border-left: none;
     }
->>>>>>> origin/develop
   }
 }
 
