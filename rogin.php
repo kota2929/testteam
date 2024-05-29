@@ -1,33 +1,45 @@
 <?php
 
-//PHPブロック終了
 ?>
+
 <!-- コンテンツ　-->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>注文確定</title>
+    <title>ログイン</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   </head>
   <style>
     
   
 .p1{
-    margin-top: 100px;
+    
     text-align: center;
 
-  font-size: 50px;
+  font-size: 40px;
+}
+.p2{
+    color: #00d5ff;
+    text-align: center;
+
+  font-size: 20px;
+}
+.p3{
+    
+    text-align: center;
+
+  font-size: 20px;
 }
 .title {
-    margin-top: 0px;
+ 
     text-align: center;
-        font-size: 50px;
+    font-size: 20px;
     }
 
     button{
     
         text-align: center;
-        margin-top: 150px;
+        margin-top: 110px;
         
     padding: 10px 120px;
   border-radius: 50px;
@@ -38,9 +50,47 @@
     background: rgb(2, 229, 250);
     color: #FFF;
 }
+.fh{
+    margin-top: 10px;
+}
 .example{
     /*コレ*/text-align: center;
 }
+th{
+    border:solid 0.5px #ffffff;
+   
+    padding: 5px;
+    
+    background-color: #ffffff;
+   }
+  
+   img {
+  border: solid 1px #ffffff; /* 色：グレー */
+ 
+}
+
+  .ZXx{
+    text-align: center;
+  }  
+  table{
+
+  
+  padding-top : 100px;
+ }
+   .g1{
+    width: 450px;
+    height: 40px;
+  }
+  
+  .g4{
+    text-align: center;
+    width: 450px;
+    height: 200px;
+
+  }
+  main p{
+        margin-bottom: 15px; 
+    }
   </style>
   <body>
     <!-- ヘッダー -->
@@ -84,13 +134,42 @@
 
     <!-- コンテンツ -->
     <main class="container mt-4">
-      <p  class="p1">ありがとうございます。</p>
-      <p class="title">注文が確定しました。</p>
-      <div class="example">
-      <button onclick="">
-	  戻る
-    </button>
+        <br><br>
+      <p  class="p1">ログイン</p>
+      <br><br>
+      <div class="ZXx">
+        <table align="center" >
+        <tr><form name="name" >
+            
+                <input type="text" class="g1" name="name" value="" placeholder="アカウントID">
+        </form></td></tr>
+        <br><br>
+        
+        <tr><form action="#" method="post">
+            
+            <input type="text" class="g1" name="name" value="" placeholder="パスワード">
+    </form></td></tr>
+    
 
+    
+</table>
+
+
+
+<button  onclick="">
+    ログイン
+</button>
+<br><br>
+</li>
+
+<a  class="p2" href="#">パスワードをお忘れの方</a>
+
+<br><br>
+<p  class="p3">初めてご利用になる方</p>
+
+<button class="fh" onclick="">
+    新規登録
+</button>
 </div>
 <br><br>
         </main>
@@ -143,12 +222,10 @@
       <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
     </body>
 <div class="contents">
-
 <h5><strong>雛形ファイル</strong></h5>
 ※このファイルは雛形ファイルです。
 </div>
 <!-- /コンテンツ　-->
 <?php 
-
 
 ?>
