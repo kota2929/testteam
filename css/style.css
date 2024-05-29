@@ -1,7 +1,7 @@
-@charset "UTF-8";
+/* @charset "UTF-8"; */
 /* CSS ドキュメント */
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
 	.bd-placeholder-img-lg {
 		font-size: 3.5rem;
 	}
@@ -22,7 +22,7 @@
 .contents {
     flex: 1 0 0%;
     padding: 2rem 1.5rem;
-}
+} */
 /*
 .in_frame {
     width: 100%;
@@ -55,7 +55,7 @@
     border-right: hidden !important;
 }
 */
-.table-bordered td,
+/* .table-bordered td,
 .table-bordered th {
 	vertical-align: middle !important;
 }
@@ -69,7 +69,7 @@
 .form-check-input,
 .form-select {
     border: 1px solid rgba(0,0,0,0.7);
-}
+} */
 /*
 .table-active span {
 	float: right;

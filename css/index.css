@@ -1,73 +1,134 @@
-
 * {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    box-sizing: border-box;
-  }
-  
-  a {
-    text-decoration: none;
-  }
-  
-  header{
-    width: 100%;
-    height: 50px;
-    background-color: #111;
-  }
-  
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+body {
+  padding-top: 0; /* 余計な空白をなくすためにリセット */
+  margin: 0; /* 余計な空白をなくすためにリセット */
+}
+
+header {
+  width: 100%;
+  height: 100px; /* ヘッダーの高さを固定 */
+  background-color: #111;
+  z-index: 1050; /* Bootstrapのモーダルと同じz-index値 */
+}
+
+.nav-set {
+  height: 100px; /* ヘッダーの高さを調整 */
+  position: relative;
+}
+
+.nav-center{
+  margin-top: 30px;
+}
+
+
+
+.navbar {
+  margin: 0; /* 余計な空白をなくすためにリセット */
+  padding: 0; /* 余計な空白をなくすためにリセット */
+}
+
+.navbar-collapse.show + main {
+  margin-top: 200px; /* Adjust this value based on the height of the expanded menu */
+  padding-top: 0; /* Navbar height */
+}
+
+main {
+  width: 70%;
+  margin-left: auto; /* 追加 */
+  margin-right: auto; /* 追加 */
+  transition: margin-top 0.5s ease;
+}
+
+a {
+  text-decoration: none;
+}
+
+nav {
+  width: 100%;
+  z-index: 1050; /* Bootstrapのモーダルと同じz-index値 */
+  text-align: center;
+}
+
+nav > ul > li {
+  width: 100%;
+}
+
+nav > ul > li > a {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+  background-color: #fff;
+  color: #000;
+  text-align: center;
+}
+
+nav > ul > li:first-child > a {
+  border-top: 1px solid #ccc;
+}
+
+nav > ul > li > ul {
+  display: none;
+}
+
+nav > ul > li li > a {
+  display: block;
+  width: 100%;
+  padding: 10px 5%;
+  border-bottom: 1px solid #ccc;
+  background-color: #fff;
+  color: #000;
+}
+
+@media screen and (min-width: 700px) {
   nav {
-    width: 100%;
+    margin-top: 50px;
+  }
+  nav > ul {
+    width: 80%;
+    margin: auto;
+    font-size: 0;
   }
   nav > ul > li {
-    width: 100%;
+    display: inline-block;
+    width: calc(100% / 3); /* 幅を広くする */
+    font-size: 1.2rem; /* フォントサイズを少し大きくする */
+    vertical-align: top;
   }
   nav > ul > li > a {
-    display: block;
-    width: 100%;
-    padding: 10px 0;
-    border-bottom: 1px solid #ccc;
-    background-color: #fff;
-    color: #000;
-    text-align: center;
+    border: none;
+    border-left: 1px solid #ccc;
+    padding: 15px 0; /* パディングを増やす */
   }
-  nav > ul > li:first-child > a{border-top: 1px solid #ccc;}
-  nav > ul > li > ul {
-    display: none;
+  nav > ul > li:first-child > a {
+    border-top: none;
+    border-left: none;
   }
-  nav > ul > li li > a {
-    display: block;
-    width: 100%;
-    padding: 10px 5%;
-    border-bottom: 1px solid #ccc;
-    background-color: #ffffffff;
-    color: #000;
-  }
-  
-  @media screen and (min-width: 700px) {
-    nav{margin-top: 50px;}
-    nav > ul {
-      width: 960px;
-      margin: 0 auto;
-      font-size: 0;
-    }
-    nav > ul > li {
-      display: inline-block;
-      width: calc(100% / 5);
-      font-size: 1rem;
-      vertical-align: top;
-    }
-    nav > ul > li > a {
-      border: none;
-      border-left: 1px solid #ccc;
-    }
-    nav > ul > li:first-child > a {
-      border-top: none;
-      border-left: none;
-    }
-  }
+}
 
-  nav {
-    text-align: center;
-  }
+/* モバイルビューのスタイル調整 */
+nav > ul > li > a {
+  display: block;
+  width: 100%;
+  padding: 15px 0; /* パディングを増やす */
+  border-bottom: 1px solid #ccc;
+  background-color: #fff;
+  color: #000;
+  text-align: center;
+  font-size: 1.2rem; /* フォントサイズを少し大きくする */
+}
 
+.user-img {
+  width: 50px; /* 必要に応じて調整 */
+}
+
+.kart-img{
+ width: 50px;
+ margin-top: 5px;
+}
