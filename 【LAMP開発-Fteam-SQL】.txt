@@ -1,0 +1,117 @@
+【LAMP開発-Fteam-SQL】
+
+
+
+
+・ユーザー情報テーブル
+
+CREATE TABLE users (
+    user_id INT(128) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    user_name VARCHAR(32) NOT NULL,
+    user_email VARCHAR(128) NOT NULL UNIQUE,
+    user_pass VARCHAR(128) NOT NULL,
+    user_post_code VARCHAR(7) NOT NULL,
+    user_address VARCHAR(128) NOT NULL
+);
+
+・管理者情報テーブル
+
+CREATE TABLE mngs (
+    mng_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    mng_name VARCHAR(32) NOT NULL,
+    mng_email VARCHAR(128) NOT NULL UNIQUE,
+    mng_pass VARCHAR(128) NOT NULL
+);
+
+・FAQテーブル
+
+CREATE TABLE faq (
+    faq_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    question VARCHAR(500) NOT NULL,
+    answer VARCHAR(500)
+);
+
+・問い合わせテーブル
+
+CREATE TABLE quirys (
+    quiry_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    quiry_email VARCHAR(128) NOT NULL,
+    quiry_user_name VARCHAR(128) NOT NULL,
+    quiry_text VARCHAR(500) NOT NULL,
+    quiry_status TINYINT NOT NULL
+);
+
+・色テーブル
+
+CREATE TABLE colors (
+    color_id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    color_name VARCHAR(10) NOT NULL
+);
+
+・季節テーブル
+
+CREATE TABLE seasons (
+    season_id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    season_name VARCHAR(10) NOT NULL
+);
+
+・サイズテーブル
+
+CREATE TABLE sizes (
+    size_id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    size_name VARCHAR(10) NOT NULL
+);
+
+・ジャンルテーブル
+
+CREATE TABLE genres (
+    genre_id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    genre_name VARCHAR(10) NOT NULL
+);
+
+・ブランドテーブル
+
+CREATE TABLE blands (
+    bland_id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    bland_name VARCHAR(10) NOT NULL
+);
+
+
+
+
+
+
+↑↑↑↑↑↑↑他テーブルの参照先となるテーブル。または外部キーを使用しないテーブル↑↑↑↑↑↑↑
+
+
+-----ユーザー情報テーブルの子テーブル-----
+
+・カートテーブル
+
+CREATE TABLE carts (
+    cart_id INT(128) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    user_id INT(128) NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+);
+
+-----色、季節、ブランドテーブルの子テーブル-----
+
+・商品情報テーブル
+
+CREATE TABLE products (
+    product_id INT(128) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    product_name VARCHAR(128) NOT NULL,
+    product_exp VARCHAR(512) NOT NULL,
+    product_price DECIMAL(10, 2) NOT NULL,
+    genre_id INT(10) NOT NULL,
+    season_id INT(10) NOT NULL,
+    bland_id INT(10) NOT NULL,
+    FOREIGN KEY (genre_id) REFERENCES genres(genre_id),
+    FOREIGN KEY (season_id) REFERENCES seasons(season_id),
+    FOREIGN KEY (bland_id) REFERENCES blands(bland_id)
+);
+
+
+
+
+

@@ -1,0 +1,238 @@
+以下の情報をもとにでテーブルを作成するcreate文を作成してください。
+
+【テーブル名】
+
+
+【カラム】
+
+【主キー】
+
+【データ型】
+
+【外部キー】
+
+【nullの許容】
+
+【その他情報】
+
+
+
+↑↑↑↑↑↑↑コピー用↑↑↑↑↑↑↑
+
+
+
+以下の情報をもとにでテーブルを作成するcreate文を作成してください。
+
+【テーブル名】
+.products
+
+【カラム】
+.product_id
+.product_name
+.product_exp
+.product_price
+.genre_id
+.season_id
+.bland_id
+
+
+【主キー】
+.product_id
+【データ型】
+.product_id　←数値型　長さ128
+.product_name　←文字列型　長さ128
+.product_exp　←文字列型　長さ512
+.product_price　←数値型　長さ10
+.genre_id　←数値型　長さ10
+.season_id　←数値型　長さ10
+.bland_id　←数値型　長さ10
+
+【外部キー】
+.genre_id　←genresテーブルを参照
+.season_id ←seasonsテーブルを参照
+.bland_id　←blandsテーブルを参照
+
+【nullの許容】
+・すべてにnullを許容しない
+【その他情報】
+・なし
+
+
+
+以下の情報をもとにでテーブルを作成するcreate文を作成してください。
+
+【テーブル名】
+・colors
+
+【カラム】
+.color_id
+.color_name
+
+【主キー】
+.color_id
+【データ型】
+.color_id ←　数値型　長さ10
+.color_name　←　文字列型　長さ10
+
+【外部キー】
+・なし
+
+【nullの許容】
+・すべてにnullを許容しない
+【その他情報】
+・なし
+
+
+以下の情報をもとにでテーブルを作成するcreate文を作成してください。
+
+【テーブル名】
+.quirys
+
+【カラム】
+.quiry_id
+.quiry_email
+.quiry_user_name
+.quiry_text
+.quiry_status
+【主キー】
+.quiry_id
+
+【データ型】
+.quiry_id ←数値型　長さ128
+.quiry_email　←文字列型　長さ128
+.quiry_user_name　←文字列型　長さ128
+.quiry_text　←文字列型　長さ　500
+.quiry_status　←数値型
+
+【外部キー】
+・なし
+
+【nullの許容】
+・すべてにnullを許容しない
+
+【その他情報】
+・quiry_statusのデータ型について
+　→0が未回答、1が回答済みとして判断します
+　→データ型の長さがわからないのでそちらでおすすめの長さを判断し追加してください。
+　　また、それを選んだ理由を教えてください。
+
+
+以下の情報をもとにでテーブルを作成するcreate文を作成してください。
+
+【テーブル名】
+.faq
+
+【カラム】
+.faq_id
+.puestion
+.answer
+【主キー】
+.faq_id
+
+【データ型】
+.faq_id ←数値型　長さ128
+.puestion　←文字列型　長さ500
+.answer　　←文字列型　長さ500
+
+【外部キー】
+・なし
+
+【nullの許容】
+・faq_id、puestionはnullを許容しない
+・answerはnullを許容する
+
+【その他情報】
+・なし
+
+
+
+
+以下の情報をもとにでテーブルを作成するcreate文を作成してください。
+
+【テーブル名】
+・mngs
+【カラム】
+.mng_id
+.mng_name
+.mng_email
+.mng_pass
+【主キー】
+.mng_id
+【データ型】
+.mng_id   ←数値型　長さ128
+.mng_name　←文字列型　長さ32
+.mng_email　←文字列型　長さ128
+.mng_pass　←文字列型　長さ128
+
+
+【外部キー】
+・なし
+
+【nullの許容】
+全てにnullを許容しない
+
+【その他情報】
+・mng_emailは重複しない
+
+
+
+
+以下の情報をもとにでテーブルを作成するcreate文を作成してください。
+
+【テーブル名】
+・carts
+
+【カラム】
+.cart_id
+.user_id
+
+【主キー】
+.carts_id
+
+【データ型】
+.cart_id ←数値型　長さ128
+.user_id ←　数値型　長さ128
+
+【外部キー】
+.user_id　←usersテーブルを参照
+
+【nullの許容】
+.すべてにnullを許容しない
+
+【その他情報】
+.usersテーブルのuser_idが変更されることはない
+.usersテーブルのuser_idが削除されたらcart_idも削除される
+
+
+
+
+以下の情報をもとにでテーブルを作成するcreate文を作成してください。
+
+【作成するテーブル】
+・ECサイトのユーザー情報を管理するユーザーテーブル。
+
+【カラム】
+.user_id
+.user_name
+.user_email
+.user_pass
+.user_post_code
+.user_address
+
+【データ型】
+.user_id　　　←数値型　長さ128
+.user_name　　←文字列型　長さ32
+.user_email   ←文字列型　長さ128
+.user_pass    ←文字列型　長さ128
+.user_post_code ←文字列型　長さ7
+.user_address　　←文字列型128
+
+【外部キー】
+なし
+
+【nullの許容】
+.すべてのカラムにnullを許容しない
+
+
+
+
