@@ -62,25 +62,35 @@ class cheader extends cnode {
 				  <div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-center">
 					  <li class="nav-item">
-						<a class="nav-link active" aria-current="page" href="#">ホーム</a>
+						<a class="nav-link active nav-text" aria-current="page" href="#">ホーム</a>
 					  </li>
 					  <li class="nav-item">
-						<a class="nav-link" href="#">ショップ</a>
+						<a class="nav-link nav-text" href="#">コーデ相談</a>
 					  </li>
 					  <li class="nav-item">
-						<a class="nav-link" href="#">ブログ</a>
+						<a class="nav-link nav-text" href="#">FAQ</a>
 					  </li>
 					  <li class="nav-item">
-						<a class="nav-link" href="#">お問い合わせ</a>
+						<a class="nav-link nav-text" href="#">お問い合わせ</a>
 					  </li>
 					</ul>
 					<ul class="navbar-nav ms-3">
-					  <li class="nav-item">
-						<a class="nav-link" href="#"><i class="bi bi-person"></i> ユーザー</a>
-					  </li>
-					  <li class="nav-item">
-						<a class="nav-link" href="#"><i class="bi bi-cart"></i> カート</a>
-					  </li>
+
+					<li class="nav-item">
+					<a class="nav-link" href="#">
+						<img src="img/kkrn_icon_user_13.png" alt="ユーザアイコン" class="user-img">
+					</a>
+				</li>
+
+					<li class="nav-item">
+                <a class="nav-link star-text" href="#"><i class="bi bi-person"></i> ☆</a>
+				</li>
+
+				<li class="nav-item">
+				<a class="nav-link" href="#">
+					<img src="img/1223676.png" alt="カートアイコン" class="kart-img">
+				</a>
+			</li>
 					</ul>
 				  </div>
 				</div>
@@ -156,17 +166,27 @@ class cfooter extends cnode {
 			  </div>
 			  <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
 				<h5 class="text-uppercase">フォローする</h5>
-				<ul class="list-unstyled mb-0">
-				  <li>
-					<a href="#" class="text-dark"><i class="bi bi-facebook"></i> Facebook</a>
-				  </li>
-				  <li>
-					<a href="#" class="text-dark"><i class="bi bi-twitter"></i> Twitter</a>
-				  </li>
-				  <li>
-					<a href="#" class="text-dark"><i class="bi bi-instagram"></i> Instagram</a>
-				  </li>
-				</ul>
+				<ul>
+				<li>
+				  <a href="#" class="text-dark sns-text">
+					<img class="sns-img" src="img/icons8-フェイスブック-50.png" alt="Facebook">
+					<i class="bi bi-facebook"></i> Facebook
+				  </a>
+				</li>
+				<li>
+				  <a href="#" class="text-dark sns-text">
+					<img src="img\icons8-ツイッターx-50.png" alt="X(旧Twitter)" class="sns-img">
+					<i class="bi bi-twitter"></i> X(旧Twitter)
+				  </a>
+				</li>
+				<li>
+				  <a href="#" class="text-dark sns-text">
+					<img src="img\icons8-インスタグラム-50 (1).png" alt="Instagram" class="sns-img">
+					<i class="bi bi-instagram"></i> Instagram
+				  </a>
+				</li>
+			  </ul>
+			  
 			  </div>
 			</div>
 		  </div>

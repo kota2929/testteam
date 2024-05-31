@@ -107,6 +107,13 @@
   border-color: #0056b3;
 }
 
+.add-to-cart-button:focus, 
+.add-to-cart-button:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+
 
 .favorite-button {
   background-color: transparent;

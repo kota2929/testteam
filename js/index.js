@@ -1,12 +1,4 @@
-// $('nav').prepend('<div class="toggle"></div>');
-// $('.toggle').css({
-//     'width':'100%',
-//     'height':'50px',
-//     'background-color':'#fff',
-//     'color':'#fff',
-//     'text-align':'center',
-//     'line-height':'50px'
-// });
+
 $(window).on('load resize',function(){
     var winWidth = $(window).width();
     if(winWidth < 900){

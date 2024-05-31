@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="css/item-home.css">
+<link rel="stylesheet" href="css/item-index.css">
 <?php
 /*!
 @file hinagata.php
@@ -51,12 +53,148 @@ class cmain_node extends cnode {
 	public function display(){
 //PHPブロック終了
 ?>
-<!-- コンテンツ　-->
-<div class="contents">
+    <!-- コンテンツ -->
+    <main class="container">
+      <section>
+        <nav class="custom-nav">
+          <ul>
+            <li><a href="#">Genre</a>
+              <ul>
+                <li><a href="#">きれいめ</a></li>
+                <li><a href="#">カジュアル</a></li>
+                <li><a href="#">ストリート</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Season</a>
+              <ul>
+                <li><a href="#">春</a></li>
+                <li><a href="#">夏</a></li>
+                <li><a href="#">秋</a></li>
+                <li><a href="#">冬</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Color</a>
+              <ul>
+                <li><a href="#">白</a></li>
+                <li><a href="#">黒</a></li>
+                <li><a href="#">グレー</a></li>
+                <li><a href="#">緑</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </section>
 
+      <div class="product-card-container row">
 
-</div>
-<!-- /コンテンツ　-->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="card-container">
+            <div class="card">
+              <a href="商品ページURL" class="card-link">
+                <img src="img/no-image.jpg" alt="商品名" class="card-img">
+                <div class="card-content">
+                  <h3 class="card-title">かっこいい服</h3>
+                  <div class="card-info">
+                    <p class="card-price">¥20,000</p>
+                          <button class="favorite-button" onclick="toggleFavorite(event, this)">★</button>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="card-container">
+            <div class="card">
+              <a href="商品ページURL" class="card-link">
+                <img src="img/no-image.jpg" alt="商品名" class="card-img">
+                <div class="card-content">
+                  <h3 class="card-title">かっこいい服</h3>
+                  <div class="card-info">
+                    <p class="card-price">¥20,000</p>
+                    <button class="favorite-button" onclick="toggleFavorite(event, this)">★</button>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="card-container">
+            <div class="card">
+              <a href="商品ページURL" class="card-link">
+                <img src="img/no-image.jpg" alt="商品名" class="card-img">
+                <div class="card-content">
+                  <h3 class="card-title">かっこいい服</h3>
+                  <div class="card-info">
+                    <p class="card-price">¥20,000</p>
+                    <button class="favorite-button" onclick="toggleFavorite(event, this)">★</button>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="card-container">
+            <div class="card">
+              <a href="商品ページURL" class="card-link">
+                <img src="img/no-image.jpg" alt="商品名" class="card-img">
+                <div class="card-content">
+                  <h3 class="card-title">かっこいい服</h3>
+                  <div class="card-info">
+                    <p class="card-price">¥20,000</p>
+                    <button class="favorite-button" onclick="toggleFavorite(event, this)">★</button>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="card-container">
+            <div class="card">
+              <a href="商品ページURL" class="card-link">
+                <img src="img/no-image.jpg" alt="商品名" class="card-img">
+                <div class="card-content">
+                  <h3 class="card-title">かっこいい服</h3>
+                  <div class="card-info">
+                    <p class="card-price">¥20,000</p>
+                    <button class="favorite-button" onclick="toggleFavorite(event, this)">★</button>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="card-container">
+            <div class="card">
+              <a href="商品ページURL" class="card-link">
+                <img src="img/no-image.jpg" alt="商品名" class="card-img">
+                <div class="card-content">
+                  <h3 class="card-title">かっこいい服</h3>
+                  <div class="card-info">
+                    <p class="card-price">¥20,000</p>
+                    <button class="favorite-button" onclick="toggleFavorite(event, this)">★</button>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        </div>
+
+        <!-- Repeat similar blocks for more products -->
+
+      </div>
+    </main>
 <?php 
 //PHPブロック再開
 	}
