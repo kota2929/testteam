@@ -55,7 +55,7 @@ class cmain_node extends cnode {
 <!-- コンテンツ　-->
 <div class="contents">
 
-<main>
+<div class = "contents-body">
       <div class="sidebar d-flex flex-column p-0 bg-body-tertiary">
         <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
           <ul class="nav flex-column">
@@ -180,7 +180,7 @@ class cmain_node extends cnode {
           </table>
         </div>
       </div>
-    </main>
+  </div>
 </div>
 <!-- /コンテンツ　-->
 <?php 

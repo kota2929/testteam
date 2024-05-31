@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="css/cart.css">
 <?php
 /*!
 @file hinagata.php
@@ -53,8 +54,66 @@ class cmain_node extends cnode {
 ?>
 <!-- コンテンツ　-->
 <div class="contents">
-<h5><strong>雛形ファイル</strong></h5>
-※このファイルは雛形ファイルです。
+      <div class="cart-page">
+        <div class="cart-items">
+          
+          <div class="cart-title"><h2>ショッピングカート</h2></div>
+
+          <div class="cart-item">
+            <img src="img/20230628_080424.jpg" alt="商品画像">
+            <div class="cart-details">
+                <p class = "item-text">ヒトラーT</p>
+                <p class = "item-text">サイズ：M</p>
+                <p class = "item-text">カラー：Black</p>
+                <p class = "item-text">¥2,500</p>
+            </div>
+            <div class="cart-actions">
+              <input type="number" value="1" min="1" max="99">
+                <button class="delete-btn">削除</button>
+            </div>
+        </div>
+
+            <div class="cart-item">
+              <img src="img/hg.jpeg" alt="商品画像">
+              <div class="cart-details">
+                  <p class = "item-text">レイザーラモンHGTシャツ</p>
+                  <p class = "item-text">サイズ：M</p>
+                  <p class = "item-text">カラー：Black</p>
+                  <p class = "item-text">¥4,980</p>
+              </div>
+              <div class="cart-actions">
+                  <input type="number" value="1" min="1" max="99">
+                  <button class="delete-btn">削除</button>
+              </div>
+          </div>
+
+          <div class="cart-item">
+            <img src="img/hg.jpeg" alt="商品画像">
+            <div class="cart-details">
+                <p class = "item-text">レイザーラモンHGTシャツ</p>
+                <p class = "item-text">サイズ：M</p>
+                <p class = "item-text">カラー：Black</p>
+                <p class = "item-text">¥4,980</p>
+            </div>
+            <div class="cart-actions">
+                <input type="number" value="1" min="1" max="99">
+                <button class="delete-btn">削除</button>
+            </div>
+        </div>
+        </div>
+
+        <div class="cart-summary">
+            <div class="total">
+			<p>
+				小計（2個の商品）
+			<p>
+			<p>
+				¥7,480
+			</p>
+			</div>
+            <button>会計へ</button>
+        </div>
+    </div>
 </div>
 <!-- /コンテンツ　-->
 <?php 
