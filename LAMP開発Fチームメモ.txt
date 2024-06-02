@@ -18,12 +18,67 @@
 
 
 ↑↑↑↑↑↑↑コピー用↑↑↑↑↑↑↑
+★はcreate文が未生成または修正予定
 
 
 
 以下の情報をもとにでテーブルを作成するcreate文を作成してください。
 
 【テーブル名】
+stacks
+
+【カラム】
+stack_id
+product_detail_id
+product_stock
+
+【主キー】
+stack_id
+
+【データ型】
+stack_id
+product_detail_id
+product_stock
+
+【外部キー】
+
+【nullの許容】
+
+【その他情報】
+
+
+以下の情報をもとにでテーブルを作成するcreate文を作成してください。
+
+【テーブル名】★
+.images
+
+【カラム】
+.product_id
+.color_id
+.img_pass
+
+【主キー】
+.product_id
+.color_id
+
+【データ型】
+.product_id ←数値型　長さ128
+.color_id　←数値型　長さ10
+.img_pass　文字列型　長さ10
+【外部キー】
+.product_id　←　productsテーブルを参照
+.color_id　←colorsテーブルを参照
+
+
+【nullの許容】
+全てにnullを許容しない
+
+【その他情報】
+主キーはproduct_idとcolor_idの二つの組み合わせを主キーとする
+
+以下の情報をもとにでテーブルを作成するcreate文を作成してください。
+
+【テーブル名】★
 .products
 
 【カラム】
