@@ -62,32 +62,32 @@ class cheader extends cnode {
 				  <div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-center">
 					  <li class="nav-item">
-						<a class="nav-link active nav-text" aria-current="page" href="#">ホーム</a>
+						<a class="nav-link active nav-text" aria-current="page" href="item-home.php">ホーム</a>
 					  </li>
 					  <li class="nav-item">
-						<a class="nav-link nav-text" href="#">コーデ相談</a>
+						<a class="nav-link nav-text" href="アンケート.php">コーデ相談</a>
 					  </li>
 					  <li class="nav-item">
-						<a class="nav-link nav-text" href="#">FAQ</a>
+						<a class="nav-link nav-text" href="FAQ.php">FAQ</a>
 					  </li>
 					  <li class="nav-item">
-						<a class="nav-link nav-text" href="#">お問い合わせ</a>
+						<a class="nav-link nav-text" href="mahune/toiawase.php">お問い合わせ</a>
 					  </li>
 					</ul>
 					<ul class="navbar-nav ms-3">
 
 					<li class="nav-item">
-					<a class="nav-link" href="#">
+					<a class="nav-link" href="mypage.php">
 						<img src="img/kkrn_icon_user_13.png" alt="ユーザアイコン" class="user-img">
 					</a>
 				</li>
 
 					<li class="nav-item">
-                <a class="nav-link star-text" href="#"><i class="bi bi-person"></i> ☆</a>
+                <a class="nav-link star-text" href="okini.php"><i class="bi bi-person"></i> ☆</a>
 				</li>
 
 				<li class="nav-item">
-				<a class="nav-link" href="#">
+				<a class="nav-link" href="kart.php">
 					<img src="img/1223676.png" alt="カートアイコン" class="kart-img">
 				</a>
 			</li>
@@ -154,13 +154,13 @@ class cfooter extends cnode {
 				<h5 class="text-uppercase">サポート</h5>
 				<ul class="list-unstyled mb-0">
 				  <li>
-					<a href="#" class="text-dark">お問い合わせ</a>
+					<a href="mahune/toiawase.php" class="text-dark">お問い合わせ</a>
 				  </li>
 				  <li>
-					<a href="#" class="text-dark">よくある質問</a>
+					<a href="FAQ.php" class="text-dark">よくある質問</a>
 				  </li>
 				  <li>
-					<a href="#" class="text-dark">返品ポリシー</a>
+					<a href="purapo.php" class="text-dark" >返品ポリシー</a>
 				  </li>
 				</ul>
 			  </div>
