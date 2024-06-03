@@ -90,7 +90,7 @@ class cmain_node extends cnode {
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
           <div class="card-container">
             <div class="card">
-              <a href="商品ページURL" class="card-link">
+              <a href="item-detatil.php" class="card-link">
                 <img src="img/no-image.jpg" alt="商品名" class="card-img">
                 <div class="card-content">
                   <h3 class="card-title">かっこいい服</h3>
@@ -107,7 +107,7 @@ class cmain_node extends cnode {
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
           <div class="card-container">
             <div class="card">
-              <a href="商品ページURL" class="card-link">
+              <a href="item-detatil.php" class="card-link">
                 <img src="img/no-image.jpg" alt="商品名" class="card-img">
                 <div class="card-content">
                   <h3 class="card-title">かっこいい服</h3>
@@ -124,7 +124,7 @@ class cmain_node extends cnode {
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
           <div class="card-container">
             <div class="card">
-              <a href="商品ページURL" class="card-link">
+              <a href="item-detatil.php" class="card-link">
                 <img src="img/no-image.jpg" alt="商品名" class="card-img">
                 <div class="card-content">
                   <h3 class="card-title">かっこいい服</h3>
@@ -141,7 +141,7 @@ class cmain_node extends cnode {
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
           <div class="card-container">
             <div class="card">
-              <a href="商品ページURL" class="card-link">
+              <a href="item-detatil.php" class="card-link">
                 <img src="img/no-image.jpg" alt="商品名" class="card-img">
                 <div class="card-content">
                   <h3 class="card-title">かっこいい服</h3>
@@ -158,7 +158,7 @@ class cmain_node extends cnode {
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
           <div class="card-container">
             <div class="card">
-              <a href="商品ページURL" class="card-link">
+              <a href="item-detatil.php" class="card-link">
                 <img src="img/no-image.jpg" alt="商品名" class="card-img">
                 <div class="card-content">
                   <h3 class="card-title">かっこいい服</h3>
@@ -175,7 +175,7 @@ class cmain_node extends cnode {
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
           <div class="card-container">
             <div class="card">
-              <a href="商品ページURL" class="card-link">
+              <a href="item-detatil.php" class="card-link">
                 <img src="img/no-image.jpg" alt="商品名" class="card-img">
                 <div class="card-content">
                   <h3 class="card-title">かっこいい服</h3>

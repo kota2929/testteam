@@ -94,7 +94,7 @@ class cmain_node extends cnode {
           </div>  
 
 
-          <button class="btn btn-primary btn-lg add-to-cart-button"><i class="bi bi-cart-plus"></i> カートに追加</button>
+          <button class="btn btn-primary btn-lg add-to-cart-button" onclick= "location.href='kart.php'"><i class="bi bi-cart-plus"></i> カートに追加</button>
           <button class="favorite-button align-middle" onclick="toggleFavorite(event, this)">★</button>
           <p class="product-description">360°どこから見ても可愛いデザイン。
             ディテールにこだわりの大人のドレスシャツ。<br>

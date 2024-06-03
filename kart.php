@@ -111,7 +111,7 @@ class cmain_node extends cnode {
 				¥7,480
 			</p>
 			</div>
-            <button>会計へ</button>
+            <button onclick= "location.href = 'siharai.php'">会計へ</button>
         </div>
     </div>
 </div>

@@ -1,0 +1,25 @@
+.p1{
+    margin-top: 100px;
+    text-align: center;
+    font-size: 50px;
+}
+.title {
+    margin-top: 0px;
+    text-align: center;
+        font-size: 50px;
+}
+
+button{
+        text-align: center;
+        margin-top: 150px;   
+        padding: 10px 120px;
+        border-radius: 50px;
+        font: bold 25px sans-serif;
+        border:rgb(2, 229, 250) 2px solid;
+        background: rgb(2, 229, 250);
+        color: #FFF;
+}
+
+.example{
+    /*コレ*/text-align: center;
+}
