@@ -55,28 +55,28 @@ class cmain_node extends cnode {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>新規登録</title>
+    <title>注文確定</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   </head>
   <style>
     
   
 .p1{
-    
+    margin-top: 100px;
     text-align: center;
 
-  font-size: 65px;
+  font-size: 50px;
 }
 .title {
- 
+    margin-top: 0px;
     text-align: center;
-    font-size: 20px;
+        font-size: 50px;
     }
 
     button{
     
-        text-align: center;
-        margin-top: 50px;
+      text-align: center;
+        margin-top: 150px;
         
     padding: 10px 120px;
   border-radius: 50px;
@@ -90,71 +90,6 @@ class cmain_node extends cnode {
 .example{
     /*コレ*/text-align: center;
 }
-th{
-    font: bold 25px sans-serif;
-   
-    
-    background-color: #ffffff;
-
-    
-    
-    
-   }
-  .fg{
-    width: 200px;
-  }
-  .hg{
-    width: 98px;
-  }
-  .ug{
-    width: 370px;
-  }
-  .pg{
-    width: 180;
-    
-  }
-  
-   img {
-  border: solid 1px #ffffff; /* 色：グレー */
- 
-}
-
-  .ZXx{
-    text-align: center;
-   
-  }  
-  table{
-
-  
-  padding-top : 100px;
- }
-   .g1{
-    width: 450px;
-    height: 40px;
-
-  }
-  .g2{
-    width: 70px;
-    height: 40px;
-
-  }
-  .g3{
-    width: 90px;
-    height: 40px;
-
-  }
-  .g4{
-    text-align: center;
-    width: 450px;
-    height: 200px;
-
-  }
-  main p{
-        margin-bottom: 15px; 
-    }
-   
-
-
   </style>
   <body>
     <!-- ヘッダー -->
@@ -198,65 +133,13 @@ th{
 
     <!-- コンテンツ -->
     <main class="container mt-4">
-        
-      <p  class="p1">新規会員登録</p>
-      
-      <div class="ZXx">
-        <table align="center" >
-        <tr><th>メールアドレス</th><td><form action="#" method="post">
-            
-                <input type="text" class="g1" name="name">
-        </form></td></tr>
-        <tr><th>パスワード</th><td><form action="#" method="post">
-            
-            <input type="text" class="g1" name="name">
-    </form></td></tr>
-    <tr><th>郵便番号</th><td><form action="#" method="post">
-            
-        <input type="text" class="g1" name="name">
-</form></td></tr>
+      <p  class="p1">ありがとうございます。</p>
+      <p class="title">注文が確定しました。</p>
+      <div class="example">
+      <button onclick="">
+        戻る
+    </button>
 
-</table>
-<table align="center" >
-<tr><th class="fg">生年月日</th><td><form action="#" method="post">
-            
-    <input type="text" class="g2" name="name">
-</form><th class="hg">年</th><td><form action="#" method="post">
-            
-    <input type="text" class="g2" name="name">
-</form><th class="hg">月</th><td><form action="#" method="post">
-            
-    <input type="text" class="g2" name="name">
-</form><th>日</th></td>
-</table>
-<table align="center" >
-    <tr><th class="pg">性別</th><td> <input type="radio"  name="q1"  value="通常配送" >男</input>
-        <td ><input type="radio"  name="q1"  value="日時指定">女</td></tr>
-    <tr><th >年齢</th><td><form action="#" method="post">
-        
-        <input type="text" class="g3" name="name">
-</form></td></tr>
-<tr><th >身長</th><td><form action="#" method="post">
-        
-    <input type="text" class="g3" name="name">
-</form></td></tr>
-<tr><th >体重</th><td><form action="#" method="post">
-        
-    <input type="text" class="g3" name="name">
-</form></td><th class="ug"></th></tr>
-<tr><th>ウエスト</th><td><form action="#" method="post">
-        
-    <input type="text" class="g3" name="name">
-</form></td></tr>
-<tr><th>股下</th><td><form action="#" method="post">
-        
-    <input type="text" class="g3" name="name">
-</form></td></tr>
-
-</table>
-<button onclick="">
-    登録
-</button>
 </div>
 <br><br>
         </main>
@@ -308,7 +191,6 @@ th{
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
     </body>
-  </html>
 <div class="contents">
 <h5><strong>雛形ファイル</strong></h5>
 ※このファイルは雛形ファイルです。
