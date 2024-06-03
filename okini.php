@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="css/okini.css">
 <?php
 /*!
 @file hinagata.php
@@ -53,8 +54,54 @@ class cmain_node extends cnode {
 ?>
 <!-- コンテンツ　-->
 <div class="contents">
-<h5><strong>雛形ファイル</strong></h5>
-※このファイルは雛形ファイルです。
+<div class="okini-page">
+        <div class="okini-items">
+          
+          <div class="okini-title"><h2>お気に入り</h2></div>
+
+          <div class="okini-item">
+            <img src="img/20230628_080424.jpg" alt="商品画像">
+            <div class="okini-details">
+                <p class = "item-text">ヒトラーT</p>
+                <p class = "item-text">サイズ：M</p>
+                <p class = "item-text">カラー：Black</p>
+                <p class = "item-text">¥2,500</p>
+            </div>
+            <div class="okini-actions">
+			<input class="add_cart" type="button" value="カートに追加">
+                <button class="delete-btn">削除</button>
+            </div>
+        </div>
+
+            <div class="okini-item">
+              <img src="img/hg.jpeg" alt="商品画像">
+              <div class="okini-details">
+                  <p class = "item-text">レイザーラモンHGTシャツ</p>
+                  <p class = "item-text">サイズ：M</p>
+                  <p class = "item-text">カラー：Black</p>
+                  <p class = "item-text">¥4,980</p>
+              </div>
+              <div class="okini-actions">
+			  <input class="add_cart" type="button" value="カートに追加">
+                  <button class="delete-btn">削除</button>
+              </div>
+          </div>
+
+          <div class="okini-item">
+            <img src="img/hg.jpeg" alt="商品画像">
+            <div class="okini-details">
+                <p class = "item-text">レイザーラモンHGTシャツ</p>
+                <p class = "item-text">サイズ：M</p>
+                <p class = "item-text">カラー：Black</p>
+                <p class = "item-text">¥4,980</p>
+            </div>
+            <div class="okini-actions">
+			<input class="add_cart" type="button" value="カートに追加">
+                <button class="delete-btn">削除</button>
+            </div>
+        </div>
+        </div>
+    </div>
 </div>
 <!-- /コンテンツ　-->
 <?php 

@@ -1,0 +1,63 @@
+.okini-page {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.okini-items {
+    flex: 3;
+}
+.cokini-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.okini-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+}
+.okini-item img {
+    width: 120px;
+    height: 150px;
+    background-color: #ccc;
+}
+.item-text{
+    margin: 0px;
+    font-size: 18px;
+}
+.okini-details {
+    flex: 2;
+    padding: 0 20px;
+}
+.okini-price {
+    width: 100px;
+    text-align: right;
+    flex: 1;
+}
+.okini-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.delete-btn{
+    color: #ff0000;
+    border: none;
+    background-color: #fff;
+}
+
+.okini-actions button {
+    padding: 5px 10px;
+}
+.add_cart{
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #00D1FF;
+    border: none;
+    border-radius: 30px;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
