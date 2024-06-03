@@ -123,44 +123,53 @@ main p{
 
 </style>
 <body>
-<!-- ヘッダー -->
-<header class="bg-light border-bottom">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="#">ブランドロゴ</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">ホーム</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">ショップ</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">ブログ</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">お問い合わせ</a>
-          </li>
-        </ul>
-        
-        <ul class="navbar-nav ms-3">
-          <li class="nav-item">
-            <a class="nav-link" href="#"><i class="bi bi-person"></i> ユーザー</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><i class="bi bi-cart"></i> カート</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    
-    
-  </nav>
-</header>
+			<!-- ヘッダー -->
+			<header class="bg-light border-bottom">
+			  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<div class="container">
+				<a class="navbar-brand nav-center" href="#">
+				<img src="img/rogo(仮).png" alt="ブランドロゴ" style="height: 50px;"> <!-- ここで画像を挿入 -->
+			  </a>
+				  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				  </button>
+				  <div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-center">
+					  <li class="nav-item">
+						<a class="nav-link active nav-text" aria-current="page" href="item-home.php">ホーム</a>
+					  </li>
+					  <li class="nav-item">
+						<a class="nav-link nav-text" href="アンケート.php">コーデ相談</a>
+					  </li>
+					  <li class="nav-item">
+						<a class="nav-link nav-text" href="FAQ.php">FAQ</a>
+					  </li>
+					  <li class="nav-item">
+						<a class="nav-link nav-text" href="mahune/toiawase.php">お問い合わせ</a>
+					  </li>
+					</ul>
+					<ul class="navbar-nav ms-3">
+
+					<li class="nav-item">
+					<a class="nav-link" href="mypage.php">
+						<img src="img/kkrn_icon_user_13.png" alt="ユーザアイコン" class="user-img">
+					</a>
+				</li>
+
+					<li class="nav-item">
+                <a class="nav-link star-text" href="okini.php"><i class="bi bi-person"></i> ☆</a>
+				</li>
+
+				<li class="nav-item">
+				<a class="nav-link" href="kart.php">
+					<img src="img/1223676.png" alt="カートアイコン" class="kart-img">
+				</a>
+			</li>
+					</ul>
+				  </div>
+				</div>
+			  </nav>
+			</header>
 
 <!-- コンテンツ -->
 <main class="container mt-4">
