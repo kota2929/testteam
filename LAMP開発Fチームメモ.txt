@@ -18,13 +18,141 @@
 
 
 ↑↑↑↑↑↑↑コピー用↑↑↑↑↑↑↑
-★はcreate文が未生成または修正予定
+★はcreate文未生成または修正予定
 
 
 
 以下の情報をもとにでテーブルを作成するcreate文を作成してください。
 
-【テーブル名】
+【テーブル名】●
+cartitems
+【カラム】
+cart_item_id
+cart_id
+product_id
+quantity
+
+【主キー】
+cart_item_id
+
+【データ型】
+cart_item_id　←数値型　長さ128
+cart_id　←数値型　長さ128
+product_id　←数値型　長さ128
+quantity　←数値型　長さ128
+
+【外部キー】
+cart_id ←　cartsテーブルを参照
+
+【nullの許容】
+全てにnullを許容しない
+
+【その他情報】
+cart_idが削除されたら該当する行もすべて削除される
+
+
+
+以下の情報をもとにでテーブルを作成するcreate文を作成してください。
+
+【テーブル名】●
+categorys
+
+【カラム】
+category_id
+category_name
+【主キー】
+category_id
+
+【データ型】
+category_id ←数値型　長さ10
+category_name　文字列型　長さ10
+
+【外部キー】
+なし
+【nullの許容】
+全てにnullを許容しない
+
+【その他情報】
+なし
+
+以下の情報をもとにでテーブルを作成するcreate文を作成してください。
+
+【テーブル名】●
+questions
+
+【カラム】
+user_id
+cons_id
+cons_status
+ans_1
+ans_2 
+ans_3
+user_cons
+mng_ans
+【主キー】
+cons_id
+
+【データ型】
+user_id ←数値型　長さ128
+cons_id　←数値型　長さ128
+cons_status　←TINYINT
+ans_1　←文字列型　長さ128
+ans_2 　←文字列型　長さ128
+ans_3　←文字列型　長さ128
+user_cons　←文字列型　長さ256
+mng_ans　←文字列型　長さ256
+【外部キー】
+user_id ←usersテーブルを参照
+【nullの許容】
+全てにnullを許容しない
+
+【その他情報】
+user_idが削除されたらこのテーブルの行も削除される
+
+
+
+以下の情報をもとにでテーブルを作成するcreate文を作成してください。
+
+【テーブル名】●
+bodys
+
+【カラム】
+user_id
+body_id
+age
+height
+weight
+shoes_waist
+
+【主キー】
+user_id
+body_id
+
+【データ型】
+user_id ←　数値型　長さ128
+body_id　←　数値型　長さ128
+age　
+height
+weight
+shoes_waist
+
+【外部キー】
+user_id ←usersテーブルを参照
+
+【nullの許容】
+全てにnullを許容しない
+
+【その他情報】
+age(年齢)
+height(身長)
+weight(体重)
+shoes_waist(ウエスト)の四つの適切なデータ長がわかりません。適切なデータ長を数値型で割り当ててください。
+
+
+
+以下の情報をもとにでテーブルを作成するcreate文を作成してください。
+
+【テーブル名】●
 stacks
 
 【カラム】
@@ -36,49 +164,81 @@ product_stock
 stack_id
 
 【データ型】
-stack_id
-product_detail_id
-product_stock
+stack_id　←数値型　長さ128
+product_detail_id　←数値型　長さ128
+product_stock　←数値型　長さ128
+
 
 【外部キー】
-
+product_detail_id ←detailsテーブルを参照
 【nullの許容】
+全てにnullを強要しない
 
 【その他情報】
+在庫数のデータ長がどれが適切かどうかわからないので適切なものに修正してください。
 
 
 以下の情報をもとにでテーブルを作成するcreate文を作成してください。
 
-【テーブル名】★
-.images
+【テーブル名】●
+images
 
 【カラム】
-.product_id
-.color_id
-.img_pass
-
+product_id
+color_id
+img_pass
 【主キー】
-.product_id
-.color_id
+product_id
+color_id
 
 【データ型】
-.product_id ←数値型　長さ128
-.color_id　←数値型　長さ10
-.img_pass　文字列型　長さ10
-【外部キー】
-.product_id　←　productsテーブルを参照
-.color_id　←colorsテーブルを参照
+product_id　←数値型　長さ128
+color_id　←数値型　長さ10
+img_pass　←文字列型　長さ64
 
+【外部キー】
+procduct_id ←productsテーブルを参照
+color_id　←colorsテーブルを参照
+
+【nullの許容】
+全てにnullを強要しない
+
+【その他情報】
+主キーはproduct_idとcolor_idの組み合わせで一意に識別する
+
+以下の情報をもとにでテーブルを作成するcreate文を作成してください。
+
+【テーブル名】●
+・details
+
+【カラム】
+.product_detail_id
+.color_id
+.size_id
+.product_id
+【主キー】
+.product_detail_id
+
+【データ型】
+.product_detail_id ←数値型　長さ128
+.color_id　←　数値型　長さ10
+.size_id　←　数値型　長さ10
+.product_id　←数値型　長さ10
+
+【外部キー】
+.color_id　←colorsテーブルを参照
+.size_id ←sizesテーブルを参照
+.product_id ←productsテーブルを参照
 
 【nullの許容】
 全てにnullを許容しない
-
 【その他情報】
-主キーはproduct_idとcolor_idの二つの組み合わせを主キーとする
+参照する外部キーのいずれかが削除されたら該当する行もすべて削除される。
+
 
 以下の情報をもとにでテーブルを作成するcreate文を作成してください。
 
-【テーブル名】★
+【テーブル名】●
 .products
 
 【カラム】
@@ -89,6 +249,7 @@ product_stock
 .genre_id
 .season_id
 .bland_id
+.category_id
 
 
 【主キー】
@@ -101,22 +262,24 @@ product_stock
 .genre_id　←数値型　長さ10
 .season_id　←数値型　長さ10
 .bland_id　←数値型　長さ10
+.category_id ←数値型　長さ10
 
 【外部キー】
 .genre_id　←genresテーブルを参照
 .season_id ←seasonsテーブルを参照
 .bland_id　←blandsテーブルを参照
+.category_id ←categorysテーブルを参照
 
 【nullの許容】
 ・すべてにnullを許容しない
 【その他情報】
-・なし
+参照する外部キーのいずれかが削除されたら該当する行もすべて削除される
 
 
 
 以下の情報をもとにでテーブルを作成するcreate文を作成してください。
 
-【テーブル名】
+【テーブル名】●
 ・colors
 
 【カラム】
@@ -140,7 +303,7 @@ product_stock
 
 以下の情報をもとにでテーブルを作成するcreate文を作成してください。
 
-【テーブル名】
+【テーブル名】●
 .quirys
 
 【カラム】
@@ -174,7 +337,7 @@ product_stock
 
 以下の情報をもとにでテーブルを作成するcreate文を作成してください。
 
-【テーブル名】
+【テーブル名】●
 .faq
 
 【カラム】
@@ -204,7 +367,7 @@ product_stock
 
 以下の情報をもとにでテーブルを作成するcreate文を作成してください。
 
-【テーブル名】
+【テーブル名】●
 ・mngs
 【カラム】
 .mng_id
@@ -234,7 +397,7 @@ product_stock
 
 以下の情報をもとにでテーブルを作成するcreate文を作成してください。
 
-【テーブル名】
+【テーブル名】●
 ・carts
 
 【カラム】
@@ -263,7 +426,7 @@ product_stock
 
 以下の情報をもとにでテーブルを作成するcreate文を作成してください。
 
-【作成するテーブル】
+【作成するテーブル】●
 ・ECサイトのユーザー情報を管理するユーザーテーブル。
 
 【カラム】
