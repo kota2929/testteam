@@ -53,39 +53,23 @@ class cmain_node extends cnode {
 ?>
 <!-- コンテンツ　-->
 <div class="contents">
-<<<<<<< HEAD
-<h5><strong>雛形ファイル</strong></h5>
-※このファイルは雛形ファイルです。
-=======
 
     <main class="container mt-4">
         <!--pageタイトル-->
       <h1>管理者マイページ</h1>
-      <!--ボタンの後ろ-->
 <div class="btn-back">
     <!--機能選択ボタン-->
-    <a href="FAQ-admin.php" class="btn btn-outline-success">
-        FAQ登録
-    </a>
-    <a href="soudan-list.php" class="btn btn-outline-success">
-          相談閲覧
-    </a>
-    <a href="user-admin.php" class="btn btn-outline-success">
-        ユーザー管理
-    </a>
-    <a href="item-admin.php" class="btn btn-outline-success">
-        商品管理
-    </a>
-    <a href="order-admin.php" class="btn btn-outline-success">
-        注文管理
-    </a>
-
+	<button type="button" onclick="window.location.href='otoi-admin.php'" class="btn btn-outline-success">お問い合わせ一覧</button>
+	<button type="button" onclick="window.location.href='FAQ-admin.php'" class="btn btn-outline-success">FAQ登録</button>
+	<button type="button" onclick="window.location.href='soudan-list.php'" class="btn btn-outline-success">相談閲覧</button>
+	<button type="button" onclick="window.location.href='item-admin.php'" class="btn btn-outline-success">商品とブランドの登録・削除</button>
+	<button type="button" onclick="window.location.href='item-detail.php'" class="btn btn-outline-success">商品一覧</button>
+	<button type="button" onclick="window.location.href='user-admin.php'" class="btn btn-outline-success">ユーザー管理</button>
+	<button type="button" onclick="window.location.href='order-admin.php'" class="btn btn-outline-success">注文管理</button>
 </div>
-      <!-- ボタン8
-    FAQ/相談/ユーザー管理/商品管理/注文管理(注文詳細) -->
+<br><br>
     </main>
 
->>>>>>> origin/develop
 </div>
 <!-- /コンテンツ　-->
 <?php 

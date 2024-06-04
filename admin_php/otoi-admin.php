@@ -53,25 +53,23 @@ class cmain_node extends cnode {
 ?>
 <!-- コンテンツ　-->
 <div class="contents">
-	
-    <!-- コンテンツ -->
-    <main class="container mt-4">
+
+<main class="container mt-4">
         <!--pageタイトル-->
-      <h1>注文詳細</h1>
-    <!--追加・削除ボタン-->
+      <h1>お問い合わせページ</h1>
 <div class="center">
-    
-<br><br>
-	注文詳細ID<br><input disabled="disabled" name="order-detail-id" size="30"><br><br>
-	注文ID<br><input disabled="disabled" name="order-id" size="30"><br><br>
-	商品ID<br><input disabled="disabled" name="item-id" size="30"><br><br>
-	サイズID<br><input disabled="disabled" name="size-id" size="30"><br><br>
-	色ID<br><input disabled="disabled" name="color-id" size="30"><br><br>
-	注文個数<br><input disabled="disabled" name="order-num" size="30"><br><br>
-	一種類の商品の合計金額<br><input disabled="disabled" name="one-item-allpey" size="30"><br><br>
-<br><br>
-	<button type="button" onclick="history.back(); return false;" class="btn btn-outline-success">戻る</button>
-<br><br>
+    <br><br>
+    <!--項目-->
+    <p>FAQNo.　　｜　　　　　　　Q　　　　　｜A　　　　　　｜補足　　　　　　｜編集</p>
+    <!--1行目-->
+    <p>1　　　　　｜ログインできない　　　　　　｜あああああああ｜あああああ...｜
+    	<button type="button" onclick="window.location.href='otoi-detail-comp.php'" class="btn btn-outline-success">詳細</button>
+	</p>
+    <!--2行目-->
+    <p>2　　　　　｜分割払いしてもいいですか？｜ダメです。　｜ああああああああ｜
+    	<button type="button" onclick="window.location.href='otoi-detail.php'" class="btn btn-outline-success">回答する</button>
+	</p>
+    <br>
 </div>
 
     </main>

@@ -53,32 +53,25 @@ class cmain_node extends cnode {
 ?>
 <!-- コンテンツ　-->
 <div class="contents">
-<<<<<<< HEAD
-<h5><strong>雛形ファイル</strong></h5>
-※このファイルは雛形ファイルです。
-=======
 	
     <main class="container mt-4">
+    <!-- 外部JavaScriptファイルのリンク -->
+    <script src="mng.js" defer></script>
         <!--pageタイトル-->
-      <h1>相談送信しました</h1>
+      <h1>送信しました</h1>
+<br><br>
+    <div class="center">
+        <p>
+		  <button onclick="window.location.href='mypage-admin.php'" class="btn btn-outline-success">管理者マイページへ戻る</button>
+        </p>
+        <p>
+			<button id="backButton" class="btn btn-outline-success">一覧ページへ戻る</button>
+        </p>
+    </div>
 <br>
-<br>
-        <div class="center">
-          <p>  
-          <a href="mypage-admin.php" class="btn btn-outline-success">
-                管理者マイページへ戻る
-          </a>
-          </p>
-          <p>
-            <a href="soudan-list.php" class="btn btn-outline-success">
-                相談一覧ページへ戻る
-            </a>
-          </p>
-        </div>
-<br>
+
     </main>
 
->>>>>>> origin/develop
 </div>
 <!-- /コンテンツ　-->
 <?php 

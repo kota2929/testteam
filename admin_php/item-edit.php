@@ -57,25 +57,29 @@ class cmain_node extends cnode {
     <!-- コンテンツ -->
     <main class="container mt-4">
         <!--pageタイトル-->
-      <h1>注文詳細</h1>
-    <!--追加・削除ボタン-->
+      <h1>商品の編集</h1>
+<br>
+
+	ユーザーID<br><input name="id" size="30"><br><br>
+	ユーザーネーム<br><input name="name" size="30"><br><br>
+	メールアドレス<br><input name="e-mail" size="30"><br><br>
+	パスワード<br><input name="pass" size="30"><br><br>
+	郵便番号<br><input name="num" size="30"><br><br>
+    住所<br><textarea cols="40" rows="2"></textarea><br><br>
+
+<br>
 <div class="center">
-    
-<br><br>
-	注文詳細ID<br><input disabled="disabled" name="order-detail-id" size="30"><br><br>
-	注文ID<br><input disabled="disabled" name="order-id" size="30"><br><br>
-	商品ID<br><input disabled="disabled" name="item-id" size="30"><br><br>
-	サイズID<br><input disabled="disabled" name="size-id" size="30"><br><br>
-	色ID<br><input disabled="disabled" name="color-id" size="30"><br><br>
-	注文個数<br><input disabled="disabled" name="order-num" size="30"><br><br>
-	一種類の商品の合計金額<br><input disabled="disabled" name="one-item-allpey" size="30"><br><br>
-<br><br>
-	<button type="button" onclick="history.back(); return false;" class="btn btn-outline-success">戻る</button>
-<br><br>
+<p>
+	<button type="button" onclick="window.location.href='item-edit-fin.php'" class="btn btn-outline-success">編集内容を保存する</button>
+</p>
+<p>
+    <button type="button" onclick="history.back(-2);" class="btn btn-outline-success">破棄して一覧ページに戻る</button>
+</p>
+
 </div>
-
+  <br>
+  <br>
     </main>
-
 </div>
 <!-- /コンテンツ　-->
 <?php 

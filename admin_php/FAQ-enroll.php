@@ -57,24 +57,24 @@ class cmain_node extends cnode {
     <!-- コンテンツ -->
     <main class="container mt-4">
         <!--pageタイトル-->
-      <h1>注文詳細</h1>
-    <!--追加・削除ボタン-->
-<div class="center">
-    
-<br><br>
-	注文詳細ID<br><input disabled="disabled" name="order-detail-id" size="30"><br><br>
-	注文ID<br><input disabled="disabled" name="order-id" size="30"><br><br>
-	商品ID<br><input disabled="disabled" name="item-id" size="30"><br><br>
-	サイズID<br><input disabled="disabled" name="size-id" size="30"><br><br>
-	色ID<br><input disabled="disabled" name="color-id" size="30"><br><br>
-	注文個数<br><input disabled="disabled" name="order-num" size="30"><br><br>
-	一種類の商品の合計金額<br><input disabled="disabled" name="one-item-allpey" size="30"><br><br>
-<br><br>
-	<button type="button" onclick="history.back(); return false;" class="btn btn-outline-success">戻る</button>
-<br><br>
-</div>
-
+      <h1>FAQ登録</h1>
+<br>
+      <!--タイトル-->
+        <div class="FAQ_title">
+よくある質問内容
+        </div>
+<br>
+      <!--本文-->
+        <div class="wide">
+回答文
+        </div>
+<br>
+    <div class="center">
+		<button type="button" onclick="window.location.href='FAQ_fin.php'" class="btn btn-outline-success">新しく登録する</button>
+    </div>
+<br>
     </main>
+
 
 </div>
 <!-- /コンテンツ　-->

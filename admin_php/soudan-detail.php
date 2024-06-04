@@ -53,10 +53,6 @@ class cmain_node extends cnode {
 ?>
 <!-- コンテンツ　-->
 <div class="contents">
-<<<<<<< HEAD
-<h5><strong>雛形ファイル</strong></h5>
-※このファイルは雛形ファイルです。
-=======
 	
 <main class="container mt-4">
         <!--pageタイトル-->
@@ -66,19 +62,16 @@ class cmain_node extends cnode {
 質問内容
       </div>
 <br>
-        <div class="wide">
+    <div class="wide">
 回答記入欄
-        </div>
+    </div>
 <br>
-        <div class="center">
-      <a href="soudan-fin.php" class="btn btn-outline-success">
-          回答送信
-      </a>
-        </div>
+    <div class="center">
+		<button type="button" onclick="window.location.href='soudan-fin.php'" class="btn btn-outline-success">回答送信</button>    
+    </div>
 <br>
     </main>
 
->>>>>>> origin/develop
 </div>
 <!-- /コンテンツ　-->
 <?php 

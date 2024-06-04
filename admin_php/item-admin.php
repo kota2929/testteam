@@ -53,24 +53,25 @@ class cmain_node extends cnode {
 ?>
 <!-- コンテンツ　-->
 <div class="contents">
-<<<<<<< HEAD
-<h5><strong>雛形ファイル</strong></h5>
-※このファイルは雛形ファイルです。
-=======
     <main class="container mt-4">
         <!--pageタイトル-->
       <h1>商品管理</h1>
     <!--追加・削除ボタン-->
 <div class="center">
-  <a class="btn btn-outline-success" href="item-add.php">商品の登録</a>
-  <br><br>
-  <a class="btn btn-outline-success" href="item-delete.php">商品の削除</a>
-  <br><br>
+<p>
+	<button type="button" onclick="window.location.href='item-add.php'" class="btn btn-outline-success">商品の登録</button>
+</p>
+<p>
+	<button type="button" onclick="window.location.href='item-delete.php'" class="btn btn-outline-success">商品の削除</button>
+</p>
+<p>
+	<button type="button" onclick="window.location.href='item-brand.php'" class="btn btn-outline-success">ブランドの登録</button>
+</p>
+
 </div>
 
     </main>
 
->>>>>>> origin/develop
 </div>
 <!-- /コンテンツ　-->
 <?php 

@@ -53,15 +53,30 @@ class cmain_node extends cnode {
 ?>
 <!-- コンテンツ　-->
 <div class="contents">
-<<<<<<< HEAD
-<h5><strong>雛形ファイル</strong></h5>
-※このファイルは雛形ファイルです。
-=======
 	
-
-
->>>>>>> origin/develop
+<main class="container mt-4">
+        <!--pageタイトル-->
+      <h1>このお問い合わせは解決済みです</h1>
+<br>
+      <div class="wide">
+問い合わせ内容
+      </div>
+<br>
+    <div class="wide">
+回答記入欄
+    </div>
+<br>
+    <div class="center">
+        <p>
+		  <button type="button" onclick="window.location.href='mypage-admin.php'" class="btn btn-outline-success">管理者マイページへ戻る</button>
+        </p>
+        <p>
+		  <button type="button" onclick="history.back(); return false;" class="btn btn-outline-success">お問い合わせ一覧ページへ戻る</button>
+        </p>
+    </div>
 </div>
+</main>
+
 <!-- /コンテンツ　-->
 <?php 
 //PHPブロック再開

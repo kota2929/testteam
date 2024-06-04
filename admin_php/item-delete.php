@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="css/item-detail.css">
 <?php
 /*!
 @file hinagata.php
@@ -36,7 +35,7 @@ class cmain_node extends cnode {
 	public function execute(){
 	}
 	//--------------------------------------------------------------------------------------
-	/*!
+	/*!★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
 	@brief	構築時の処理(継承して使用)
 	@return	なし
 	*/
@@ -54,30 +53,40 @@ class cmain_node extends cnode {
 ?>
 <!-- コンテンツ　-->
 <div class="contents">
-<<<<<<< HEAD
-<h5><strong>雛形ファイル</strong></h5>
-※このファイルは雛形ファイルです。
-=======
     <main class="container mt-4">
         <!--pageタイトル-->
       <h1>商品の削除</h1>
-<br>
-
-<!--ボタン-->
-<br>
+<br><br>
 <div class="center">
-  <p>
-    <a href="../商品管理/delete_comp.html" class="btn btn-outline-success">
-    商品を削除する
-	表の中の削除ボタンをクリックで表とデータがぺっと消える
-    </a>
+    <br><br>
+    <!--項目-->
+    <p>商品No.　　｜Q　　　　　　｜A　　　　　　｜補足　　　　　　｜削除ボタン</p>
+    <!--1行目-->
+    <p>1　　　　　｜タンクトップ　｜山田　敏夫｜2024-08-02-04:46:01｜
+		<button type="button" onclick="window.location.href='#'" class="btn btn-outline-success">
+		未実装
+		<!--			商品を削除する
+			表の中の削除ボタンをクリックで表とデータがぺっと消える-->
+		</button>
+  	</p>
+    <!--2行目-->
+    <p>2　　　　　｜シャツ　　　｜あいす　　｜2024-09-20-15:03:56｜
+		<button type="button" onclick="window.location.href='#'" class="btn btn-outline-success">
+未実装
+		<!--			商品を削除する
+			表の中の削除ボタンをクリックで表とデータがぺっと消える-->
+		</button>
+  	</p>
+	
+  <br><br>
+  <p><a href="#" class="btn btn-outline-success" onclick="history.back(); return false;">
+      戻る
+  </a>
   </p>
 </div>
-  <br>
-  <br>
+<br><br>
     </main>
 
->>>>>>> origin/develop
 </div>
 <!-- /コンテンツ　-->
 <?php 

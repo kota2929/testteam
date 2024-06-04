@@ -53,10 +53,6 @@ class cmain_node extends cnode {
 ?>
 <!-- コンテンツ　-->
 <div class="contents">
-<<<<<<< HEAD
-<h5><strong>雛形ファイル</strong></h5>
-※このファイルは雛形ファイルです。
-=======
 	
 <main class="container mt-4">
         <!--pageタイトル-->
@@ -64,18 +60,15 @@ class cmain_node extends cnode {
 <br>
 <!--テーブル-->
 <br>
-<p>注文No.　　｜商品名 　　｜ユーザー名　｜購入日時　　　　　｜詳細</p>
-<p>1　　　　　｜タンクトップ　｜山田　敏夫｜2024-08-02-04:46:01｜
-  <a href="order-rireki.php" class="btn btn-outline-success">
-  詳細
-  </a></p>
-<p>2　　　　　｜シャツ　　　｜あいす　　｜2024-09-20-15:03:56｜
-  <a href="order-rireki.php" class="btn btn-outline-success">
-  詳細
-  </a></p>
+<p>注文ID｜ユーザーID｜合計金額｜注文ステータス｜注文作成日時｜詳細</p>
+	1　　　｜ 　23　　｜￥13,456｜ああああああああ｜2024-08-02-04:46:01｜
+	  <button type="button" onclick="window.location.href='order-rireki.php'" class="btn btn-outline-success">詳細</button>
+</p>
+<p>2　　　｜　　58　　｜￥5,230｜あああああああああ｜2024-09-20-15:03:56｜
+	  <button type="button" onclick="window.location.href='order-rireki.php'" class="btn btn-outline-success">詳細</button>
+</p>
 <br>
     </main>
->>>>>>> origin/develop
 </div>
 <!-- /コンテンツ　-->
 <?php 

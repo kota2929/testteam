@@ -53,10 +53,6 @@ class cmain_node extends cnode {
 ?>
 <!-- コンテンツ　-->
 <div class="contents">
-<<<<<<< HEAD
-<h5><strong>雛形ファイル</strong></h5>
-※このファイルは雛形ファイルです。
-=======
 	
     <!-- コンテンツ -->
     <main class="container mt-4">
@@ -66,14 +62,50 @@ class cmain_node extends cnode {
 <!--ボタン-->
 <br>
 <div class="center">
-<a href="../商品管理/add_comp.html" class="btn btn-outline-success">
-    商品を登録-non
-</a>
+
+商品ID
+
+	商品名<br><input name="id" size="30"><br><br>
+	商品の説明<br><input name="id" size="30"><br><br>
+	ジャンルID<br>
+		<select id="fruits" name="janru">
+    		<option value="apple">　</option>
+      		<option value="orange">カジュアル</option>
+      		<option value="grape">ストリート</option>
+    	</select><br><br>
+	季節ID<br>
+		<select id="fruits" name="kisetu">
+    		<option value="apple">　</option>
+      		<option value="orange">春夏</option>
+      		<option value="grape">秋冬</option>
+    	</select><br><br>
+	単価<br><input name="pey" size="30"><br><br>
+	ブランドID<br>
+		<select id="fruits" name="burando">
+    		<option value="apple">　</option>
+      		<option value="orange">らぁめん</option>
+      		<option value="grape">うどん</option>
+    	</select><br><br>
+	色ID<br>
+		<select id="fruits" name="color">
+    		<option value="apple">　</option>
+      		<option value="orange">赤</option>
+      		<option value="grape">青</option>
+    	</select><br><br>
+	サイズID<br>
+		<select id="fruits" name="size">
+    		<option value="apple">　</option>
+    		<option value="apple">S</option>
+      		<option value="orange">M</option>
+      		<option value="grape">L</option>
+    	</select><br><br>
+	<br>
+
+	<button type="button" onclick="window.location.href='item-add-fin.php'" class="btn btn-outline-success">商品を登録</button>
 </div>
   <br>
   <br>
     </main>
->>>>>>> origin/develop
 </div>
 <!-- /コンテンツ　-->
 <?php 

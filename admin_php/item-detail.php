@@ -57,25 +57,29 @@ class cmain_node extends cnode {
     <!-- コンテンツ -->
     <main class="container mt-4">
         <!--pageタイトル-->
-      <h1>注文詳細</h1>
-    <!--追加・削除ボタン-->
+      <h1>商品一覧</h1>
+<br>
+    <!--項目-->
+    <p>FAQNo.　　｜　　　　　　　Q　　　　　｜A　　　　　　｜補足　　　　　　｜編集</p>
+    <!--1行目-->
+    <p>1　　　　　｜ログインできない　　　　　　｜あああああああ｜あああああ...｜
+    	<button type="button" onclick="window.location.href='item-edit.php'" class="btn btn-outline-success">編集する</button>
+	</p>
+    <!--2行目-->
+    <p>2　　　　　｜分割払いしてもいいですか？｜ダメです。　｜ああああああああ｜
+    	<button type="button" onclick="window.location.href='item-edit.php'" class="btn btn-outline-success">編集する</button>
+	</p>
+    <br>
+<br>
 <div class="center">
-    
-<br><br>
-	注文詳細ID<br><input disabled="disabled" name="order-detail-id" size="30"><br><br>
-	注文ID<br><input disabled="disabled" name="order-id" size="30"><br><br>
-	商品ID<br><input disabled="disabled" name="item-id" size="30"><br><br>
-	サイズID<br><input disabled="disabled" name="size-id" size="30"><br><br>
-	色ID<br><input disabled="disabled" name="color-id" size="30"><br><br>
-	注文個数<br><input disabled="disabled" name="order-num" size="30"><br><br>
-	一種類の商品の合計金額<br><input disabled="disabled" name="one-item-allpey" size="30"><br><br>
-<br><br>
-	<button type="button" onclick="history.back(); return false;" class="btn btn-outline-success">戻る</button>
-<br><br>
+<p>
+	<button type="button" onclick="window.location.href='mypage-admin.php'" class="btn btn-outline-success">管理者マイページへ戻る</button>
+</p>
+
 </div>
-
+  <br>
+  <br>
     </main>
-
 </div>
 <!-- /コンテンツ　-->
 <?php 
