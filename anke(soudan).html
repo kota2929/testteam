@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ECサイト - 商品詳細</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/anke.css">
+  </head>
+  <body>
+    <!-- ヘッダー -->
+    <header class="bg-light border-bottom">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <a class="navbar-brand" href="#">ブランドロゴ</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">ホーム</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">ショップ</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">ブログ</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">お問い合わせ</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav ms-3">
+              <li class="nav-item">
+                <a class="nav-link" href="#"><i class="bi bi-person"></i> ユーザー</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"><i class="bi bi-cart"></i> カート</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- コンテンツ -->
+    <main class="container my-5">
+      <h1 class="mb-4 soudan-title">コーデ相談</h1>
+      <p class="soudan-sent">アンケートと要望を送信してあなたにピッタリな服を探しましょう</p>
+      <form id="surveyForm" class="p-4 border rounded">
+        <div class="mb-3">
+          <label class="form-label">1. どんな場面で着ますか？</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="question1" id="q1_option1" value="option1">
+            <label class="form-check-label" for="q1_option1">学校で</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="question1" id="q1_option2" value="option2">
+            <label class="form-check-label" for="q1_option2">お出かけで</label>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">2. 服を買う目的は？</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="question2" id="q2_option1" value="option1">
+            <label class="form-check-label" for="q2_option1">モテたい</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="question2" id="q2_option2" value="option2">
+            <label class="form-check-label" for="q2_option2">おしゃれに思われたい</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="question2" id="q2_option3" value="option3">
+            <label class="form-check-label" for="q2_option3">自分を変えたい</label>
+          </div>
+        </div>
+
+        <!-- 横並びにする部分 -->
+        <div class="mb-3">
+          <label class="form-label">3. 好きなコーデは？</label>
+          <div class="row">
+            <div class="col-md-3">
+              <div class="form-check option-item">
+                <img src="img\no-image.jpg" alt="きれいめ" class="option-image">
+                <label class="form-check-label" for="q3_option1">きれいめ</label>
+                <input class="form-check-input" type="radio" name="question3" id="q3_option1" value="option1">
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-check option-item">
+                <img src="img\no-image.jpg" alt="カジュアル" class="option-image">
+                <label class="form-check-label" for="q3_option2">カジュアル</label>
+                <input class="form-check-input" type="radio" name="question3" id="q3_option2" value="option2">
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-check option-item">
+                <img src="img\no-image.jpg" alt="ストリート" class="option-image">
+                <label class="form-check-label" for="q3_option3">ストリート</label>
+                <input class="form-check-input" type="radio" name="question3" id="q3_option3" value="option3">
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-check option-item">
+                <img src="img\no-image.jpg" alt="モード系" class="option-image">
+                <label class="form-check-label" for="q3_option4">モード系</label>
+                <input class="form-check-input" type="radio" name="question3" id="q3_option4" value="option4">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">4. 着る時期は？</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="question4" id="q4_option1" value="option1">
+            <label class="form-check-label" for="q4_option1">春</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="question4" id="q4_option2" value="option2">
+            <label class="form-check-label" for="q4_option2">夏</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="question4" id="q4_option3" value="option3">
+            <label class="form-check-label" for="q4_option3">秋</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="question4" id="q4_option4" value="option4">
+            <label class="form-check-label" for="q4_option4">冬</label>
+          </div>
+        </div>
+
+        <!-- その他要望 -->
+        <div class="mb-3">
+          <label class="form-label" for="additionalRequests">その他要望</label>
+          <textarea class="form-control" id="additionalRequests" name="additionalRequests" rows="3"></textarea>
+        </div>
+
+        <!-- 回答欄 -->
+        <div class="mb-3">
+          <label class="form-label" for="responderAnswer">回答欄</label>
+          <input type="text" class="form-control" id="responderAnswer" name="responderAnswer">
+        </div>
+
+        <button type="submit" class="btn btn-primary">送信</button>
+      </form>
+    </main>
+
+    <!-- フッター -->
+    <footer class="bg-light text-center text-lg-start border-top mt-auto">
+      <div class="container p-4">
+        <div class="row">
+          <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+            <h5 class="text-uppercase">会社情報</h5>
+            <p>ここに会社の説明文を入れます。お客様に対するメッセージや、会社のビジョンなど。</p>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase">サポート</h5>
+            <ul class="list-unstyled mb-0">
+              <li><a href="#" class="text-dark">お問い合わせ</a></li>
+              <li><a href="#" class="text-dark">よくある質問</a></li>
+              <li><a href="#" class="text-dark">返品ポリシー</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase">フォローする</h5>
+            <ul class="list-unstyled mb-0">
+              <li><a href="#" class="text-dark"><i class="bi bi-facebook"></i> Facebook</a></li>
+              <li><a href="#" class="text-dark"><i class="bi bi-twitter"></i> Twitter</a></li>
+              <li><a href="#" class="text-dark"><i class="bi bi-instagram"></i> Instagram</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2024 会社名
+      </div>
+    </footer>
+
+    <!-- 必要なスクリプトの読み込み順序を修正 -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
+    <script src="js/item-detail.js"></script>
+    <script src="js/anke.js"></script>
+  </body>
+</html>
