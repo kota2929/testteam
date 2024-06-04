@@ -1,12 +1,12 @@
 <?php
-/*!
+/*/*!
 @file hinagata.php
 @brief ページ作成の雛形ファイル
 @copyright Copyright (c) 2024 Yamanoi Yasushi.
 */
 
 //ライブラリをインクルード
-require_once("common/libs.php");
+/*/require_once("common/libs.php");
 
 $err_array = array();
 $err_flag = 0;
@@ -16,13 +16,13 @@ $page_obj = null;
 //--------------------------------------------------------------------------------------
 ///	本体ノード
 //--------------------------------------------------------------------------------------
-class cmain_node extends cnode {
+/*class cmain_node extends cnode {
 	//--------------------------------------------------------------------------------------
 	/*!
 	@brief	コンストラクタ
 	*/
 	//--------------------------------------------------------------------------------------
-	public function __construct() {
+	/*public function __construct() {
 		//親クラスのコンストラクタを呼ぶ
 		parent::__construct();
 	}
@@ -32,7 +32,7 @@ class cmain_node extends cnode {
 	@return なし
 	*/
 	//--------------------------------------------------------------------------------------
-	public function execute(){
+	/*public function execute(){
 	}
 	//--------------------------------------------------------------------------------------
 	/*!
@@ -40,7 +40,7 @@ class cmain_node extends cnode {
 	@return	なし
 	*/
 	//--------------------------------------------------------------------------------------
-	public function create(){
+	/*public function create(){
 	}
 	//--------------------------------------------------------------------------------------
 	/*!
@@ -48,8 +48,8 @@ class cmain_node extends cnode {
 	@return なし
 	*/
 	//--------------------------------------------------------------------------------------
-	public function display(){
-//PHPブロック終了
+	/*public function display(){*/
+//PHPブロック終了*/*/
 ?>
 <!-- コンテンツ　-->
 <head>
@@ -114,23 +114,23 @@ class cmain_node extends cnode {
 						<a class="nav-link nav-text" href="FAQ.php">FAQ</a>
 					  </li>
 					  <li class="nav-item">
-						<a class="nav-link nav-text" href="mahune/toiawase.php">お問い合わせ</a>
+						<a class="nav-link nav-text" href="toiawase.php">お問い合わせ</a>
 					  </li>
 					</ul>
 					<ul class="navbar-nav ms-3">
 
 					<li class="nav-item">
-					<a class="nav-link" href="mypage.php">
+					<a class="nav-link" href="../mypage.php">
 						<img src="img/kkrn_icon_user_13.png" alt="ユーザアイコン" class="user-img">
 					</a>
 				</li>
 
 					<li class="nav-item">
-                <a class="nav-link star-text" href="okini.php"><i class="bi bi-person"></i> ☆</a>
+                <a class="nav-link star-text" href="../okini.php"><i class="bi bi-person"></i> ☆</a>
 				</li>
 
 				<li class="nav-item">
-				<a class="nav-link" href="kart.php">
+				<a class="nav-link" href="../kart.php">
 					<img src="img/1223676.png" alt="カートアイコン" class="kart-img">
 				</a>
 			</li>
@@ -218,13 +218,13 @@ class cmain_node extends cnode {
 <!-- /コンテンツ　-->
 <?php 
 //PHPブロック再開
-	}
+	/*}
 	//--------------------------------------------------------------------------------------
 	/*!
 	@brief	デストラクタ
 	*/
 	//--------------------------------------------------------------------------------------
-	public function __destruct(){
+	/*public function __destruct(){
 		//親クラスのデストラクタを呼ぶ
 		parent::__destruct();
 	}
@@ -244,5 +244,5 @@ $page_obj->create();
 $main_obj->execute();
 //ページ全体を表示
 $page_obj->display();
-
+*/
 ?>
