@@ -1,0 +1,79 @@
+.p1{
+    
+    text-align: center;
+
+  font-size: 40px;
+}
+.p2{
+    color: #00d5ff;
+    text-align: center;
+
+  font-size: 20px;
+}
+.p3{
+    
+    text-align: center;
+
+  font-size: 20px;
+}
+.title {
+ 
+    text-align: center;
+    font-size: 20px;
+    }
+
+    button{
+    
+        text-align: center;
+        margin-top: 110px;
+        
+    padding: 10px 120px;
+  border-radius: 50px;
+  font: bold 25px sans-serif;
+    
+    border:rgb(2, 229, 250) 2px solid;
+    
+    background: rgb(2, 229, 250);
+    color: #FFF;
+}
+.fh{
+    margin-top: 10px;
+}
+.example{
+    /*コレ*/text-align: center;
+}
+th{
+    border:solid 0.5px #ffffff;
+   
+    padding: 5px;
+    
+    background-color: #ffffff;
+   }
+  
+   img {
+  border: solid 1px #ffffff; /* 色：グレー */
+ 
+}
+
+  .ZXx{
+    text-align: center;
+  }  
+  table{
+
+  
+  padding-top : 100px;
+ }
+   .g1{
+    width: 450px;
+    height: 40px;
+  }
+  
+  .g4{
+    text-align: center;
+    width: 450px;
+    height: 200px;
+
+  }
+  main p{
+        margin-bottom: 15px; 
+    }

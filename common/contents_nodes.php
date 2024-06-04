@@ -53,7 +53,7 @@ class cheader extends cnode {
 			<header class="bg-light border-bottom">
 			  <nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="container">
-				<a class="navbar-brand nav-center" href="#">
+				<a class="navbar-brand nav-center" href="item-home.php">
 				<img src="img/rogo(仮).png" alt="ブランドロゴ" style="height: 50px;"> <!-- ここで画像を挿入 -->
 			  </a>
 				  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -71,7 +71,7 @@ class cheader extends cnode {
 						<a class="nav-link nav-text" href="FAQ.php">FAQ</a>
 					  </li>
 					  <li class="nav-item">
-						<a class="nav-link nav-text" href="mahune/toiawase.php">お問い合わせ</a>
+						<a class="nav-link nav-text" href="toiawase.php">お問い合わせ</a>
 					  </li>
 					</ul>
 					<ul class="navbar-nav ms-3">
@@ -154,13 +154,13 @@ class cfooter extends cnode {
 				<h5 class="text-uppercase">サポート</h5>
 				<ul class="list-unstyled mb-0">
 				  <li>
-					<a href="mahune/toiawase.php" class="text-dark">お問い合わせ</a>
+					<a href="toiawase.php" class="text-dark">お問い合わせ</a>
 				  </li>
 				  <li>
 					<a href="FAQ.php" class="text-dark">よくある質問</a>
 				  </li>
 				  <li>
-					<a href="purapo.php" class="text-dark" >返品ポリシー</a>
+					<a href="purapo.php" class="text-dark" >プライバシーポリシー</a>
 				  </li>
 				</ul>
 			  </div>
