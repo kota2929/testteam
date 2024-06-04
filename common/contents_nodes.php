@@ -82,8 +82,8 @@ class cheader extends cnode {
 					</a>
 				</li>
 
-					<li class="nav-item">
-                <a class="nav-link star-text" href="okini.php"><i class="bi bi-person"></i> ☆</a>
+				<li class="nav-item">
+                <a class="nav-link star-text" href="okini.php">☆</a>
 				</li>
 
 				<li class="nav-item">
