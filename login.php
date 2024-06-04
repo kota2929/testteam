@@ -1,3 +1,4 @@
+<link rel="stylesheet" href = "css/login.css">
 <?php
 /*!
 @file hinagata.php
@@ -53,8 +54,47 @@ class cmain_node extends cnode {
 ?>
 <!-- コンテンツ　-->
 <div class="contents">
-<h5><strong>雛形ファイル</strong></h5>
-※このファイルは雛形ファイルです。
+<main class="container mt-4">
+        <br><br>
+      <p  class="p1">ログイン</p>
+      <br><br>
+      <div class="ZXx">
+        <table align="center" >
+        <tr><form name="name" >
+            
+                <input type="text" class="g1" name="name" value="" placeholder="アカウントID">
+        </form></td></tr>
+        <br><br>
+        
+        <tr><form action="#" method="post">
+            
+            <input type="text" class="g1" name="name" value="" placeholder="パスワード">
+    </form></td></tr>
+    
+
+    
+</table>
+
+
+
+<button  onclick="">
+    ログイン
+</button>
+<br><br>
+</li>
+
+<a  class="p2" href="#">パスワードをお忘れの方</a>
+
+<br><br>
+<p  class="p3">初めてご利用になる方</p>
+
+<button class="fh" onclick="">
+    新規登録
+</button>
+</div>
+<br><br>
+        </main>
+
 </div>
 <!-- /コンテンツ　-->
 <?php 

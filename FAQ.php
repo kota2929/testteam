@@ -108,7 +108,7 @@ class cmain_node extends cnode {
       </div>
 
       <div class="contact_button_block text-center">
-        <a href="contact.html" class="contact_button">お問い合わせフォームへ</a>
+        <a href="toiawase.php" class="contact_button">お問い合わせフォームへ</a>
       </div>
     </main>
 </div>
