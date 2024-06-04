@@ -280,17 +280,17 @@ color_id　←colorsテーブルを参照
 以下の情報をもとにでテーブルを作成するcreate文を作成してください。
 
 【テーブル名】●
-・colors
+・blands
 
 【カラム】
-.color_id
-.color_name
+.bland_id
+.bland_name
 
 【主キー】
-.color_id
+.bland_id
 【データ型】
-.color_id ←　数値型　長さ10
-.color_name　←　文字列型　長さ10
+.bland_id ←　数値型　長さ32
+.bland_name　←　文字列型　長さ32
 
 【外部キー】
 ・なし

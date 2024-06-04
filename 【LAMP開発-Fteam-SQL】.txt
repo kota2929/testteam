@@ -3,7 +3,7 @@
 
 
 
-・ユーザー情報テーブル
+・ユーザー情報テーブル★
 
 CREATE TABLE users (
     user_id INT(128) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -14,7 +14,7 @@ CREATE TABLE users (
     user_address VARCHAR(128) NOT NULL
 );
 
-・管理者情報テーブル
+・管理者情報テーブル★
 
 CREATE TABLE mngs (
     mng_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -23,7 +23,7 @@ CREATE TABLE mngs (
     mng_pass VARCHAR(128) NOT NULL
 );
 
-・FAQテーブル
+・FAQテーブル★
 
 CREATE TABLE faq (
     faq_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -31,7 +31,7 @@ CREATE TABLE faq (
     answer VARCHAR(500)
 );
 
-・問い合わせテーブル
+・問い合わせテーブル★
 
 CREATE TABLE quirys (
     quiry_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -41,42 +41,42 @@ CREATE TABLE quirys (
     quiry_status TINYINT NOT NULL
 );
 
-・色テーブル
+・色テーブル★
 
 CREATE TABLE colors (
     color_id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     color_name VARCHAR(10) NOT NULL
 );
 
-・季節テーブル
+・季節テーブル★
 
 CREATE TABLE seasons (
     season_id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     season_name VARCHAR(10) NOT NULL
 );
 
-・サイズテーブル
+・サイズテーブル★
 
 CREATE TABLE sizes (
     size_id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     size_name VARCHAR(10) NOT NULL
 );
 
-・ジャンルテーブル
+・ジャンルテーブル★
 
 CREATE TABLE genres (
     genre_id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     genre_name VARCHAR(10) NOT NULL
 );
 
-・ブランドテーブル
+・ブランドテーブル★
 
 CREATE TABLE blands (
     bland_id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     bland_name VARCHAR(10) NOT NULL
 );
 
-・カテゴリーテーブル
+・カテゴリーテーブル★
 CREATE TABLE categorys (
     category_id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     category_name VARCHAR(10) NOT NULL
@@ -92,7 +92,7 @@ CREATE TABLE categorys (
 
 -----ユーザー情報テーブルの子テーブル-----
 
-・カートテーブル
+・カートテーブル★
 
 CREATE TABLE carts (
     cart_id INT(128) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -100,7 +100,7 @@ CREATE TABLE carts (
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
 
-・身体情報テーブル
+・身体情報テーブル●
 
 CREATE TABLE bodys (
     user_id INT(128) NOT NULL,
@@ -113,7 +113,7 @@ CREATE TABLE bodys (
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
 
-・相談テーブル
+・相談テーブル★
 
 CREATE TABLE questions (
     user_id INT(128) NOT NULL,
@@ -131,7 +131,7 @@ CREATE TABLE questions (
 
 -----色、季節、ブランドテーブルの子テーブル-----
 
-・商品情報テーブル
+・商品情報テーブル★
 
 CREATE TABLE products (
     product_id INT(128) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -150,7 +150,7 @@ CREATE TABLE products (
 
 -----色、サイズ、商品情報テーブルの子テーブル-----
 
-・商品詳細
+・商品詳細★
 
 CREATE TABLE details (
     product_detail_id INT(128) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -164,10 +164,10 @@ CREATE TABLE details (
 
 -----商品詳細テーブルの子テーブル-----
 
-・在庫数テーブル
+・在庫数テーブル★
 
 CREATE TABLE stacks (
-    stack_id INT(128) NOT NULL,
+    stack_id INT(128) NOT NULL　AUTO_INCREMENT PRIMARY KEY,
     product_detail_id INT(128) NOT NULL,
     product_stock INT NOT NULL,
     PRIMARY KEY (stack_id),
@@ -177,7 +177,7 @@ CREATE TABLE stacks (
 
 -----色、商品情報テーブルの子テーブル-----
 
-・商品画像テーブル
+・商品画像テーブル★
 
 CREATE TABLE images (
     product_id INT(128) NOT NULL,
@@ -190,7 +190,7 @@ CREATE TABLE images (
 
 -----商品情報、カートテーブルに子テーブル-----
 
-・カートない情報テーブル
+・カートない情報テーブル★
 
 CREATE TABLE cartitems (
     cart_item_id INT(128) NOT NULL,
