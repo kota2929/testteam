@@ -43,7 +43,7 @@ class cmain_node extends cnode {
         $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
         // クエリを実行して結果を取得
-        $query = "SELECT product_name, product_price FROM products";
+        $query = "SELECT product_id, product_name, product_price FROM products";
         $result = $mysqli->query($query);
 
         // 取得した商品情報をプロパティに保存
@@ -109,16 +109,17 @@ class cmain_node extends cnode {
 
           <div class="product-card-container row">
         <?php
-        // 商品情報を表示
-        foreach ($this->products as $product) {
+          // 商品情報を表示
+          foreach ($this->products as $product) {
             $product_name = $product['product_name'];
-            $product_price = $product['product_price'];
+            $product_price = round($product['product_price']);
+            $product_id = $product['product_id']; // 商品IDを取得
 
             // 商品カードのHTMLを出力
             echo '<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">';
             echo '<div class="card-container">';
             echo '<div class="card">';
-            echo '<a href="item-detatil.php" class="card-link">';
+            echo '<a href="item-detail.php?id=' . $product_id . '" class="card-link">'; // 商品詳細ページへのリンクを追加
             echo '<img src="img/no-image.jpg" alt="' . $product_name . '" class="card-img">';
             echo '<div class="card-content">';
             echo '<h3 class="card-title">' . $product_name . '</h3>';
@@ -126,7 +127,8 @@ class cmain_node extends cnode {
             echo '<p class="card-price">¥' . $product_price . '</p>';
             echo '<button class="favorite-button" onclick="toggleFavorite(event, this)">★</button>';
             echo '</div></div></a></div></div></div>';
-        }
+          }
+
         ?>
         </div>
         </main>
