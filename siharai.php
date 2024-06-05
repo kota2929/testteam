@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="css/shiharai.css">
+<link rel="stylesheet" href="css/siharai.css">
 <?php
 /*!
 @file hinagata.php
@@ -53,65 +53,67 @@ class cmain_node extends cnode {
 //PHPブロック終了
 ?>
 <!-- コンテンツ　-->
-<div class="contents">
+<main class="container mt-4">
+
     
-<h1>お届け先・配送方法・お支払い方法</h1>
-<hr>
-
-<div class="left box"><p>お届け先</p></div>
-<div class="left box1"><p>田中太郎</p>
-  <p>〒XXX-XXXX</p>
-  <p>東京都中央区XXXXXXXXX</p>
-  </div>
-  <div class="left box3"><p>小計</p>
-                         <p>￥7,480</p>
-                         <button onclick= "href = 'siharai-fin.php'">
-                          会計へ
-                      </button>
-
-  </div>
-
-
-  
-  <div class="clear">
+      <h1 class="h1">お届け先・配送方法・お支払い方法</h1>
       <hr>
-  <div class="left box"><p>配送方法</p></div>
-  <div class="left box2"> <input type="radio"  name="q1"  value="通常配送">通常配送 <p1>○月×日～○月△日 発送予定</p1><div> 
-      <input type="radio"  name="q1"  value="日時指定">日時指定</div>
+      
+      <div class="left box"><p>お届け先</p></div>
+      <div class="left box1"><p>田中太郎</p>
+        <p>〒XXX-XXXX</p>
+        <p>東京都中央区XXXXXXXXX</p>
+        </div>
+        <div class="left box3"><p>小計</p>
+                               <p>￥7,480</p>
+                               <button class="submit-btn" type="submit" onclick="submitForm()">
+                                会計へ
+                            </button>
+
+        </div>
+      
     
-      <select class=" huj" name="name" id="nme">
-        <option  value="who">--- ×月○日 ---</option>
-        <option value="1月">1月</option>
-        <option value="2月">2月</option>
-        <option value="3月">3月</option>
-        <option value="4月">4月</option>
-        <option value="5月">5月</option>
-        <option value="6月">6月</option>
-        <option value="7月">7月</option>
-       
-      </select>
-     
-      <select class=" huj"name="name" id="name">
-        <option  value="who">--- 午前--午後 ---</option>
-        <option value="午前中">午前中</option>
-        <option value="午後中">午後中</option>
-       
-      </select>
+        
+        <div class="clear">
+            <hr>
+        <div class="left box"><p>配送方法</p></div>
+        <div class="left box2"> <input type="radio"  name="q1"  value="通常配送">通常配送 <p1>○月×日～○月△日 発送予定</p1><div> 
+            <input type="radio"  name="q1"  value="日時指定">日時指定</div>
+          
+            <select class=" huj" name="name" id="nme">
+              <option  value="who">--- ×月○日 ---</option>
+              <option value="1月">1月</option>
+              <option value="2月">2月</option>
+              <option value="3月">3月</option>
+              <option value="4月">4月</option>
+              <option value="5月">5月</option>
+              <option value="6月">6月</option>
+              <option value="7月">7月</option>
+             
+            </select>
+           
+            <select class=" huj"name="name" id="name">
+              <option  value="who">--- 午前--午後 ---</option>
+              <option value="午前中">午前中</option>
+              <option value="午後中">午後中</option>
+             
+            </select>
+          </div>
     </div>
-</div>
-<div class="clear"></div>
-      <hr>
-  <div class="left box"><p>配送方法</p></div>
-  <div class="left box2"> <input type="radio"  name="q1"  value="通常配送">クレジットカード <br>
-      <p1>+クレジットカードの追加</p1><div> 
-      <input type="radio"  name="q1"  value="日時指定">コンビニ払い</div>
-          
-      
-      
-          
-</div>
-
-</div>
+    <div class="clear"></div>
+            <hr>
+        <div class="left box"><p>配送方法</p></div>
+        <div class="left box2"> <input type="radio"  name="q1"  value="通常配送">クレジットカード <br>
+            <p1>+クレジットカードの追加</p1><div> 
+            <input type="radio"  name="q1"  value="日時指定">コンビニ払い</div>
+                
+            
+            
+                
+    </div>
+	<div class="clear"></div>
+      <!-- 他のコンテンツがここに入ります -->
+    </main>
 <!-- /コンテンツ　-->
 <?php 
 //PHPブロック再開

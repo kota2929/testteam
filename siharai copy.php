@@ -82,6 +82,7 @@ button{
     background: rgb(2, 229, 250);
     color: #FFF;
 }
+
 .huj{
     color: #000000;
     margin-left:20px;
