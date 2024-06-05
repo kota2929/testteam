@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ECサイト</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/mypage.css">
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        margin: 0;
+      }
+      header {
+        flex-shrink: 0;
+      }
+      main {
+        display: flex;
+        flex: 1;
+      }
+      .sidebar {
+        flex-shrink: 0;
+        width: 250px;
+        background-color: #f8f9fa;
+        border-right: 1px solid rgba(0, 0, 0, 0.1);
+      }
+      .contents {
+        flex: 1;
+        padding: 2rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem; /* スペースを追加してセクションを分ける */
+      }
+      .content-area {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ヘッダー -->
+    <header class="bg-light border-bottom">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <a class="navbar-brand" href="#">ブランドロゴ</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active"  aria-current="page" href="#">ホーム</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">ショップ</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">ブログ</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">お問い合わせ</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav ms-3">
+              <li class="nav-item">
+                <a class="nav-link" href="#"><i class="bi bi-person"></i> ユーザー</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"><i class="bi bi-cart"></i> カート</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- コンテンツ -->
+    <div class="contents">
+
+      <div class = "contents-body">
+            <div class="sidebar d-flex flex-column p-0 bg-body-tertiary">
+              <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
+                <ul class="nav flex-column">
+                  <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="mypage.php">
+                      <svg class="bi"></svg>
+                      会員情報
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2" href="rireki.php">
+                      <svg class="bi"></svg>
+                      注文履歴
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2" href="okini">
+                      <svg class="bi"></svg>
+                      お気に入り
+                    </a>
+                  </li>
+                </ul>
+                <hr class="my-3">
+                <ul class="nav flex-column mb-auto">
+                  <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2" href="">
+                      <svg class="bi"></svg>
+                      ログアウト
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="contents-block">
+              <div class="content-area">
+                <h5><strong>会員登録情報</strong></h5>
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th colspan="3">基本情報</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th><p>氏名</p></th>
+                      <td>佐藤夢二</td>
+                      <td><input type="button" value="編集"></td>
+                    </tr>
+                    <tr>
+                      <th><p>郵便番号</p></th>
+                      <td><p>〒XXX-XXXX<p></td>
+                        <td><input type="button" value="編集"></td>
+                    </tr>
+                    <tr>
+                      <th><p>住所</p></th>
+                      <td><p>福島県郡山市喜久田町XXXXXXXXX</p></td>
+                      <td><input type="button" value="編集"></td>
+                    </tr>
+                    <tr>
+                      <th><p>電話番号</p></th>
+                      <td><p>090-XXXX-XXXX</p></td>
+                      <td><input type="button" value="編集"></td>
+                    </tr>
+                    <tr>
+                      <th><p>パスワード</p></th>
+                      <td><p>*********</p></td>
+                      <td><input type="button" value="編集"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+      
+              <div class="content-area">
+                <h5><strong>身体情報</strong></h5>
+                <table class="table table-bordered">
+                  <thead>
+                    <tr><th colspan="3">身体情報</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th><p>年齢</p></th>
+                      <td><p>30</p></td>
+                      <td><input type="button" value="編集"></td>
+                    </tr>
+                    <tr>
+                      <th><p>身長</p></th>
+                      <td><p>165cm<p></td>
+                      <td><input type="button" value="編集"></td>
+                    </tr>
+                    <tr>
+                      <th><p>体重</p></th>
+                      <td><p>55kg</p></td>
+                      <td><input type="button" value="編集"></td>
+                    </tr>
+                    <tr>
+                      <th><p>ウエスト</p></th>
+                      <td><p>80cm</p></td>
+                      <td><input type="button" value="編集"></td>
+                    </tr>
+                    <tr>
+                      <th><p>股下</p></th>
+                      <td><p>秘密♡</p></td>
+                      <td><input type="button" value="編集"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+      
+              <div class="content-area">
+                <h5><strong>クレジットカード情報</strong></h5>
+                <table class="table table-bordered">
+                  <thead>
+                    <tr><th colspan="4">クレジットカード情報</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th><p>カード番号</p></th>
+                      <td><p>＊＊＊＊＊＊＊＊＊＊＊XXX</p></td>
+                      <td><input type="button" value="編集"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              
+            </div>
+        </div>
+      </div>
+
+    <!-- フッター -->
+    <footer class="bg-light text-center text-lg-start border-top mt-auto">
+      <div class="container p-4">
+        <div class="row">
+          <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+            <h5 class="text-uppercase">会社情報</h5>
+            <p>ここに会社の説明文を入れます。お客様に対するメッセージや、会社のビジョンなど。</p>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase">サポート</h5>
+            <ul class="list-unstyled mb-0">
+              <li><a href="#" class="text-dark">お問い合わせ</a></li>
+              <li><a href="#" class="text-dark">よくある質問</a></li>
+              <li><a href="#" class="text-dark">プライバシーポリシー</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase">フォローする</h5>
+            <ul class="list-unstyled mb-0">
+              <li><a href="#" class="text-dark"><i class="bi bi-facebook"></i> Facebook</a></li>
+              <li><a href="#" class="text-dark"><i class="bi bi-twitter"></i> Twitter</a></li>
+              <li><a href="#" class="text-dark"><i class="bi bi-instagram"></i> Instagram</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">© 2024 会社名</div>
+    </footer>
+
+    <!-- 必要なスクリプトの読み込み順序を修正 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+9oC4+AMR9A25P0I18B2QjKK5Z9h7" crossorigin="anonymous"></script>
+  </body>
+</html>

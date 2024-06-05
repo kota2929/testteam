@@ -46,12 +46,16 @@
 
     .card-content {
         padding: 20px;
-        font-family: "Arial Black", Arial, sans-serif;
+        font-family: sans-serif;
     }
 
     .card-title {
-        font-size: 1.3em;
         margin-bottom: 10px;
+    }
+
+    .card-title {
+        text-align: left; /* Align card titles to the left */
+        font-size: 16px; /* Reduce font size */
     }
 
     .card-info {
