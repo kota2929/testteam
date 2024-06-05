@@ -1,3 +1,4 @@
+<link rel="stylesheet" href = "css/rireki.css">
 <?php
 /*!
 @file hinagata.php
@@ -53,8 +54,85 @@ class cmain_node extends cnode {
 ?>
 <!-- コンテンツ　-->
 <div class="contents">
-<h5><strong>雛形ファイル</strong></h5>
-※このファイルは雛形ファイルです。
+<div class="contents-body">
+      <div class="sidebar d-flex flex-column p-0 bg-body-tertiary">
+        <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="mypage.php">
+                <svg class="bi"></svg>
+                会員情報
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center gap-2" href="rireki.php">
+                <svg class="bi"></svg>
+                注文履歴
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center gap-2" href="okini">
+                <svg class="bi"></svg>
+                お気に入り
+              </a>
+            </li>
+          </ul>
+          <hr class="my-3">
+          <ul class="nav flex-column mb-auto">
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center gap-2" href="#modal-01">
+                <svg class="bi"></svg>
+                ログアウト
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="order-card">
+        <div class="rireki-title">
+          <h2>注文履歴</h2>
+        </div>
+
+        <div class="order-card-body">
+          <div class="order-details-header">
+            <div>注文日: 2024年5月20日</div>
+            <div>合計: ¥2,500</div>
+            <div>お届け先: 佐藤夢二</div>
+          </div>
+          <div class="order-content">
+            <img src="path/to/image1.jpg" alt="商品画像">
+            <div class="order-details">
+              <p>商品名: 商品名〜〜〜〜〜〜〜〜〜〜〜</p>
+              <p>サイズ: M</p>
+              <p>カラー: Black</p>
+            </div>
+            <div class="order-actions">
+              <button class="btn btn-primary">再度購入</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="order-card-body">
+          <div class="order-details-header">
+            <div>注文日: 2024年3月10日</div>
+            <div>合計: ¥2,500</div>
+            <div>お届け先: 佐藤夢二</div>
+          </div>
+          <div class="order-content">
+            <img src="path/to/image2.jpg" alt="商品画像">
+            <div class="order-details">
+              <p>商品名: 商品名〜〜〜〜〜〜〜〜〜〜〜</p>
+              <p>サイズ: M</p>
+              <p>カラー: Black</p>
+            </div>
+            <div class="order-actions">
+              <button class="btn btn-primary">再度購入</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>
 <!-- /コンテンツ　-->
 <?php 

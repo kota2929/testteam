@@ -1,0 +1,291 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+header {
+  flex-shrink: 0;
+}
+main {
+  display: flex;
+  flex: 1;
+}
+.sidebar {
+  flex-shrink: 0;
+  width: 250px;
+  background-color: #f8f9fa;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  min-height: 100%; /* サイトバーの高さを調整 */
+}
+.contents-body {
+  display: flex;
+  flex: 1;
+}
+.content-area {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.contents-block{
+  width: 100%;
+  display: block;
+  padding: 30px;
+  margin: auto;
+}
+.bi {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Sidebar */
+@media (min-width: 768px) {
+}
+
+.content-area{
+  margin-top: 30px;
+}
+
+.sidebar .nav-link {
+  font-size: 18px;
+  font-weight: 500;
+  position: sticky;
+}
+
+.sidebar .nav-link.active {
+  color: #2470dc;
+}
+
+.sidebar-heading {
+  font-size: .75rem;
+}
+
+/* Navbar */
+.navbar-brand {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+}
+
+.navbar .form-control {
+  padding: .75rem 1rem;
+}
+
+.b-divider {
+  width: 100%;
+  height: 3rem;
+  background-color: rgba(0, 0, 0, .1);
+  box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+}
+.rireki-title{
+  text-align: left;
+}
+.order-card-body {
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.order-card {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  width: 60%;
+  margin: auto;
+}
+
+.order-details-header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #ddd;
+  width: 100%;
+  padding: 10px;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.order-details-header div {
+  flex: 1;
+  text-align: center;
+}
+
+.order-card img {
+  width: 120px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 0.25rem;
+  background-color: #ccc;
+}
+
+.order-content {
+  display: flex;
+  align-items: center;
+  margin: 30px;
+}
+
+.order-details {
+  flex: 1;
+  margin-left: 20px;
+}
+
+.order-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 20px;
+  gap: 0.5rem;
+}
+
+.modal-wrapper {
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 40px 10px;
+  text-align: center;
+}
+
+.modal-button {
+  color: #4f96f6;
+  background-color: #eeeeee;
+  font-weight: bold;
+  text-align: center;
+  cursor :pointer;
+  transition: all 0.3s;
+  display: block;
+  margin-top: 40px;
+  margin-bottom: 1px;
+  padding: 12px 2px;
+  max-width:300px;
+  text-decoration: none;
+}
+
+.modal-button:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(2px);
+  transform: translateY(2px);/*下に動く*/
+}
+
+/*アイコンを表示*/
+.modal-button:after {
+  font-family: "Font Awesome 5 Free";
+  content: "\f2d0";
+  padding-left: 8px;
+}
+
+/*ラベルホバー時*/
+.modal-button:hover {
+  color: #FFFFFF;
+  background-color: #4f96f6;
+  transition: .6s;
+}
+
+.modal-wrapper:not(:target) {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s, visibility .3s;
+}
+
+.modal-wrapper:target {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .4s, visibility .4s;
+}
+
+.modal-wrapper::after {
+  display: inline-block;
+  height: 100%;
+  margin-left: -.05em;
+  vertical-align: middle;
+  content: ""
+}
+
+.modal-wrapper .modal-window {
+  box-sizing: border-box;
+  display: inline-block;
+  z-index: 20;
+  position: relative;
+  width: 70%;
+  max-width: 600px;
+  padding: 10px 30px 25px;
+  border-radius: 2px;
+  background: #fff;
+  box-shadow: 0 0 30px rgba(0, 0, 0, .6);
+  vertical-align: middle;
+}
+
+.modal-wrapper .modal-window .modal-content {
+  max-height: 80vh;
+  overflow-y: auto;
+  text-align: left;
+}
+
+.modal_title {
+  font-size: 1.5em;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+}
+
+/* h2 プライマリカラー*/
+
+/* h2 セカンダリカラー*/
+
+.modal-content p {
+  margin: 10px 0 0 0;
+}
+
+.modal-overlay {
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, .8);
+}
+
+.modal-wrapper .modal-close {
+  z-index: 20;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 35px;
+  color: #95979c !important;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 35px;
+  text-align: center;
+  text-decoration: none;
+  text-indent: 0;
+}
+
+.modal-wrapper .modal-close:hover {
+  color: #2b2e38 !important;
+}
+
+.btn-group{
+  display: flex;
+  justify-content: center;
+}
+
+.cancel-btn, .logout-btn {
+  margin: 50px;
+  padding: 20px 40px;
+  border-radius: 10px;
+  border: none;
+}
+
+.cancel-btn {
+  background-color: #2b2e38;
+  color: #fff;
+}
+
+.logout-btn {
+  background-color: #00D1FF;
+  color: #FFFFFF;
+}
