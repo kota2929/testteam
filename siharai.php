@@ -54,15 +54,59 @@ class cmain_node extends cnode {
 ?>
 <!-- コンテンツ　-->
 <main class="container mt-4">
-
-    
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  <script src="postal_api.js"></script>
+</head>
+<body>
+<div class="container col-6">
       <h1 class="h1">お届け先・配送方法・お支払い方法</h1>
       <hr>
       
       <div class="left box"><p>お届け先</p></div>
-      <div class="left box1"><p>田中太郎</p>
+      <div class="left box1"><input type="radio"  name="q1"  value=""><p>田中太郎</p>
         <p>〒XXX-XXXX</p>
-        <p>東京都中央区XXXXXXXXX</p>
+        <p>東京都中央区XXXXXXXXX</p><input type="radio"  name="q1"  value=""><label>
+  <span>住所変更</span>
+  <input type="checkbox" name="checkbox">
+<div id="popup">
+<main class="container mt-4">
+
+<head>
+  
+  
+    <h1 style="text-align: center; margin-top: 2.4rem; margin-bottom: 1.6rem">入力フォーム</h1>
+    <div>
+      <form method="post" action="#" style="width: fit-content; margin: 0 auto;">
+        郵便番号<br />
+        <input type="text" name="zip_code" style="width:100px" id="zip_code">
+        <input type="button" value="住所検索" id="search_address_btn">
+        <input type="button" value="クリア" id="search_clear_btn">
+        <br />
+        都道府県<br />
+        <input type="text" name="address1" style="width:500px" id="address1"><br />
+        市区町村<br />
+        <input type="text" name="address2" style="width:500px" id="address2"><br />
+        その他<br />
+        <input type="text" name="address3" style="width:500px" id="address3"><br />
+        建物名など<br />
+        <input type="text" name="address4" style="width:500px"><br />
+        <br />
+        <div class="submit_button_right" style="text-align: right;">
+          <input type="submit"><br />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</label>
+		
         </div>
         <div class="left box3"><p>小計</p>
                                <p>￥7,480</p>
@@ -77,8 +121,8 @@ class cmain_node extends cnode {
         <div class="clear">
             <hr>
         <div class="left box"><p>配送方法</p></div>
-        <div class="left box2"> <input type="radio"  name="q1"  value="通常配送">通常配送 <p1>○月×日～○月△日 発送予定</p1><div> 
-            <input type="radio"  name="q1"  value="日時指定">日時指定</div>
+        <div class="left box2"> <input type="radio"  name="q2"  value="通常配送">通常配送 <p1>○月×日～○月△日 発送予定</p1><div> 
+            <input type="radio"  name="q2"  value="日時指定">日時指定</div>
           
             <select class=" huj" name="name" id="nme">
               <option  value="who">--- ×月○日 ---</option>
@@ -103,9 +147,9 @@ class cmain_node extends cnode {
     <div class="clear"></div>
             <hr>
         <div class="left box"><p>配送方法</p></div>
-        <div class="left box2"> <input type="radio"  name="q1"  value="通常配送">クレジットカード <br>
+        <div class="left box2"> <input type="radio"  name="q3"  value="通常配送">クレジットカード <br>
             <p1>+クレジットカードの追加</p1><div> 
-            <input type="radio"  name="q1"  value="日時指定">コンビニ払い</div>
+            <input type="radio"  name="q3"  value="日時指定">コンビニ払い</div>
                 
             
             

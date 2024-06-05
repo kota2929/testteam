@@ -20,7 +20,9 @@ $page_obj = null;
 //PHPブロック終了
 ?>
 <!-- コンテンツ　-->
+
 <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>お支払い</title>
@@ -88,7 +90,18 @@ button{
     margin-left:20px;
 }
 
-
+#app {
+    width: 96%;
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 20px;
+    padding: 28px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    background-color: transparent;
+    box-shadow: 2px 2px 5px 0px rgba(200, 200, 200, 1);
+    font-family: "Times New Roman";
+}
   </style>
    <body>
 			<!-- フッター -->
@@ -161,11 +174,43 @@ button{
       <h1>お届け先・配送方法・お支払い方法</h1>
       <hr>
       
-      <div class="left box"><p>お届け先</p></div>
-      <div class="left box1"><p>田中太郎</p>
-        <p>〒XXX-XXXX</p>
-        <p>東京都中央区XXXXXXXXX</p>
+      <title>郵便番号検索API</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  <script src="postal_api.js"></script>
+</head>
+<body>
+  <div class="container col-6">
+    <h1 style="text-align: center; margin-top: 2.4rem; margin-bottom: 1.6rem">入力フォーム</h1>
+    <div>
+      <form method="post" action="#" style="width: fit-content; margin: 0 auto;">
+        郵便番号<br />
+        <input type="text" name="zip_code" style="width:100px" id="zip_code">
+        <input type="button" value="住所検索" id="search_address_btn">
+        <input type="button" value="クリア" id="search_clear_btn">
+        <br />
+        都道府県<br />
+        <input type="text" name="address1" style="width:500px" id="address1"><br />
+        市区町村<br />
+        <input type="text" name="address2" style="width:500px" id="address2"><br />
+        その他<br />
+        <input type="text" name="address3" style="width:500px" id="address3"><br />
+        建物名など<br />
+        <input type="text" name="address4" style="width:500px"><br />
+        <br />
+        <div class="submit_button_right" style="text-align: right;">
+          <input type="submit"><br />
         </div>
+      </form>
+    </div>
+  </div>
+
         <div class="left box3"><p>小計</p>
                                <p>￥7,480</p>
                                <button onclick="">
@@ -182,17 +227,22 @@ button{
         <div class="left box2"> <input type="radio"  name="q1"  value="通常配送">通常配送 <p1>○月×日～○月△日 発送予定</p1><div> 
             <input type="radio"  name="q1"  value="日時指定">日時指定</div>
           
-            <select class=" huj" name="name" id="nme">
-              <option  value="who">--- ×月○日 ---</option>
-              <option value="1月">1月</option>
-              <option value="2月">2月</option>
-              <option value="3月">3月</option>
-              <option value="4月">4月</option>
-              <option value="5月">5月</option>
-              <option value="6月">6月</option>
-              <option value="7月">7月</option>
-             
-            </select>
+            <div id="app">
+    <select id="datelist" name="datelist" src="datelist.js">
+        <option value="">---選択してください---</option>
+    </select>
+    <div class="dateSlide">
+    <ul class="dateSlideList">
+        <li class="date01"></li>
+        <li class="date02"></li>
+        <li class="date03"></li>
+        <li class="date04"></li>
+        <li class="date05"></li>
+        <li class="date06"></li>
+        <li class="date07"></li>
+    </ul>
+</div>
+</div>
            
             <select class=" huj"name="name" id="name">
               <option  value="who">--- 午前--午後 ---</option>

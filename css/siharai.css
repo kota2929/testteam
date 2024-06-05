@@ -23,7 +23,7 @@ font-size: 25px;
 .box{width: 20%; border:#ffffff;}
 .box1{
 width:45%;
-  height:120px;
+  height:200px;
   border:#ffffff;
 }
 .box2{
@@ -55,4 +55,56 @@ width: 13%;
 .huj{
 color: #000000;
 margin-left:20px;
+}
+#popup{
+  position: absolute;
+        width: 50%;
+        height: 90%;
+        top: 25%;
+        left: 25%;
+ 
+  line-height:30px;
+  background:#88ffcf;
+  padding:0 4%;
+  box-sizing:border-box;
+  display:none;
+ 
+  text-align: center;
+  
+  
+}
+
+input[type="checkbox"]:checked + #popup{
+  display:block;
+  transition:.2s;
+}
+img{
+  width:100%;
+}
+label{
+  display:block;
+}
+label span{
+  display:block;
+  background-color:#01b6ed;
+  color:#fff;
+  width:200px;
+  line-height:40px;
+  border-radius:4px;
+  text-align:center;
+}
+label span:hover{
+  cursor:pointer;
+}
+input[type="checkbox"]{
+  display:none;
+}
+.txt{
+  display: inline-block;
+  width: 300;
+  padding: 0.5em;
+  border: 1px solid #999;
+  box-sizing: border-box;
+  background: #f2f2f2;
+  margin: 0.5em 0;
 }
