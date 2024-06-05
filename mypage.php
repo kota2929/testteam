@@ -55,7 +55,7 @@ class cmain_node extends cnode {
 <!-- コンテンツ　-->
 <div class="contents">
 
-<div class = "contents-body">
+<div class="contents-body">
       <div class="sidebar d-flex flex-column p-0 bg-body-tertiary">
         <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
           <ul class="nav flex-column">
@@ -81,7 +81,7 @@ class cmain_node extends cnode {
           <hr class="my-3">
           <ul class="nav flex-column mb-auto">
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="">
+              <a class="nav-link d-flex align-items-center gap-2" href="#modal-01">
                 <svg class="bi"></svg>
                 ログアウト
               </a>
@@ -179,8 +179,22 @@ class cmain_node extends cnode {
             </tbody>
           </table>
         </div>
+        
       </div>
+  <div class="modal-wrapper" id="modal-01">
+    <a href="#!" class="modal-overlay"></a>
+    <div class="modal-window">
+      <div class="modal-content">
+        <p class="modal_title">ログアウトしますか？</p>
+        <div class="btn-group">
+        <button class="cancel-btn" onclick="">キャンセル</button>
+        <button class="logout-btn" onclick="">ログアウト</button>
+        </div>
+      </div>
+      <a href="#!" class="modal-close"><i class="far fa-times-circle"></i></a>
+    </div>
   </div>
+    </div>
 </div>
 <!-- /コンテンツ　-->
 <?php 
