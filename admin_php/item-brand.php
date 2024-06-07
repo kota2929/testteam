@@ -1,6 +1,6 @@
 <?php
 /*!
-@file hinagata.php
+@file item-brand.php
 @brief ページ作成の雛形ファイル
 @copyright Copyright (c) 2024 Yamanoi Yasushi.
 */
@@ -38,6 +38,17 @@ class cmain_node extends cnode {
         $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
         if ($mysqli->connect_error) {
             die("データベース接続失敗: " . $mysqli->connect_error);
+        }
+
+        // フォームが送信された場合の処理
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['brand'])) {
+            $brand_name = $mysqli->real_escape_string($_POST['brand']);
+            $insert_query = "INSERT INTO blands (bland_name) VALUES ('$brand_name')";
+            if ($mysqli->query($insert_query)) {
+                echo "ブランドが正常に登録されました。<br>";
+            } else {
+                echo "エラー: " . $mysqli->error . "<br>";
+            }
         }
 
         // blandsテーブルの全ての内容を取得するクエリを実行
@@ -106,7 +117,7 @@ class cmain_node extends cnode {
         <br>
         <!--ブランド登録フォーム-->
         <div class="center">
-            <form action="item-add-fin.php" method="post">
+            <form action="item-brand.php" method="post">
                 <label for="brand">ブランド名</label>
                 <input type="text" id="brand" name="brand" size="30" required><br><br>
                 <button type="submit" class="btn btn-outline-success">ブランドを登録</button>
