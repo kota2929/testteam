@@ -53,18 +53,7 @@ class cmain_node extends cnode {
 //PHPブロック終了
 ?>
 <!-- コンテンツ　-->
-<main class="container mt-4">
-<meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-  <script src="postal_api.js"></script>
-</head>
-<body>
+
 <div class="container col-6">
       <h1 class="h1">お届け先・配送方法・お支払い方法</h1>
       <hr>
@@ -77,33 +66,44 @@ class cmain_node extends cnode {
   <input type="checkbox" name="checkbox">
 <div id="popup">
 <main class="container mt-4">
+<main class="container mt-4">
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  <script src="postal_api.js"></script>
 
 <head>
   
   
     <h1 style="text-align: center; margin-top: 2.4rem; margin-bottom: 1.6rem">入力フォーム</h1>
     <div>
-      <form method="post" action="#" style="width: fit-content; margin: 0 auto;">
+      <form method="post" action="#" >
         郵便番号<br />
-        <input type="text" name="zip_code" style="width:100px" id="zip_code">
+        <input type="text" name="zip_code"  id="zip_code">
         <input type="button" value="住所検索" id="search_address_btn">
         <input type="button" value="クリア" id="search_clear_btn">
         <br />
         都道府県<br />
-        <input type="text" name="address1" style="width:500px" id="address1"><br />
+        <input type="text" name="address1"  id="address1"><br />
         市区町村<br />
-        <input type="text" name="address2" style="width:500px" id="address2"><br />
+        <input type="text" name="address2"  id="address2"><br />
         その他<br />
-        <input type="text" name="address3" style="width:500px" id="address3"><br />
+        <input type="text" name="address3"  id="address3"><br />
         建物名など<br />
-        <input type="text" name="address4" style="width:500px"><br />
+        <input type="text" name="address4" ><br />
         <br />
-        <div class="submit_button_right" style="text-align: right;">
+        <div class="submit_button_right" >
           <input type="submit"><br />
         </div>
       </form>
     </div>
   </div>
+  </head>
 </div>
 </label>
 		
@@ -124,18 +124,26 @@ class cmain_node extends cnode {
         <div class="left box2"> <input type="radio"  name="q2"  value="通常配送">通常配送 <p1>○月×日～○月△日 発送予定</p1><div> 
             <input type="radio"  name="q2"  value="日時指定">日時指定</div>
           
-            <select class=" huj" name="name" id="nme">
-              <option  value="who">--- ×月○日 ---</option>
-              <option value="1月">1月</option>
-              <option value="2月">2月</option>
-              <option value="3月">3月</option>
-              <option value="4月">4月</option>
-              <option value="5月">5月</option>
-              <option value="6月">6月</option>
-              <option value="7月">7月</option>
-             
-            </select>
-           
+            <select class=" huj" name="name" id="dateSelector"></select>
+            <script>
+document.addEventListener("DOMContentLoaded", function() {
+  var select = document.getElementById("dateSelector");
+  var today = new Date();
+  
+  // 今日から一週間後までの日付をループして追加
+  for (var i = 0; i < 7; i++) {
+    var date = new Date();
+    date.setDate(today.getDate() + i);
+    var month = date.getMonth() + 1; // 月は0から始まるため
+    var day = date.getDate();
+    
+    var option = document.createElement("option");
+    option.text = month + "月 " + day + "日";
+    option.value = date.toISOString(); // オプションの値としてISO 8601形式の日付を使用
+    select.add(option);
+  }
+});
+</script>
             <select class=" huj"name="name" id="name">
               <option  value="who">--- 午前--午後 ---</option>
               <option value="午前中">午前中</option>

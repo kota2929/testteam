@@ -24,6 +24,52 @@ $page_obj = null;
 <head>
 
     <meta charset="utf-8">
+    <script>
+// コードを記述する
+const datelist = document.getElementById('datelist')
+//表示終了日
+const end = 7
+//日本の曜日
+const week = ['日', '月', '火', '水', '木', '金', '土']
+
+if(end !== undefined){
+
+    for(let i = 0; i < end; i++){
+        //取得する日付の値を設定
+        let param = Date.now() + i * 86400000
+        //値から日付を取得
+        let date = new Date(param)
+        
+        //dateから年を取得
+        let y = date.getFullYear()
+        //dateから月を取得
+        let m = date.getMonth()+1
+        //dateから日を取得
+        let d = date.getDate()
+        //dateから曜日を取得
+        let w = date.getDay()
+        
+        //月を2桁に揃える
+        if(m < 10){ m = '0'+m }
+        //日を2桁に揃える
+        if(d < 10){ d = '0'+d }
+        
+        //テキストの出力形式
+        let textFormat = y+'年'+m+'月'+d+'日'+'('+week[w]+')'
+        //値の出力形式
+        let valueFormat = y+'-'+m+'-'+d
+        
+        //option要素を作成
+        let option = document.createElement('option')
+        //optionのテキストを指定
+        option.textContent = textFormat
+        //optionの値を指定
+        option.value = valueFormat
+        //detelistの末尾に追加
+        datelist.appendChild(option);
+    }
+}
+</script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>お支払い</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
@@ -226,24 +272,27 @@ button{
         <div class="left box"><p>配送方法</p></div>
         <div class="left box2"> <input type="radio"  name="q1"  value="通常配送">通常配送 <p1>○月×日～○月△日 発送予定</p1><div> 
             <input type="radio"  name="q1"  value="日時指定">日時指定</div>
-          
-            <div id="app">
-    <select id="datelist" name="datelist" src="datelist.js">
-        <option value="">---選択してください---</option>
-    </select>
-    <div class="dateSlide">
-    <ul class="dateSlideList">
-        <li class="date01"></li>
-        <li class="date02"></li>
-        <li class="date03"></li>
-        <li class="date04"></li>
-        <li class="date05"></li>
-        <li class="date06"></li>
-        <li class="date07"></li>
-    </ul>
-</div>
-</div>
-           
+            
+            <select id="dateSelector"></select>
+            <script>
+document.addEventListener("DOMContentLoaded", function() {
+  var select = document.getElementById("dateSelector");
+  var today = new Date();
+  
+  // 今日から一週間後までの日付をループして追加
+  for (var i = 0; i < 7; i++) {
+    var date = new Date();
+    date.setDate(today.getDate() + i);
+    var month = date.getMonth() + 1; // 月は0から始まるため
+    var day = date.getDate();
+    
+    var option = document.createElement("option");
+    option.text = month + "月 " + day + "日";
+    option.value = date.toISOString(); // オプションの値としてISO 8601形式の日付を使用
+    select.add(option);
+  }
+});
+</script>
             <select class=" huj"name="name" id="name">
               <option  value="who">--- 午前--午後 ---</option>
               <option value="午前中">午前中</option>
