@@ -163,6 +163,7 @@ document.addEventListener("DOMContentLoaded", function() {
             
                 
     </div>
+    <br><br><br><br><br><br><br><br>
 	<div class="clear"></div>
       <!-- 他のコンテンツがここに入ります -->
     </main>
