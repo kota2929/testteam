@@ -61,11 +61,11 @@ class cmain_node extends cnode {
       <div class="left box"><p>お届け先</p></div>
       <div class="left box1"><input type="radio"  name="q1"  value=""><p>田中太郎</p>
         <p>〒XXX-XXXX</p>
-        <p>東京都中央区XXXXXXXXX</p><input type="radio"  name="q1"  value=""><label>
+        <p>東京都中央区XXXXXXXXX</p><input type="radio"  name="q1"  value="">
+  <label>   
   <span>住所変更</span>
   <input type="checkbox" name="checkbox">
 <div id="popup">
-<main class="container mt-4">
 <main class="container mt-4">
 <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -76,11 +76,11 @@ class cmain_node extends cnode {
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
   <script src="postal_api.js"></script>
+  
+ 
 
-<head>
   
-  
-    <h1 style="text-align: center; margin-top: 2.4rem; margin-bottom: 1.6rem">入力フォーム</h1>
+    <h1 >住所検索</h1>
     <div>
       <form method="post" action="#" >
         郵便番号<br />
@@ -107,7 +107,7 @@ class cmain_node extends cnode {
 </div>
 </label>
 		
-        </div>
+
         <div class="left box3"><p>小計</p>
                                <p>￥7,480</p>
                                <button class="submit-btn" type="submit" onclick="submitForm()">
@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function() {
   var today = new Date();
   
   // 今日から一週間後までの日付をループして追加
-  for (var i = 0; i < 7; i++) {
+  for (var i = 0; i < 8; i++) {
     var date = new Date();
     date.setDate(today.getDate() + i);
     var month = date.getMonth() + 1; // 月は0から始まるため

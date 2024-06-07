@@ -59,7 +59,7 @@ margin-left:20px;
 #popup{
   position: absolute;
         width: 50%;
-        height: 350px;
+        height: 500px;
         top: 25%;
         left: 25%;
  
@@ -74,16 +74,13 @@ margin-left:20px;
   
 }
 
-input[type="checkbox"]:checked + #popup{
-  display:block;
-  transition:.2s;
-}
 img{
   width:100%;
 }
 label{
   display:block;
 }
+/*ボタンの装飾*/
 label span{
   display:block;
   background-color:#01b6ed;
@@ -98,6 +95,10 @@ label span:hover{
 }
 input[type="checkbox"]{
   display:none;
+}
+/*checkboxがチェックの状態になったらpopupを表示させる*/
+input[type="checkbox"]:checked + #popup{
+  display:block;
 }
 .txt{
   display: inline-block;

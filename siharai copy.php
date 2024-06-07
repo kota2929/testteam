@@ -148,6 +148,46 @@ button{
     box-shadow: 2px 2px 5px 0px rgba(200, 200, 200, 1);
     font-family: "Times New Roman";
 }
+/*popup表示させたいコンテンツのレイアウトと位置*/
+#popup{
+  width:30%;
+  line-height:100px;
+  background:#000;
+  padding:0 4%;
+  box-sizing:border-box;
+  display:none;
+  position:fixed;
+  top:50%;
+  left:50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+img{
+  width:100%;
+}
+label{
+  display:block;
+}
+/*ボタンの装飾*/
+label span{
+  display:block;
+  background-color:#01b6ed;
+  color:#fff;
+  width:200px;
+  line-height:40px;
+  border-radius:4px;
+  text-align:center;
+}
+label span:hover{
+  cursor:pointer;
+}
+input[type="checkbox"]{
+  display:none;
+}
+/*checkboxがチェックの状態になったらpopupを表示させる*/
+input[type="checkbox"]:checked + #popup{
+  display:block;
+}
   </style>
    <body>
 			<!-- フッター -->
@@ -256,7 +296,11 @@ button{
       </form>
     </div>
   </div>
+  <label>
+  <span>popupを表示</span>
+  <input type="checkbox" name="checkbox">
 
+</label>
         <div class="left box3"><p>小計</p>
                                <p>￥7,480</p>
                                <button onclick="">
