@@ -16,13 +16,15 @@ $page_obj = null;
 //--------------------------------------------------------------------------------------
 ///	本体ノード
 //--------------------------------------------------------------------------------------
-class cmain_node extends cnode {
+class cmain_node extends cnode
+{
 	//--------------------------------------------------------------------------------------
 	/*!
 	@brief	コンストラクタ
 	*/
 	//--------------------------------------------------------------------------------------
-	public function __construct() {
+	public function __construct()
+	{
 		//親クラスのコンストラクタを呼ぶ
 		parent::__construct();
 	}
@@ -32,7 +34,8 @@ class cmain_node extends cnode {
 	@return なし
 	*/
 	//--------------------------------------------------------------------------------------
-	public function execute(){
+	public function execute()
+	{
 	}
 	//--------------------------------------------------------------------------------------
 	/*!
@@ -40,47 +43,97 @@ class cmain_node extends cnode {
 	@return	なし
 	*/
 	//--------------------------------------------------------------------------------------
-	public function create(){
+	public function create()
+	{
 	}
+	//--------------------------------------------------------------------------------------
+	/*!
+	@brief  DBテーブル表示
+	@return なし
+	*/
+	//--------------------------------------------------------------------------------------
+	
 	//--------------------------------------------------------------------------------------
 	/*!
 	@brief  表示(継承して使用)
 	@return なし
 	*/
 	//--------------------------------------------------------------------------------------
-	public function display(){
-//PHPブロック終了
-?>
-<!-- コンテンツ　-->
-<div class="contents">
-	
-<main class="container mt-4">
-        <!--pageタイトル-->
-      <h1>ユーザー管理</h1>
-<br>
-<!--テーブル-->
-<br>
-<p>ユーザー名　　｜ID　　　　　 ｜電話番号　｜会員状態　｜アカウント状態｜その他</p>
-<p>テストユーザー ｜test_user001   ｜080****0000｜通常会員　｜Not Banned　｜
-	<button type="button" onclick="window.location.href='user-detail.php'" class="btn btn-outline-success">詳細</button>
-</p>
-<p>あいうえおかき  ｜test_aiue002  ｜070****0885｜プレミアム ｜Not Banned　　｜
-	<button type="button" onclick="window.location.href='user-detail.php'" class="btn btn-outline-success">詳細</button>
-</p>
-<br>
-    </main>
+	public function display()
+	{
+		// データベース接続を試みる 
+		$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-</div>
-<!-- /コンテンツ　-->
-<?php 
-//PHPブロック再開
+		if ($mysqli->connect_error) {
+			die("データベース接続失敗: " . $mysqli->connect_error);
+		} else {
+			echo "データベース接続成功<br>";
+		}
+
+		// usersテーブルから全ての情報を取得するクエリを実行
+		$sql = "SELECT user_id , user_name , user_email , user_pass , 
+						user_post_code , user_address
+                FROM users";
+
+		$result = $mysqli->query($sql);
+
+		if (!$result) {
+			die("クエリ実行エラー: " . $mysqli->error);
+		}
+		//PHPブロック終了
+?>
+
+		<!-- コンテンツ　-->
+		<div class="contents">
+			<main class="container mt-4">
+				<!--pageタイトル-->
+				<h1>ユーザー管理</h1>
+				<br>
+				<!--テーブル-->
+				<div class="center">
+					<?php
+					// 取得した情報をテーブル形式で表示
+					if ($result->num_rows > 0) {
+						// データがある場合はテーブルを表示
+						echo "<table border='1' id='productTable'>";
+						echo "<tr><th>ユーザーID</th><th>ユーザー名</th><th>メールアドレス</th><th>パスワード</th><th>郵便番号</th><th>住所</th><th>詳細</th></tr>";
+						//カテゴリー順に並んでいる
+						while ($row = $result->fetch_assoc()) {
+							echo "<td>" . htmlspecialchars($row["user_id"]) . "</td>";
+							echo "<td>" . htmlspecialchars($row["user_name"]) . "</td>";
+							echo "<td>" . htmlspecialchars($row["user_email"]) . "</td>";
+							echo "<td>" . htmlspecialchars($row["user_pass"]) . "</td>";
+							echo "<td>" . htmlspecialchars($row["user_post_code"]) . "</td>";
+							echo "<td>" . htmlspecialchars($row["user_address"]) . "</td>";
+							echo "<td><button type='button' class='btn btn-outline-danger' onclick='deleteProduct(" . htmlspecialchars($row["user_id"]) . ")'>詳細</button></td>";
+							echo "</tr>";
+						}
+						echo "</table>";
+					} else {
+						// データがない場合はメッセージを表示
+						echo "0件の結果";
+					}
+
+					// データベース接続を閉じる
+					$mysqli->close();
+					?>
+
+
+					<br>
+			</main>
+
+		</div>
+		<!-- /コンテンツ　-->
+<?php
+		//PHPブロック再開
 	}
 	//--------------------------------------------------------------------------------------
 	/*!
 	@brief	デストラクタ
 	*/
 	//--------------------------------------------------------------------------------------
-	public function __destruct(){
+	public function __destruct()
+	{
 		//親クラスのデストラクタを呼ぶ
 		parent::__destruct();
 	}

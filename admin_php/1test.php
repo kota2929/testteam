@@ -26,7 +26,6 @@ class cmain_node extends cnode
         //親クラスのコンストラクタを呼ぶ
         parent::__construct();
     }
-
     //--------------------------------------------------------------------------------------
     /*!
     @brief 本体実行（表示前処理）
@@ -48,7 +47,6 @@ class cmain_node extends cnode
     public function create()
     {
     }
-
     //--------------------------------------------------------------------------------------
     /*!
     @brief 商品削除用のスクリプト
@@ -118,7 +116,9 @@ class cmain_node extends cnode
         if (!$result) {
             die("クエリ実行エラー: " . $mysqli->error);
         }
+        //PHPブロック終了
 ?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>

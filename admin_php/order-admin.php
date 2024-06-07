@@ -49,6 +49,29 @@ class cmain_node extends cnode {
 	*/
 	//--------------------------------------------------------------------------------------
 	public function display(){
+        // データベース接続を試みる 
+        $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+        if ($mysqli->connect_error) {
+            die("データベース接続失敗: " . $mysqli->connect_error);
+        } else {
+            echo "データベース接続成功<br>";
+        }
+
+        // productsテーブルから全ての情報を取得するクエリを実行
+        $sql = "SELECT products.product_id, products.product_name, products.product_exp, products.product_price, 
+                       genres.genre_name, seasons.season_name, blands.bland_name, categorys.category_name 
+                FROM products
+                JOIN genres ON products.genre_id = genres.genre_id
+                JOIN seasons ON products.season_id = seasons.season_id
+                JOIN blands ON products.bland_id = blands.bland_id
+                JOIN categorys ON products.category_id = categorys.category_id";
+
+        $result = $mysqli->query($sql);
+
+        if (!$result) {
+            die("クエリ実行エラー: " . $mysqli->error);
+        }
 //PHPブロック終了
 ?>
 <!-- コンテンツ　-->
