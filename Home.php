@@ -1,4 +1,4 @@
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/item-home.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
@@ -14,18 +14,86 @@ $err_array = array();
 $err_flag = 0;
 $page_obj = null;
 
+
+
 class cmain_node extends cnode {
-    public function __construct() {
-        parent::__construct();
+	private $products = array();
+
+
+	public function __construct() {
+		//親クラスのコンストラクタを呼ぶ
+		parent::__construct();
+	}
+	//--------------------------------------------------------------------------------------
+	/*!
+	@brief  本体実行（表示前処理）
+	@return なし
+	*/
+	//--------------------------------------------------------------------------------------
+	public function execute(){
+    global $mysqli;
+
+    $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+    // Check connection
+    if ($mysqli->connect_error) {
+        die("Connection failed: " . $mysqli->connect_error);
     }
 
-    public function execute() {
+    // First SQL query to retrieve all products
+    $query_products = "SELECT product_id, product_name, product_price FROM products";
+
+    // Execute the first query
+    $result_products = $mysqli->query($query_products);
+
+    // Initialize products array
+    $this->products = array();
+
+    // Fetch products from the result set
+    while ($row = $result_products->fetch_assoc()) {
+        $this->products[] = $row;
     }
 
-    public function create() {
+    // Close the result set for the first query
+    $result_products->close();
+
+    // Second SQL query to retrieve top 5 newest items
+    $query_newest_items = "SELECT product_id, product_name, product_price FROM products ORDER BY registration_date DESC LIMIT 5";
+
+    // Execute the second query
+    $result_newest_items = $mysqli->query($query_newest_items);
+
+    // Initialize newest items array
+    $this->newest_items = array();
+
+    // Fetch newest items from the result set
+    while ($row = $result_newest_items->fetch_assoc()) {
+        $this->newest_items[] = $row;
     }
 
-    public function display() {
+    // Close the result set for the second query
+    $result_newest_items->close();
+
+    // Close the database connection
+    $mysqli->close();
+}
+
+	//--------------------------------------------------------------------------------------
+	/*!
+	@brief	構築時の処理(継承して使用)
+	@return	なし
+	*/
+	//--------------------------------------------------------------------------------------
+	public function create(){
+	}
+	//--------------------------------------------------------------------------------------
+	/*!
+	@brief  表示(継承して使用)
+	@return なし
+	*/
+	//--------------------------------------------------------------------------------------
+	public function display(){
+//PHPブロック終了
 ?>
 <!-- コンテンツ -->
 <div class="contents">
@@ -77,109 +145,40 @@ class cmain_node extends cnode {
   <h3>人気のおすすめアイテム</h3>
 </div>
 <div class="product-card-container row">
+<?php
 
-  <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-    <div class="card-container">
-      <div class="card">
-        <a href="" class="card-link">
-          <img src="img/no-image.jpg" alt="商品名" class="card-img">
-          <div class="card-content">
-            <h3 class="card-title">かっこいい服</h3>
-            <div class="card-info">
-              <p class="card-price">¥20,000</p>
-              <button class="favorite-button" onclick="toggleFavorite(event, this)">★</button>
-            </div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
+// シャッフルする
+shuffle($this->products);
 
-  <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-    <div class="card-container">
-      <div class="card">
-        <a href="" class="card-link">
-          <img src="img/no-image.jpg" alt="商品名" class="card-img">
-          <div class="card-content">
-            <h3 class="card-title">かっこいい服</h3>
-            <div class="card-info">
-              <p class="card-price">¥20,000</p>
-              <button class="favorite-button" onclick="toggleFavorite(event, this)">★</button>
-            </div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
+// 表示する新着アイテムの数を指定
+$display_count = 5; // 例として5つの商品を表示するとします
 
-  <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-    <div class="card-container">
-      <div class="card">
-        <a href="" class="card-link">
-          <img src="img/no-image.jpg" alt="商品名" class="card-img">
-          <div class="card-content">
-            <h3 class="card-title">かっこいい服</h3>
-            <div class="card-info">
-              <p class="card-price">¥20,000</p>
-              <button class="favorite-button" onclick="toggleFavorite(event, this)">★</button>
-            </div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
+// 表示する新着アイテムの数だけループを実行
+for ($i = 0; $i < $display_count && $i < count($this->products); $i++) {
+    // 新着アイテム情報を取得
+    $item = $this->products[$i];
+    
+    // 新着アイテム情報から必要なデータを取得
+    $item_name = $item['product_name'];
+    $item_price = round($item['product_price']);
+    $item_id = $item['product_id'];
 
-  <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-    <div class="card-container">
-      <div class="card">
-        <a href="商品ページURL" class="card-link">
-          <img src="img/no-image.jpg" alt="商品名" class="card-img">
-          <div class="card-content">
-            <h3 class="card-title">かっこいい服</h3>
-            <div class="card-info">
-              <p class="card-price">¥20,000</p>
-              <button class="favorite-button" onclick="toggleFavorite(event, this)">★</button>
-            </div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
+    // 新着アイテムのカードのHTMLを出力
+    echo '<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">';
+    echo '<div class="card-container">';
+    echo '<div class="card">';
+    echo '<a href="item-detail.php?id=' . $item_id . '" class="card-link">'; // 商品詳細ページへのリンクを追加
+    echo '<img src="img/no-image.jpg" alt="' . $item_name . '" class="card-img">';
+    echo '<div class="card-content">';
+    echo '<h3 class="card-title">' . $item_name . '</h3>';
+    echo '<div class="card-info">';
+    echo '<p class="card-price">¥' . $item_price . '</p>';
+    echo '<button class="favorite-button" onclick="toggleFavorite(event, this)">★</button>';
+    echo '</div></div></a></div></div></div>';
+}
 
-  <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-    <div class="card-container">
-      <div class="card">
-        <a href="" class="card-link">
-          <img src="img/no-image.jpg" alt="商品名" class="card-img">
-          <div class="card-content">
-            <h3 class="card-title">かっこいい服</h3>
-            <div class="card-info">
-              <p class="card-price">¥20,000</p>
-              <button class="favorite-button" onclick="toggleFavorite(event, this)">★</button>
-            </div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
 
-  <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-    <div class="card-container">
-      <div class="card">
-        <a href="" class="card-link">
-          <img src="img/no-image.jpg" alt="商品名" class="card-img">
-          <div class="card-content">
-            <h3 class="card-title">かっこいい服</h3>
-            <div class="card-info">
-              <p class="card-price">¥20,000</p>
-              <button class="favorite-button" onclick="toggleFavorite(event, this)">★</button>
-            </div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
-
+?>
 </div>
 
 <div class="product-introduce-text">
@@ -188,108 +187,39 @@ class cmain_node extends cnode {
 
 <div class="product-card-container row">
 
-  <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-    <div class="card-container">
-      <div class="card">
-        <a href="" class="card-link">
-          <img src="img/no-image.jpg" alt="商品名" class="card-img">
-          <div class="card-content">
-            <h3 class="card-title">かっこいい服</h3>
-            <div class="card-info">
-              <p class="card-price">¥20,000</p>
-              <button class="favorite-button" onclick="toggleFavorite(event, this)">★</button>
-            </div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
+  <?php
 
-  <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-    <div class="card-container">
-      <div class="card">
-        <a href="" class="card-link">
-          <img src="img/no-image.jpg" alt="商品名" class="card-img">
-          <div class="card-content">
-            <h3 class="card-title">かっこいい服</h3>
-            <div class="card-info">
-              <p class="card-price">¥20,000</p>
-              <button class="favorite-button" onclick="toggleFavorite(event, this)">★</button>
-            </div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
+// 表示する商品の数を指定
+// 表示する新着アイテムの数を指定
+$display_count = 5; // 例として5つの商品を表示するとします
 
-  <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-    <div class="card-container">
-      <div class="card">
-        <a href="" class="card-link">
-          <img src="img/no-image.jpg" alt="商品名" class="card-img">
-          <div class="card-content">
-            <h3 class="card-title">かっこいい服</h3>
-            <div class="card-info">
-              <p class="card-price">¥20,000</p>
-              <button class="favorite-button" onclick="toggleFavorite(event, this)">★</button>
-            </div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
+// 表示する新着アイテムの数だけループを実行
+for ($i = 0; $i < $display_count && $i < count($this->newest_items); $i++) {
+    // 新着アイテム情報を取得
+    $item = $this->newest_items[$i];
+    
+    // 新着アイテム情報から必要なデータを取得
+    $item_name = $item['product_name'];
+    $item_price = round($item['product_price']);
+    $item_id = $item['product_id'];
 
-  <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-    <div class="card-container">
-      <div class="card">
-        <a href="" class="card-link">
-          <img src="img/no-image.jpg" alt="商品名" class="card-img">
-          <div class="card-content">
-            <h3 class="card-title">かっこいい服</h3>
-            <div class="card-info">
-              <p class="card-price">¥20,000</p>
-              <button class="favorite-button" onclick="toggleFavorite(event, this)">★</button>
-            </div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
+    // 新着アイテムのカードのHTMLを出力
+    echo '<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">';
+    echo '<div class="card-container">';
+    echo '<div class="card">';
+    echo '<a href="item-detail.php?id=' . $item_id . '" class="card-link">'; // 商品詳細ページへのリンクを追加
+    echo '<img src="img/no-image.jpg" alt="' . $item_name . '" class="card-img">';
+    echo '<div class="card-content">';
+    echo '<h3 class="card-title">' . $item_name . '</h3>';
+    echo '<div class="card-info">';
+    echo '<p class="card-price">¥' . $item_price . '</p>';
+    echo '<button class="favorite-button" onclick="toggleFavorite(event, this)">★</button>';
+    echo '</div></div></a></div></div></div>';
+}
 
-  <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-    <div class="card-container">
-      <div class="card">
-        <a href="" class="card-link">
-          <img src="img/no-image.jpg" alt="商品名" class="card-img">
-          <div class="card-content">
-            <h3 class="card-title">かっこいい服</h3>
-            <div class="card-info">
-              <p class="card-price">¥20,000</p>
-              <button class="favorite-button" onclick="toggleFavorite(event, this)">★</button>
-            </div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
 
-  <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-    <div class="card-container">
-      <div class="card">
-        <a href="" class="card-link">
-          <img src="img/no-image.jpg" alt="商品名" class="card-img">
-          <div class="card-content">
-            <h3 class="card-title">かっこいい服</h3>
-            <div class="card-info">
-              <p class="card-price">¥20,000</p>
-              <button class="favorite-button" onclick="toggleFavorite(event, this)">★</button>
-            </div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
 
+?>
 </div>
 </div>
 <!-- /コンテンツ -->

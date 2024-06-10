@@ -91,7 +91,7 @@ class cmain_node extends cnode {
       </div>
       <div class="contents-block">
         <div class="content-area">
-          <h5><strong>会員登録情報</strong></h5>
+          <h2><strong>会員登録情報</strong></h2>
           <table class="table table-bordered">
             <thead>
               <tr>

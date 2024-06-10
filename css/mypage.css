@@ -34,6 +34,8 @@ main {
   display: flex;
   flex: 1;
   flex-direction: column;
+  margin: auto;
+  width: 75%;
 }
 .contents-block{
   width: 100%;
