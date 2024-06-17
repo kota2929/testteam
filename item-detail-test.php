@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="css/item-detail.css">
 <?php
 /*!
 @file hinagata.php
@@ -17,7 +18,8 @@ $page_obj = null;
 //--------------------------------------------------------------------------------------
 class cmain_node extends cnode {
     private $product = array(); // プロパティとして商品情報を保存する配列
-    private $bland_name = ""; // プロパティとしてブランド名を保存する変数
+    private $colors = array();  // プロパティとして色情報を保存する配列
+    private $sizes = array();   // プロパティとしてサイズ情報を保存する配列
 
     //--------------------------------------------------------------------------------------
     /*!
@@ -45,8 +47,11 @@ class cmain_node extends cnode {
 
         if ($product_id > 0) {
             // クエリを実行して結果を取得
-            $query = "SELECT product_name, product_price, product_exp, bland_id FROM products WHERE product_id = ?";
+            $query = "SELECT product_name, product_price, product_exp,bland_id FROM products WHERE product_id = ?";
             $stmt = $mysqli->prepare($query);
+            if ($stmt === false) {
+                die("クエリの準備に失敗しました: " . $mysqli->error);
+            }
             $stmt->bind_param('i', $product_id);
             $stmt->execute();
             $result = $stmt->get_result();
@@ -54,24 +59,63 @@ class cmain_node extends cnode {
             // 取得した商品情報をプロパティに保存
             if ($row = $result->fetch_assoc()) {
                 $this->product = $row;
+            }
+                            // 商品情報からブランドIDを取得
+                            $bland_id = $row['bland_id'];
 
-                // 商品情報からブランドIDを取得
-                $bland_id = $row['bland_id'];
+                            // ブランド名を取得するクエリを準備
+                            $query_brand = "SELECT bland_name FROM blands WHERE bland_id = ?";
+                            $stmt_brand = $mysqli->prepare($query_brand);
+                            $stmt_brand->bind_param('i', $bland_id);
+                            $stmt_brand->execute();
+                            $result_brand = $stmt_brand->get_result();
 
-                // ブランド名を取得するクエリを準備
-                $query_brand = "SELECT bland_name FROM blands WHERE bland_id = ?";
-                $stmt_brand = $mysqli->prepare($query_brand);
-                $stmt_brand->bind_param('i', $bland_id);
-                $stmt_brand->execute();
-                $result_brand = $stmt_brand->get_result();
+            // 結果セットを閉じる
+            $stmt->close();
 
-                // ブランド名を取得
-                if ($row_brand = $result_brand->fetch_assoc()) {
-                    $this->bland_name = $row_brand['bland_name'];
-                }
+            // 色情報を取得するクエリ
+            $query_colors = "SELECT DISTINCT c.color_id, c.color_name 
+                             FROM details d
+                             JOIN colors c ON d.color_id = c.color_id
+                             WHERE d.product_id = ?";
+            $stmt = $mysqli->prepare($query_colors);
+            if ($stmt === false) {
+                die("クエリの準備に失敗しました: " . $mysqli->error);
+            }
+            $stmt->bind_param('i', $product_id);
+            $stmt->execute();
+            $result = $stmt->get_result();
 
-                // 結果セットを閉じる
-                $stmt_brand->close();
+            // 取得した色情報をプロパティに保存
+            while ($row = $result->fetch_assoc()) {
+                $this->colors[] = array(
+                    'color_id' => $row['color_id'],
+                    'color_name' => $row['color_name']
+                );
+            }
+
+            // 結果セットを閉じる
+            $stmt->close();
+
+            // サイズ情報を取得するクエリ
+            $query_sizes = "SELECT DISTINCT s.size_id, s.size_name 
+                             FROM details d
+                             JOIN sizes s ON d.size_id = s.size_id
+                             WHERE d.product_id = ?";
+            $stmt = $mysqli->prepare($query_sizes);
+            if ($stmt === false) {
+                die("クエリの準備に失敗しました: " . $mysqli->error);
+            }
+            $stmt->bind_param('i', $product_id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            // 取得したサイズ情報をプロパティに保存
+            while ($row = $result->fetch_assoc()) {
+                $this->sizes[] = array(
+                    'size_id' => $row['size_id'],
+                    'size_name' => $row['size_name']
+                );
             }
 
             // 結果セットを閉じる
@@ -103,9 +147,12 @@ class cmain_node extends cnode {
             return;
         }
 
-        $product_name = $this->product['product_name'];
+        $product_bland = htmlspecialchars($this->product['product_name'], ENT_QUOTES, 'UTF-8');
+        $product_name = htmlspecialchars($this->product['product_name'], ENT_QUOTES, 'UTF-8');
         $product_price = round($this->product['product_price']);
         $product_description = nl2br(htmlspecialchars($this->product['product_exp'], ENT_QUOTES, 'UTF-8'));
+
+// PHPブロック終了
 ?>
 <!-- コンテンツ　-->
 <main class="container my-5">
@@ -129,9 +176,9 @@ class cmain_node extends cnode {
         <label for="colorSelect" class="form-label">色:</label>
         <select class="form-select" id="colorSelect">
           <option selected>色を選択してください</option>
-          <option value="red">ピンク</option>
-          <option value="blue">黄緑</option>
-          <option value="green">バーガンディ</option>
+          <?php foreach ($this->colors as $color): ?>
+            <option value="<?php echo htmlspecialchars($color['color_id'], ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($color['color_name'], ENT_QUOTES, 'UTF-8'); ?></option>
+          <?php endforeach; ?>
         </select>
       </div>
 
@@ -140,20 +187,21 @@ class cmain_node extends cnode {
         <label for="sizeSelect" class="form-label">サイズ:</label>
         <select class="form-select" id="sizeSelect">
           <option selected>サイズを選択してください</option>
-          <option value="small">小</option>
-          <option value="medium">中</option>
-          <option value="large">大</option>
+          <?php foreach ($this->sizes as $size): ?>
+            <option value="<?php echo htmlspecialchars($size['size_id'], ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($size['size_name'], ENT_QUOTES, 'UTF-8'); ?></option>
+          <?php endforeach; ?>
         </select>
       </div>  
 
       <button class="btn btn-primary btn-lg add-to-cart-button" onclick="location.href='kart.php'"><i class="bi bi-cart-plus"></i> カートに追加</button>
-      <button class="favorite-button align-middle" onclick="toggleFavorite(event, this)">★</button>
+      <button id="favoriteButton" class="favorite-button align-middle" onclick="toggleFavorite(event, this)">★</button>
       <p class="product-description"><?php echo $product_description; ?></p>
     </div>
   </div>
 </main>
 <!-- /コンテンツ　-->
 <?php 
+// PHPブロック再開
     }
 
     //--------------------------------------------------------------------------------------
@@ -183,6 +231,5 @@ $main_obj->execute();
 $page_obj->display();
 
 ?>
-
 
 <script src="js/item-detail.js"></script>

@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="css/login.css">
+<link rel="stylesheet" href="css/login copy.css">
 <?php
 /*!
 @file hinagata.php
@@ -65,25 +65,31 @@ class cmain_node extends cnode {
     public function display(){
         ?>
         <div class="contents">
-          <main class="container mt-4">
-            <br><br>
-            <p class="p1">ログイン</p>
-            <div class="ZXx center-form">
-              <form action="#" method="post">
-                <div class="input-container">
-                  <input type="text" class="g1" name="accountID" value="" placeholder="アカウントID">
-                  <input type="password" class="g1" name="password" value="" placeholder="パスワード">
-                </div>
-                <div class="login-button-layout">
-                  <button type="submit">ログイン</button>
-                </div>
-              </form>
-              <a class="p2" href="#">パスワードをお忘れの方</a>
-              <br><br>
-              <p class="p3">初めてご利用になる方</p>
-              <button class="fh" onclick="">新規登録</button>
-            </div>
-          </main>
+        <div class="login-container">
+    <h2 class="login-title">ログイン</h2>
+    <form class="login-form" name="loginForm" method="post">
+        <div class="form-group">
+            <input type="text" class="user-name" name="accountID" placeholder="ユーザーID" required>
+        </div>
+        <div class="form-group">
+            <input type="password" class="password" name="password" placeholder="パスワード" required>
+        </div>
+        
+        <!-- エラーメッセージを表示する場所 -->
+        <div class="form-group">
+            <input class="loginbtn" type="submit" value="ログイン" onclick="" />
+        </div>
+        <div class="login-text">
+            <a class="forget-pass">パスワードをお忘れの方</a>
+        </div>
+        <div class="new-user">
+            <label>初めてのご利用になる方</label>
+        </div>
+        <div class="form-group">
+            <button class="regist-btn" type="button" onclick="location.href='sinnkitouroku.php'">新規登録</button>
+        </div>
+    </form>
+</div>
         </div>
         <?php
     }

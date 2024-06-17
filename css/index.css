@@ -5,6 +5,15 @@
   box-sizing: border-box;
 }
 
+dl, ol, ul {
+  margin-top: 0;
+  margin-bottom: 0rem;
+}
+
+ol, ul {
+  padding-left: 0rem;
+}
+
 body {
   padding-top: 0; /* 余計な空白をなくすためにリセット */
   margin: 0; /* 余計な空白をなくすためにリセット */
@@ -124,7 +133,7 @@ nav > ul > li li > a {
   
   @media screen and (min-width: 700px) {
     nav > ul {
-      width: 960px;
+
       margin: 0 auto;
       font-size: 0;
     }

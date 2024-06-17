@@ -20,6 +20,7 @@ $page_obj = null;
 //--------------------------------------------------------------------------------------
 class cmain_node extends cnode {
     private $products = array(); // プロパティとして商品情報を保存する配列
+    private $details_products = array(); // 新たに追加：結合クエリの結果を保存する配列
 
     //--------------------------------------------------------------------------------------
     /*!
@@ -53,6 +54,32 @@ class cmain_node extends cnode {
 
         // 結果セットを閉じる
         $result->close();
+
+        // 結合クエリを実行して結果を取得
+        $details_query = "
+            SELECT DISTINCT
+                details.product_id,
+                products.product_name,
+                products.product_exp,
+                products.product_price,
+                products.bland_id,
+                products.genre_id,
+                details.color_id,
+                products.category_id,
+            FROM
+                details
+            INNER JOIN
+                products ON details.product_id = products.product_id;
+        ";
+        $details_result = $mysqli->query($details_query);
+
+        // 取得した結合クエリの結果をプロパティに保存
+        while ($row = $details_result->fetch_assoc()) {
+            $this->details_products[] = $row;
+        }
+
+        // 結果セットを閉じる
+        $details_result->close();
 
         // データベース接続を閉じる
         $mysqli->close();
@@ -99,10 +126,15 @@ class cmain_node extends cnode {
                 </li>
                 <li><a href="#">Color</a>
                   <ul>
-                    <li><a href="#">ホワイト</a></li>
                     <li><a href="#">ブラック</a></li>
-                    <li><a href="#">グレー</a></li>
+                    <li><a href="#">ホワイト</a></li>
+                    <li><a href="#">レッド</a></li>
+                    <li><a href="#">ブルー</a></li>
                     <li><a href="#">グリーン</a></li>
+                    <li><a href="#">イエロー</a></li>
+                    <li><a href="#">パープル</a></li>
+                    <li><a href="#">ピンク</a></li>
+                    <li><a href="#">ブラウン</a></li>
                   </ul>
                 </li>
                 <li><a href="#">Category</a>
@@ -137,7 +169,39 @@ class cmain_node extends cnode {
             echo '<button class="favorite-button" onclick="toggleFavorite(event, this)">★</button>';
             echo '</div></div></a></div></div></div>';
           }
+        ?>
+        </div>
 
+        <!-- 結合クエリの結果をカード形式で表示 -->
+        <div class="product-card-container row">
+        <?php
+          // 商品詳細情報を表示
+          foreach ($this->details_products as $details_product) {
+            $product_id = $details_product['product_id'];
+            $product_name = $details_product['product_name'];
+            $product_price = round($details_product['product_price']);
+            $bland_id = $details_product['bland_id'];
+            $genre_id = $details_product['genre_id'];
+            $color_id = $details_product['color_id'];
+            $category_id = $details_product['category_id'];
+
+            // 商品カードのHTMLを出力
+            echo '<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">';
+            echo '<div class="card-container">';
+            echo '<div class="card">';
+            echo '<a href="item-detail.php?id=' . $product_id . '" class="card-link">'; // 商品詳細ページへのリンクを追加
+            echo '<img src="img/no-image.jpg" alt="' . $product_name . '" class="card-img">';
+            echo '<div class="card-content">';
+            echo '<h3 class="card-title">' . $product_name . '</h3>';
+            echo '<div class="card-info">';
+            echo '<p class="card-price">¥' . $product_price . '</p>';
+            echo '<p class="card-bland">ブランドID: ' . $bland_id . '</p>';
+            echo '<p class="card-genre">ジャンルID: ' . $genre_id . '</p>';
+            echo '<p class="card-color">カラーID: ' . $color_id . '</p>';
+            echo '<p class="card-color">カテゴリーID: ' . $category_id . '</p>';
+            echo '<button class="favorite-button" onclick="toggleFavorite(event, this)">★</button>';
+            echo '</div></div></a></div></div></div>';
+          }
         ?>
         </div>
         </main>
