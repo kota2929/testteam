@@ -1,0 +1,44 @@
+ /*商品管理・*/
+ .center{
+  text-align: center;
+  top: 50%;                /* 上端を中央に配置 */
+  left: 50%;               /* 左端を中央に配置 */
+  margin: auto;            /* 自動でマージンを設定して中央に配置 */
+ }
+ /**/
+ .FAQ_title{
+  font-size: 20px;
+  text-align: center;
+  border: solid ;
+  color: #555555;
+  padding: 5px 25px; /* 上下10px、左右20pxのbutton余白 */
+  width: 60%;
+  height: 80px;
+  top: 50%;                /* 上端を中央に配置 */
+  left: 50%;               /* 左端を中央に配置 */
+  margin: auto;            /* 自動でマージンを設定して中央に配置 */
+ }
+ /**/
+ .wide{
+  font-size: 16px;
+  border: solid ;
+  color: #555555;
+  width: 90%;
+  height: 200px;
+  justify-content: center; /* 水平方向の中央揃え */
+  align-items: center;     /* 垂直方向の中央揃え */
+  margin: auto;            /* 自動でマージンを設定して中央に配置 */
+  top: 50%;                /* 上端を中央に配置 */
+  left: 50%;               /* 左端を中央に配置 */
+  /*position: absolute;      /* 絶対位置を使用 */
+  /*display: flex;*/
+  /*transform: translate(-50%, -50%); /* 要素の中央を基準に移動 */
+ }
+ 
+ /*buton*/
+/*bottom-back*/
+  .btn-back{
+    padding: 100px 50px;
+    background: gray;
+  }
+  

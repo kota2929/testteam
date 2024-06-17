@@ -1,4 +1,6 @@
-
+/* 商品カードのコンテナにクラスを追加 */
+    /* 商品カードのスタイルを追加 */
+    /* Card Design Styles */
 
     .card-container * {
         margin: 0;
@@ -43,10 +45,11 @@
 
     .card-content {
         padding: 20px;
-        font-family: sans-serif;
+        font-family: "Arial Black", Arial, sans-serif;
     }
 
     .card-title {
+        font-size: 1.3em;
         margin-bottom: 10px;
     }
 /* item-home.css */

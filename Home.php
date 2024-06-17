@@ -1,4 +1,4 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/item-home.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
@@ -14,12 +14,35 @@ $err_array = array();
 $err_flag = 0;
 $page_obj = null;
 
+$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
+if ($mysqli->connect_error) {
+    die("データベース接続失敗: " . $mysqli->connect_error);
+} else {
+    echo "データベース接続成功<br>";
+}
+
+// blandsテーブルからbland_idが1のbrand_nameを取得するクエリを実行
+$query = "SELECT bland_name FROM blands WHERE bland_id = 1";
+$result = $mysqli->query($query);
+
+if ($result) {
+    if ($row = $result->fetch_assoc()) {
+        $brand_name = $row['bland_name'];
+        echo "ブランド名: " . htmlspecialchars($brand_name) . "<br>";
+    } else {
+        echo "データが見つかりません<br>";
+    }
+} else {
+    echo "クエリ実行エラー: " . $mysqli->error . "<br>";
+}
 
 class cmain_node extends cnode {
-	private $products = array();
-
-
+	//--------------------------------------------------------------------------------------
+	/*!
+	@brief	コンストラクタ
+	*/
+	//--------------------------------------------------------------------------------------
 	public function __construct() {
 		//親クラスのコンストラクタを呼ぶ
 		parent::__construct();

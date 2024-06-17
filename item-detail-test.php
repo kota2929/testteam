@@ -70,6 +70,11 @@ class cmain_node extends cnode {
                             $stmt_brand->execute();
                             $result_brand = $stmt_brand->get_result();
 
+                                            // ブランド名を取得
+                if ($row_brand = $result_brand->fetch_assoc()) {
+                  $this->bland_name = $row_brand['bland_name'];
+              }
+
             // 結果セットを閉じる
             $stmt->close();
 

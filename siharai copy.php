@@ -20,8 +20,56 @@ $page_obj = null;
 //PHPブロック終了
 ?>
 <!-- コンテンツ　-->
+
 <head>
+
     <meta charset="utf-8">
+    <script>
+// コードを記述する
+const datelist = document.getElementById('datelist')
+//表示終了日
+const end = 7
+//日本の曜日
+const week = ['日', '月', '火', '水', '木', '金', '土']
+
+if(end !== undefined){
+
+    for(let i = 0; i < end; i++){
+        //取得する日付の値を設定
+        let param = Date.now() + i * 86400000
+        //値から日付を取得
+        let date = new Date(param)
+        
+        //dateから年を取得
+        let y = date.getFullYear()
+        //dateから月を取得
+        let m = date.getMonth()+1
+        //dateから日を取得
+        let d = date.getDate()
+        //dateから曜日を取得
+        let w = date.getDay()
+        
+        //月を2桁に揃える
+        if(m < 10){ m = '0'+m }
+        //日を2桁に揃える
+        if(d < 10){ d = '0'+d }
+        
+        //テキストの出力形式
+        let textFormat = y+'年'+m+'月'+d+'日'+'('+week[w]+')'
+        //値の出力形式
+        let valueFormat = y+'-'+m+'-'+d
+        
+        //option要素を作成
+        let option = document.createElement('option')
+        //optionのテキストを指定
+        option.textContent = textFormat
+        //optionの値を指定
+        option.value = valueFormat
+        //detelistの末尾に追加
+        datelist.appendChild(option);
+    }
+}
+</script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>お支払い</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
@@ -88,7 +136,58 @@ button{
     margin-left:20px;
 }
 
-
+#app {
+    width: 96%;
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 20px;
+    padding: 28px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    background-color: transparent;
+    box-shadow: 2px 2px 5px 0px rgba(200, 200, 200, 1);
+    font-family: "Times New Roman";
+}
+/*popup表示させたいコンテンツのレイアウトと位置*/
+#popup{
+  width:30%;
+  line-height:100px;
+  background:#000;
+  padding:0 4%;
+  box-sizing:border-box;
+  display:none;
+  position:fixed;
+  top:50%;
+  left:50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+img{
+  width:100%;
+}
+label{
+  display:block;
+}
+/*ボタンの装飾*/
+label span{
+  display:block;
+  background-color:#01b6ed;
+  color:#fff;
+  width:200px;
+  line-height:40px;
+  border-radius:4px;
+  text-align:center;
+}
+label span:hover{
+  cursor:pointer;
+}
+input[type="checkbox"]{
+  display:none;
+}
+/*checkboxがチェックの状態になったらpopupを表示させる*/
+input[type="checkbox"]:checked + #popup{
+  display:block;
+}
   </style>
    <body>
 			<!-- フッター -->
@@ -161,11 +260,47 @@ button{
       <h1>お届け先・配送方法・お支払い方法</h1>
       <hr>
       
-      <div class="left box"><p>お届け先</p></div>
-      <div class="left box1"><p>田中太郎</p>
-        <p>〒XXX-XXXX</p>
-        <p>東京都中央区XXXXXXXXX</p>
+      <title>郵便番号検索API</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  <script src="postal_api.js"></script>
+</head>
+<body>
+  <div class="container col-6">
+    <h1 style="text-align: center; margin-top: 2.4rem; margin-bottom: 1.6rem">入力フォーム</h1>
+    <div>
+      <form method="post" action="#" style="width: fit-content; margin: 0 auto;">
+        郵便番号<br />
+        <input type="text" name="zip_code" style="width:100px" id="zip_code">
+        <input type="button" value="住所検索" id="search_address_btn">
+        <input type="button" value="クリア" id="search_clear_btn">
+        <br />
+        都道府県<br />
+        <input type="text" name="address1" style="width:500px" id="address1"><br />
+        市区町村<br />
+        <input type="text" name="address2" style="width:500px" id="address2"><br />
+        その他<br />
+        <input type="text" name="address3" style="width:500px" id="address3"><br />
+        建物名など<br />
+        <input type="text" name="address4" style="width:500px"><br />
+        <br />
+        <div class="submit_button_right" style="text-align: right;">
+          <input type="submit"><br />
         </div>
+      </form>
+    </div>
+  </div>
+  <label>
+  <span>popupを表示</span>
+  <input type="checkbox" name="checkbox">
+
+</label>
         <div class="left box3"><p>小計</p>
                                <p>￥7,480</p>
                                <button onclick="">
@@ -181,19 +316,27 @@ button{
         <div class="left box"><p>配送方法</p></div>
         <div class="left box2"> <input type="radio"  name="q1"  value="通常配送">通常配送 <p1>○月×日～○月△日 発送予定</p1><div> 
             <input type="radio"  name="q1"  value="日時指定">日時指定</div>
-          
-            <select class=" huj" name="name" id="nme">
-              <option  value="who">--- ×月○日 ---</option>
-              <option value="1月">1月</option>
-              <option value="2月">2月</option>
-              <option value="3月">3月</option>
-              <option value="4月">4月</option>
-              <option value="5月">5月</option>
-              <option value="6月">6月</option>
-              <option value="7月">7月</option>
-             
-            </select>
-           
+            
+            <select id="dateSelector"></select>
+            <script>
+document.addEventListener("DOMContentLoaded", function() {
+  var select = document.getElementById("dateSelector");
+  var today = new Date();
+  
+  // 今日から一週間後までの日付をループして追加
+  for (var i = 0; i < 7; i++) {
+    var date = new Date();
+    date.setDate(today.getDate() + i);
+    var month = date.getMonth() + 1; // 月は0から始まるため
+    var day = date.getDate();
+    
+    var option = document.createElement("option");
+    option.text = month + "月 " + day + "日";
+    option.value = date.toISOString(); // オプションの値としてISO 8601形式の日付を使用
+    select.add(option);
+  }
+});
+</script>
             <select class=" huj"name="name" id="name">
               <option  value="who">--- 午前--午後 ---</option>
               <option value="午前中">午前中</option>
