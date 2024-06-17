@@ -58,22 +58,14 @@ class cmain_node extends cnode {
     <!-- コンテンツ -->
     <main class="container mt-4">
         <!--pageタイトル-->
-      <h1>この相談は解決済みです</h1>
-<br><br>
-      <div class="wide">
-質問内容
-      </div>
-<br>
-        <div class="wide">
-回答記入欄
-        </div>
-<br><br>
+      <h1>回答が送信されました</h1>
+
     <div class="center">
         <p>
 		  <button type="button" onclick="window.location.href='mypage-admin.php'" class="btn btn-outline-success">管理者マイページへ戻る</button>
         </p>
         <p>
-		  <button type="button" onclick="history.back(); return false;" class="btn btn-outline-success">相談一覧ページへ戻る</button>
+		<button onclick="window.location.href='soudan-list.php'" class="btn btn-outline-success">一覧ページに戻る</button>
         </p>
     </div>
 <br>

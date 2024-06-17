@@ -65,7 +65,7 @@ class cmain_node extends cnode {
 		  <button onclick="window.location.href='mypage-admin.php'" class="btn btn-outline-success">管理者マイページへ戻る</button>
         </p>
         <p>
-			<button id="2backButton" class="btn btn-outline-success">一覧ページへ戻る</button>
+		<button onclick="window.location.href='soudan-list.php'" class="btn btn-outline-success">一覧ページに戻る</button>
         </p>
     </div>
 <br>

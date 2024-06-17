@@ -12,7 +12,6 @@ $err_array = array();
 $err_flag = 0;
 $page_obj = null;
 
-
 //--------------------------------------------------------------------------------------
 /// 本体ノード
 //--------------------------------------------------------------------------------------
@@ -28,6 +27,7 @@ class cmain_node extends cnode
         //親クラスのコンストラクタを呼ぶ
         parent::__construct();
     }
+
     //--------------------------------------------------------------------------------------
     /*!
     @brief 本体実行（表示前処理）
@@ -36,7 +36,7 @@ class cmain_node extends cnode
     //--------------------------------------------------------------------------------------
     public function execute()
     {
-        global $mysqli, $brand_data, $genre_data, $season_data, $category_data;
+        global $mysqli, $brand_data, $genre_data, $season_data, $category_data, $color_data, $size_data;
 
         // データベース接続を試みる 
         $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
@@ -54,6 +54,8 @@ class cmain_node extends cnode
             $price = floatval($_POST['product_price']);
             $brand_id = intval($_POST['brand_id']);
             $category_id = intval($_POST['category_id']);
+            $color_id = intval($_POST['color_id']);
+            $size_ids = isset($_POST['size_ids']) ? $_POST['size_ids'] : [];
 
             // INSERTクエリを準備。クエリ実行でDB登録が完了する。
             $insert_query = "INSERT INTO products (product_name, product_exp, genre_id, season_id, product_price, bland_id, category_id) VALUES ('$product_name', '$product_exp', $genre_id, $season_id, $price, $brand_id, $category_id)";
@@ -61,6 +63,17 @@ class cmain_node extends cnode
             // クエリを実行して成功したか否か
             if ($mysqli->query($insert_query)) {
                 echo "商品を登録しました。<br>";
+
+                // 直近の挿入で生成されたproduct_idを取得
+                $product_id = $mysqli->insert_id;
+
+                // 選択されたサイズに対してdetailsテーブルに情報を追加
+                foreach ($size_ids as $size_id) {
+                    $detail_insert_query = "INSERT INTO details (color_id, size_id, product_id) VALUES ($color_id, $size_id, $product_id)";
+                    if (!$mysqli->query($detail_insert_query)) {
+                        echo "detailsテーブルへの挿入エラー: " . $mysqli->error . "<br>";
+                    }
+                }
             } else {
                 echo "エラー: " . $mysqli->error . "<br>";
             }
@@ -71,6 +84,8 @@ class cmain_node extends cnode
         $genre_data = $this->get_table_data($mysqli, "genres", "genre_id", "genre_name");
         $season_data = $this->get_table_data($mysqli, "seasons", "season_id", "season_name");
         $category_data = $this->get_table_data($mysqli, "categorys", "category_id", "category_name");
+        $color_data = $this->get_table_data($mysqli, "colors", "color_id", "color_name");
+        $size_data = $this->get_table_data($mysqli, "sizes", "size_id", "size_name");
 
         $mysqli->close();
     }
@@ -101,6 +116,7 @@ class cmain_node extends cnode
     public function create()
     {
     }
+
     //--------------------------------------------------------------------------------------
     /*!
     @brief 表示(継承して使用)
@@ -109,7 +125,7 @@ class cmain_node extends cnode
     //--------------------------------------------------------------------------------------
     public function display()
     {
-        global $brand_data, $genre_data, $season_data, $category_data;
+        global $brand_data, $genre_data, $season_data, $category_data, $color_data, $size_data;
 ?>
         <!-- コンテンツ　-->
         <div class="contents">
@@ -165,6 +181,20 @@ class cmain_node extends cnode
                             <?php endforeach; ?>
                         </select><br><br>
 
+                        <label>色</label><br>
+                        <select name="color_id" required>
+                            <option value="">　</option>
+                            <?php foreach ($color_data as $color) : ?>
+                                <option value="<?php echo htmlspecialchars($color['color_id']); ?>"><?php echo htmlspecialchars($color['color_name']); ?></option>
+                            <?php endforeach; ?>
+                        </select><br><br>
+
+                        <label>サイズ</label><br>
+                        <?php foreach ($size_data as $size) : ?>
+                            <input type="checkbox" name="size_ids[]" value="<?php echo htmlspecialchars($size['size_id']); ?>">
+                            <?php echo htmlspecialchars($size['size_name']); ?><br>
+                        <?php endforeach; ?><br>
+
                         <br>
                         <button type="submit" class="btn btn-outline-success">商品を登録</button>
                     </div>
@@ -175,6 +205,7 @@ class cmain_node extends cnode
         <!-- /コンテンツ　-->
 <?php
     }
+
     //--------------------------------------------------------------------------------------
     /*!
     @brief デストラクタ

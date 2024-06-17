@@ -25,16 +25,12 @@ class cmain_node extends cnode {
             $accountID = $_POST['accountID'];
             $password = $_POST['password'];
 
-<<<<<<< HEAD
             // データベース接続
             $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
             if ($mysqli->connect_error) {
                 die("データベース接続失敗: " . $mysqli->connect_error);
             }
-=======
-<br>
->>>>>>> origin/develop
 
             // SQLクエリの準備
             $stmt = $mysqli->prepare("SELECT user_pass FROM users WHERE user_email = ?");
