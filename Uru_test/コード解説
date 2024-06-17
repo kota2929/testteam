@@ -1,0 +1,17 @@
+★戻るボタン(←)のように前ページに戻る
+onclick="history.back(-2);　の()の中を変えるといくつ前に戻るか指定できる
+    <a href="#" class="btn btn-outline-success" onclick="history.back(-2); return false;">
+    前ページへ戻る
+    </a>
+
+★<p>disabled属性を指定しているテキストボックスは入力できない
+
+	郵便番号<input disabled="disabled" name="num" size="30">
+    <textarea disabled="disabled" cols="30" rows="5">住所</textarea>
+
+★
+
+class="btn btn-outline-success"
+
+相談、お問い合わせ、FAQはDBの中身を見作成のため、
+表示件数は0件になります。
