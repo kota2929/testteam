@@ -71,17 +71,11 @@ class cmain_node extends cnode {
                 注文履歴
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="okini">
-                <svg class="bi"></svg>
-                お気に入り
-              </a>
-            </li>
           </ul>
           <hr class="my-3">
           <ul class="nav flex-column mb-auto">
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="#modal-01">
+              <a class="nav-link d-flex align-items-center gap-2" onclick="openModal()">
                 <svg class="bi"></svg>
                 ログアウト
               </a>
@@ -187,7 +181,7 @@ class cmain_node extends cnode {
       <div class="modal-content">
         <p class="modal_title">ログアウトしますか？</p>
         <div class="btn-group">
-        <button class="cancel-btn" onclick="">キャンセル</button>
+        <button class="cancel-btn" onclick="closeModal()">キャンセル</button>
         <button class="logout-btn" onclick="">ログアウト</button>
         </div>
       </div>
@@ -227,3 +221,4 @@ $main_obj->execute();
 $page_obj->display();
 
 ?>
+<script src="js/modal.js"></script>

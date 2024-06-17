@@ -2,8 +2,6 @@
     <link rel="stylesheet" href="css/item-home.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
-
-
 <?php
 // PHP ブロック開始
 
@@ -14,86 +12,102 @@ $err_array = array();
 $err_flag = 0;
 $page_obj = null;
 
-
-
 class cmain_node extends cnode {
-	private $products = array();
+    private $products = array();
+    private $newest_items = array();
+    private $user_id = null;
+    private $user_name = null;
+    private $user_email = null;
 
-
-	public function __construct() {
-		//親クラスのコンストラクタを呼ぶ
-		parent::__construct();
-	}
-	//--------------------------------------------------------------------------------------
-	/*!
-	@brief  本体実行（表示前処理）
-	@return なし
-	*/
-	//--------------------------------------------------------------------------------------
-	public function execute(){
-    global $mysqli;
-
-    $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-
-    // Check connection
-    if ($mysqli->connect_error) {
-        die("Connection failed: " . $mysqli->connect_error);
+    public function __construct() {
+        //親クラスのコンストラクタを呼ぶ
+        parent::__construct();
     }
 
-    // First SQL query to retrieve all products
-    $query_products = "SELECT product_id, product_name, product_price FROM products";
+    //--------------------------------------------------------------------------------------
+    /*!
+    @brief  本体実行（表示前処理）
+    @return なし
+    */
+    //--------------------------------------------------------------------------------------
+    public function execute(){
+        global $mysqli;
 
-    // Execute the first query
-    $result_products = $mysqli->query($query_products);
+        // user_idをGETパラメータから取得
+        $this->user_id = isset($_GET['id']) ? intval($_GET['id']) : null;
 
-    // Initialize products array
-    $this->products = array();
+        $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-    // Fetch products from the result set
-    while ($row = $result_products->fetch_assoc()) {
-        $this->products[] = $row;
+        // Check connection
+        if ($mysqli->connect_error) {
+            die("Connection failed: " . $mysqli->connect_error);
+        }
+
+        // user_idが取得できた場合、ユーザー情報を取得する
+        if ($this->user_id) {
+            $stmt = $mysqli->prepare("SELECT user_name, user_email FROM users WHERE user_id = ?");
+            $stmt->bind_param("i", $this->user_id);
+            $stmt->execute();
+            $stmt->bind_result($this->user_name, $this->user_email);
+            $stmt->fetch();
+            $stmt->close();
+        }
+
+        // First SQL query to retrieve all products
+        $query_products = "SELECT product_id, product_name, product_price FROM products";
+
+        // Execute the first query
+        $result_products = $mysqli->query($query_products);
+
+        // Initialize products array
+        $this->products = array();
+
+        // Fetch products from the result set
+        while ($row = $result_products->fetch_assoc()) {
+            $this->products[] = $row;
+        }
+
+        // Close the result set for the first query
+        $result_products->close();
+
+        // Second SQL query to retrieve top 5 newest items
+        $query_newest_items = "SELECT product_id, product_name, product_price FROM products ORDER BY registration_date DESC LIMIT 5";
+
+        // Execute the second query
+        $result_newest_items = $mysqli->query($query_newest_items);
+
+        // Initialize newest items array
+        $this->newest_items = array();
+
+        // Fetch newest items from the result set
+        while ($row = $result_newest_items->fetch_assoc()) {
+            $this->newest_items[] = $row;
+        }
+
+        // Close the result set for the second query
+        $result_newest_items->close();
+
+        // Close the database connection
+        $mysqli->close();
     }
 
-    // Close the result set for the first query
-    $result_products->close();
-
-    // Second SQL query to retrieve top 5 newest items
-    $query_newest_items = "SELECT product_id, product_name, product_price FROM products ORDER BY registration_date DESC LIMIT 5";
-
-    // Execute the second query
-    $result_newest_items = $mysqli->query($query_newest_items);
-
-    // Initialize newest items array
-    $this->newest_items = array();
-
-    // Fetch newest items from the result set
-    while ($row = $result_newest_items->fetch_assoc()) {
-        $this->newest_items[] = $row;
+    //--------------------------------------------------------------------------------------
+    /*!
+    @brief  構築時の処理(継承して使用)
+    @return なし
+    */
+    //--------------------------------------------------------------------------------------
+    public function create(){
     }
 
-    // Close the result set for the second query
-    $result_newest_items->close();
-
-    // Close the database connection
-    $mysqli->close();
-}
-
-	//--------------------------------------------------------------------------------------
-	/*!
-	@brief	構築時の処理(継承して使用)
-	@return	なし
-	*/
-	//--------------------------------------------------------------------------------------
-	public function create(){
-	}
-	//--------------------------------------------------------------------------------------
-	/*!
-	@brief  表示(継承して使用)
-	@return なし
-	*/
-	//--------------------------------------------------------------------------------------
-	public function display(){
-//PHPブロック終了
+    //--------------------------------------------------------------------------------------
+    /*!
+    @brief  表示(継承して使用)
+    @return なし
+    */
+    //--------------------------------------------------------------------------------------
+    public function display(){
+        // PHPブロック終了
 ?>
 <!-- コンテンツ -->
 <div class="contents">
@@ -140,6 +154,13 @@ class cmain_node extends cnode {
   </nav>
 </section>
 
+<?php if ($this->user_name): ?>
+<div class="user-info">
+    <h2>ようこそ, <?php echo htmlspecialchars($this->user_name); ?> さん</h2>
+    <p>メールアドレス: <?php echo htmlspecialchars($this->user_email); ?></p>
+    <p>ユーザーID: <?php echo htmlspecialchars($this->user_id); ?></p>
+</div>
+<?php endif; ?>
 
 <div class="product-introduce-text">
   <h3>人気のおすすめアイテム</h3>
@@ -176,7 +197,6 @@ for ($i = 0; $i < $display_count && $i < count($this->products); $i++) {
     echo '<button class="favorite-button" onclick="toggleFavorite(event, this)">★</button>';
     echo '</div></div></a></div></div></div>';
 }
-
 
 ?>
 </div>
@@ -216,8 +236,6 @@ for ($i = 0; $i < $display_count && $i < count($this->newest_items); $i++) {
     echo '<button class="favorite-button" onclick="toggleFavorite(event, this)">★</button>';
     echo '</div></div></a></div></div></div>';
 }
-
-
 
 ?>
 </div>

@@ -10,3 +10,8 @@ $('.slider').slick({
   variableWidth: true,
   dots: true,
 });
+function updateProductList(filter, value) {
+  $.get('your_php_file.php', { filter: filter, value: value }, function(response) {
+      $('.product-card-container').html($(response).find('.product-card-container').html());
+  });
+}

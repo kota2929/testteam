@@ -61,6 +61,7 @@ main {
   font-size: 18px;
   font-weight: 500;
   position: sticky;
+  cursor: pointer;
 }
 
 .sidebar .nav-link.active {
@@ -123,6 +124,10 @@ main {
   left: 0;
   padding: 40px 10px;
   text-align: center;
+}
+
+.bi{
+  cursor: pointer;
 }
 
 .modal-button {

@@ -14,3 +14,17 @@ $(document).ready(function() {
     }
   });
 });
+
+
+function toggleFavorite(event, button) {
+    // Toggle favorite class to change color
+    button.classList.toggle('favorite-active');
+    
+    // Display message
+    if (button.classList.contains('favorite-active')) {
+        alert('お気に入りに登録しました');
+    }
+    
+    // Prevent default button behavior
+    event.preventDefault();
+}

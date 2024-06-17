@@ -70,12 +70,6 @@ class cmain_node extends cnode {
                 注文履歴
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="okini">
-                <svg class="bi"></svg>
-                お気に入り
-              </a>
-            </li>
           </ul>
           <hr class="my-3">
           <ul class="nav flex-column mb-auto">

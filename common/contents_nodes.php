@@ -12,103 +12,91 @@
 ///	ヘッダノード
 //--------------------------------------------------------------------------------------
 class cheader extends cnode {
-	//--------------------------------------------------------------------------------------
-	/*!
-	@brief	コンストラクタ
-	*/
-	//--------------------------------------------------------------------------------------
-	public function __construct() {
-		//親クラスのコンストラクタを呼ぶ
-		parent::__construct();
-	}
-	//--------------------------------------------------------------------------------------
-	/*!
-	@brief	構築時の処理(継承して使用)
-	@return	なし
-	*/
-	//--------------------------------------------------------------------------------------
-	public function create(){
-	}
-	//--------------------------------------------------------------------------------------
-	/*!
-	@brief  表示(継承して使用)
-	@return なし
-	*/
-	//--------------------------------------------------------------------------------------
-	public function display(){
-		$echo_str = <<< END_BLOCK
+    // Property to store the user's name
+    private $user_name;
+    
+    // Constructor to initialize the user name
+    public function __construct($user_name = '') {
+        parent::__construct();
+        $this->user_name = $user_name; // Set the user name
+    }
 
-		<!doctype html>
-		<html lang="en">
-		  <head>
-			<meta charset="utf-8">
-			<meta name="viewport" content="width=device-width, initial-scale=1">
-			<title>ECサイト</title>
-			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-			<link rel="stylesheet" href="css/index.css">
+    public function create(){
+    }
 
-		  </head>
-		  <body>
-			<!-- ヘッダー -->
-			<header class="bg-light border-bottom">
-			  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-				<div class="container">
-				<a class="navbar-brand nav-center" href="item-home.php">
-				<img src="img/rogo(仮).png" alt="ブランドロゴ" style="height: 50px;"> <!-- ここで画像を挿入 -->
-			  </a>
-				  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				  </button>
-				  <div class="collapse navbar-collapse" id="navbarNav">
-					<ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-center">
-					  <li class="nav-item">
-						<a class="nav-link active nav-text" aria-current="page" href="item-home.php">ホーム</a>
-					  </li>
-					  <li class="nav-item">
-						<a class="nav-link nav-text" href="アンケート.php">コーデ相談</a>
-					  </li>
-					  <li class="nav-item">
-						<a class="nav-link nav-text" href="FAQ.php">FAQ</a>
-					  </li>
-					  <li class="nav-item">
-						<a class="nav-link nav-text" href="toiawase.php">お問い合わせ</a>
-					  </li>
-					</ul>
-					<ul class="navbar-nav ms-3">
+    public function display(){
+        $user_name = htmlspecialchars($this->user_name);
+        $echo_str = <<< END_BLOCK
 
-					<li class="nav-item">
-					<a class="nav-link" href="mypage.php">
-						<img src="img/kkrn_icon_user_13.png" alt="ユーザアイコン" class="user-img">
-					</a>
-				</li>
+        <!doctype html>
+        <html lang="en">
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>ECサイト</title>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+            <link rel="stylesheet" href="css/index.css">
 
-				<li class="nav-item">
-                <a class="nav-link star-text" href="okini.php">☆</a>
-				</li>
-
-				<li class="nav-item">
-				<a class="nav-link" href="kart.php">
-					<img src="img/1223676.png" alt="カートアイコン" class="kart-img">
-				</a>
-			</li>
-					</ul>
-				  </div>
-				</div>
-			  </nav>
-			</header>
+          </head>
+          <body>
+            <!-- ヘッダー -->
+            <header class="bg-light border-bottom">
+              <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container">
+                <a class="navbar-brand nav-center" href="item-home.php">
+                <img src="img/rogo(仮).png" alt="ブランドロゴ" style="height: 50px;"> <!-- ここで画像を挿入 -->
+              </a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-center">
+                      <li class="nav-item">
+                        <a class="nav-link active nav-text" aria-current="page" href="item-home.php">ホーム</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link nav-text" href="アンケート.php">コーデ相談</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link nav-text" href="FAQ.php">FAQ</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link nav-text" href="toiawase.php">お問い合わせ</a>
+                      </li>
+                    </ul>
+                    <ul class="navbar-nav ms-3">
+                    <li class="nav-item">
+                     <a class="nav-link" href="mypage.php">
+                        <img src="img/kkrn_icon_user_13.png" alt="ユーザアイコン" class="user-img">
+                        <!-- Display username if available -->
+                        <?php if ($user_name): ?>
+                          <span class="navbar-text">ようこそ, <?php echo $user_name; ?> さん</span>
+                        <?php endif; ?>
+                     </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link star-text" href="okini.php">☆</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="kart.php">
+                        <img src="img/1223676.png" alt="カートアイコン" class="kart-img">
+                    </a>
+                </li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+            </header>
 END_BLOCK;
-		echo $echo_str;
-	}
-	//--------------------------------------------------------------------------------------
-	/*!
-	@brief	デストラクタ
-	*/
-	//--------------------------------------------------------------------------------------
-	public function __destruct(){
-		//親クラスのデストラクタを呼ぶ
-		parent::__destruct();
-	}
+        echo $echo_str;
+    }
+
+    public function __destruct(){
+        parent::__destruct();
+    }
 }
+
+
 
 //--------------------------------------------------------------------------------------
 ///	フッターノード
