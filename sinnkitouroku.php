@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="css/sinkitouroku.css">
 <?php
 /*!
 @file hinagata.php
@@ -6,272 +7,340 @@
 */
 
 //ライブラリをインクルード
-
+require_once ("common/libs.php");
 
 $err_array = array();
 $err_flag = 0;
 $page_obj = null;
 
-
 //--------------------------------------------------------------------------------------
 ///	本体ノード
 //--------------------------------------------------------------------------------------
+class cmain_node extends cnode
+{
+    //--------------------------------------------------------------------------------------
+    /*!
+       @brief	コンストラクタ
+       */
+    //--------------------------------------------------------------------------------------
+    public function __construct()
+    {
+        //親クラスのコンストラクタを呼ぶ
+        parent::__construct();
+    }
 
-//PHPブロック終了
-?><head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>新規登録</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-</head>
-<style>
+    //--------------------------------------------------------------------------------------
+    /*!
+       @brief  本体実行（表示前処理）
+       @return なし
+       */
+    //--------------------------------------------------------------------------------------
+    public function execute()
+    {
+        global $err_array, $err_flag;
 
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $err_array = array();
+            $err_flag = 0;
 
-.p1{
+            // 入力データの取得とバリデーション
+            $user_first_name = trim($_POST['first-name']);
+            $user_last_name = trim($_POST['last-name']);
+            $user_nickname = trim($_POST['username']);
+            $user_email = trim($_POST['email']);
+            $user_pass = trim($_POST['password']);
+            $user_post_code = trim($_POST['zipcode']);
+            $user_address = trim($_POST['prefecture'] . $_POST['city'] . $_POST['street'] . ($_POST['building-room'] ?? ''));
 
-text-align: center;
+            // バリデーションチェック
+            if (empty($user_first_name)) {
+                $err_array['first-name'] = '姓を入力してください';
+            }
 
-font-size: 65px;
-}
-.title {
+            if (empty($user_last_name)) {
+                $err_array['last-name'] = '名を入力してください';
+            }
 
-text-align: center;
-font-size: 20px;
-}
+            if (empty($user_nickname)) {
+                $err_array['username'] = 'ユーザーネームを入力してください';
+            }
 
-button{
+            if (empty($user_email)) {
+                $err_array['email'] = 'メールアドレスを入力してください';
+            } elseif (!filter_var($user_email, FILTER_VALIDATE_EMAIL)) {
+                $err_array['email'] = '正しいフォーマットで入力してください';
+            } else {
+                // メールアドレスの重複チェック
+                $db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+                if ($db->connect_error) {
+                    die("データベース接続に失敗しました: " . $db->connect_error);
+                }
+                $stmt = $db->prepare("SELECT COUNT(*) FROM users WHERE user_email = ?");
+                $stmt->bind_param('s', $user_email);
+                $stmt->execute();
+                $stmt->bind_result($count);
+                $stmt->fetch();
+                $stmt->close();
 
-    text-align: center;
-    margin-top: 50px;
-    
-padding: 10px 120px;
-border-radius: 50px;
-font: bold 25px sans-serif;
+                if ($count > 0) {
+                    $err_array['email'] = 'このメールアドレスは既に使用されています';
+                }
+            }
 
-border:rgb(2, 229, 250) 2px solid;
+            if (empty($user_pass)) {
+                $err_array['password'] = 'パスワードを入力してください';
+            } elseif (!preg_match('/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/', $user_pass)) {
+                $err_array['password'] = '８桁以上の英数字でパスワードを設定してください';
+            }
 
-background: rgb(2, 229, 250);
-color: #FFF;
-}
-.example{
-/*コレ*/text-align: center;
-}
-th{
-font: bold 25px sans-serif;
+            if (empty($user_post_code)) {
+                $err_array['zipcode'] = '郵便番号を入力してください';
+            } elseif (!preg_match('/^\d{7}$/', $user_post_code)) {
+                $err_array['zipcode'] = 'ハイフン無し、半角数字７桁で入力してください';
+            }
 
+            if (empty($user_address)) {
+                $err_array['address'] = '住所を入力してください';
+            }
 
-background-color: #ffffff;
+            // エラーがない場合のみデータベースに格納
+            if (empty($err_array)) {
+                // パスワードのハッシュ化
+                $hashed_password = password_hash($user_pass, PASSWORD_DEFAULT);
 
+                // データベース接続情報（接続は既にされている前提）
+                $db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
+                if ($db->connect_error) {
+                    die("データベース接続に失敗しました: " . $db->connect_error);
+                }
 
+// データの挿入
+$stmt = $db->prepare("INSERT INTO users (user_name, user_email, user_pass, user_post_code, user_address, user_nickname) VALUES (?, ?, ?, ?, ?, ?)");
+$user_name = $user_first_name . ' ' . $user_last_name;  // 姓と名を半角スペースで結合
+$stmt->bind_param('ssssss', $user_name, $user_email, $hashed_password, $user_post_code, $user_address, $user_nickname);
 
-}
-.fg{
-width: 200px;
-}
-.hg{
-width: 98px;
-}
-.ug{
-width: 370px;
-}
-.pg{
-width: 180;
-
-}
-
-img {
-border: solid 1px #ffffff; /* 色：グレー */
-
-}
-
-.ZXx{
-text-align: center;
-
-}  
-table{
-
-
-padding-top : 100px;
-}
-.g1{
-width: 450px;
-height: 40px;
-
-}
-.g2{
-width: 70px;
-height: 40px;
-
-}
-.g3{
-width: 90px;
-height: 40px;
-
-}
-.g4{
-text-align: center;
-width: 450px;
-height: 200px;
-
-}
-main p{
-    margin-bottom: 15px; 
-}
+// bind_param() の引数は、最初に型定義文字列（ここでは 'ssssss'）があり、その後に順番にバインドする変数が続くことになります。
 
 
 
-</style>
-<body>
-<!-- ヘッダー -->
-<header class="bg-light border-bottom">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="#">ブランドロゴ</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">ホーム</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">ショップ</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">ブログ</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">お問い合わせ</a>
-          </li>
-        </ul>
-        
-        <ul class="navbar-nav ms-3">
-          <li class="nav-item">
-            <a class="nav-link" href="#"><i class="bi bi-person"></i> ユーザー</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><i class="bi bi-cart"></i> カート</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    
-    
-  </nav>
-</header>
+                if ($stmt->execute()) {
+                    header("Location: login copy.php");
+                    exit;
+                } else {
+                    echo "<div class='error-message'>データベースエラー: " . $stmt->error . "</div>";
+                }
 
-<!-- コンテンツ -->
-<main class="container mt-4">
-    
-  <p  class="p1">新規会員登録</p>
-  
-  <div class="ZXx">
-    <table align="center" >
-    <tr><th>メールアドレス</th><td><form action="#" method="post">
-        
-            <input type="text" class="g1" name="name">
-    </form></td></tr>
-    <tr><th>パスワード</th><td><form action="#" method="post">
-        
-        <input type="text" class="g1" name="name">
-</form></td></tr>
-<tr><th>郵便番号</th><td><form action="#" method="post">
-        
-    <input type="text" class="g1" name="name">
-</form></td></tr>
+                $stmt->close();
+                $db->close();
+            } else {
+                // エラーメッセージを表示するためにJavaScriptを使用
+                echo "<script>window.errors = " . json_encode($err_array) . ";</script>";
+                if (isset($err_array['email'])) {
+                    echo "<script>window.emailError = '" . $err_array['email'] . "';</script>";
+                }
+            }
+        }
+    }
 
-</table>
-<table align="center" >
-<tr><th class="fg">生年月日</th><td><form action="#" method="post">
-        
-<input type="text" class="g2" name="name">
-</form><th class="hg">年</th><td><form action="#" method="post">
-        
-<input type="text" class="g2" name="name">
-</form><th class="hg">月</th><td><form action="#" method="post">
-        
-<input type="text" class="g2" name="name">
-</form><th>日</th></td>
-</table>
-<table align="center" >
-<tr><th class="pg">性別</th><td> <input type="radio"  name="q1"  value="通常配送" >男</input>
-    <td ><input type="radio"  name="q1"  value="日時指定">女</td></tr>
-<tr><th >年齢</th><td><form action="#" method="post">
-    
-    <input type="text" class="g3" name="name">
-</form></td></tr>
-<tr><th >身長</th><td><form action="#" method="post">
-    
-<input type="text" class="g3" name="name">
-</form></td></tr>
-<tr><th >体重</th><td><form action="#" method="post">
-    
-<input type="text" class="g3" name="name">
-</form></td><th class="ug"></th></tr>
-<tr><th>ウエスト</th><td><form action="#" method="post">
-    
-<input type="text" class="g3" name="name">
-</form></td></tr>
-<tr><th>股下</th><td><form action="#" method="post">
-    
-<input type="text" class="g3" name="name">
-</form></td></tr>
+    //--------------------------------------------------------------------------------------
+    /*!
+       @brief	構築時の処理(継承して使用)
+       @return	なし
+       */
+    //--------------------------------------------------------------------------------------
+    public function create()
+    {
+    }
 
-</table>
-<button onclick="">
-登録
-</button>
+    //--------------------------------------------------------------------------------------
+    /*!
+       @brief  表示(継承して使用)
+       @return なし
+       */
+    //--------------------------------------------------------------------------------------
+    public function display()
+    {
+        //PHPブロック終了
+        ?>
+        <!-- コンテンツ　-->
+        <div class="login-page">
+            <div class="form">
+                <form class="register-form" method="post" action="">
+                    <h2 class="text-center">新規登録</h2>
+                    <hr color="#000000" size="10px">
+                    <div class="input-container">
+                        <label for="name">本名</label>
+                        <div class="name-container">
+                            <input type="text" id="first-name" name="first-name" placeholder="姓" value="<?= htmlspecialchars($_POST['first-name'] ?? '', ENT_QUOTES) ?>" />
+                            <input type="text" id="last-name" name="last-name" placeholder="名" value="<?= htmlspecialchars($_POST['last-name'] ?? '', ENT_QUOTES) ?>" />
+                        </div>
+                        <div class="error-message" id="first-name-error"></div>
+                        <div class="error-message" id="last-name-error"></div>
+                    </div>
+                    <div class="input-container">
+                        <label for="username">ユーザーネーム</label>
+                        <input type="text" id="username" name="username" placeholder="ユーザーネーム" value="<?= htmlspecialchars($_POST['username'] ?? '', ENT_QUOTES) ?>" />
+                        <div class="error-message" id="username-error"></div>
+                    </div>
+
+                    <hr>
+
+                    <div class="input-container">
+                        <label for="email">メールアドレス</label>
+                        <input type="text" id="email" name="email" placeholder="メールアドレス" value="<?= htmlspecialchars($_POST['email'] ?? '', ENT_QUOTES) ?>" />
+                        <div class="error-message" id="email-error"></div>
+                    </div>
+                    <div class="input-container">
+                        <label for="password">パスワード</label>
+                        <input type="password" id="password" name="password" placeholder="パスワード" value="<?= htmlspecialchars($_POST['password'] ?? '', ENT_QUOTES) ?>" />
+                        <div class="error-message" id="password-error"></div>
+                    </div>
+
+                    <hr>
+
+                    <div class="input-container">
+                        <label for="zipcode">郵便番号</label>
+                        <input type="text" id="zipcode" name="zipcode" placeholder="郵便番号" value="<?= htmlspecialchars($_POST['zipcode'] ?? '', ENT_QUOTES) ?>" />
+                        <div class="error-message" id="zipcode-error"></div>
+                    </div>
+                    <div class="input-container">
+                        <label for="prefecture">都道府県</label>
+                        <select id="prefecture" name="prefecture">
+                            <option value="">都道府県を選択</option>
+                            <option value="北海道" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '北海道') ? 'selected' : '' ?>>北海道</option>
+<option value="青森県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '青森県') ? 'selected' : '' ?>>青森県</option>
+<option value="岩手県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '岩手県') ? 'selected' : '' ?>>岩手県</option>
+<option value="宮城県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '宮城県') ? 'selected' : '' ?>>宮城県</option>
+<option value="秋田県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '秋田県') ? 'selected' : '' ?>>秋田県</option>
+<option value="山形県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '山形県') ? 'selected' : '' ?>>山形県</option>
+<option value="福島県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '福島県') ? 'selected' : '' ?>>福島県</option>
+<option value="茨城県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '茨城県') ? 'selected' : '' ?>>茨城県</option>
+<option value="栃木県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '栃木県') ? 'selected' : '' ?>>栃木県</option>
+<option value="群馬県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '群馬県') ? 'selected' : '' ?>>群馬県</option>
+<option value="埼玉県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '埼玉県') ? 'selected' : '' ?>>埼玉県</option>
+<option value="千葉県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '千葉県') ? 'selected' : '' ?>>千葉県</option>
+<option value="東京都" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '東京都') ? 'selected' : '' ?>>東京都</option>
+<option value="神奈川県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '神奈川県') ? 'selected' : '' ?>>神奈川県</option>
+<option value="新潟県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '新潟県') ? 'selected' : '' ?>>新潟県</option>
+<option value="富山県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '富山県') ? 'selected' : '' ?>>富山県</option>
+<option value="石川県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '石川県') ? 'selected' : '' ?>>石川県</option>
+<option value="福井県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '福井県') ? 'selected' : '' ?>>福井県</option>
+<option value="山梨県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '山梨県') ? 'selected' : '' ?>>山梨県</option>
+<option value="長野県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '長野県') ? 'selected' : '' ?>>長野県</option>
+<option value="岐阜県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '岐阜県') ? 'selected' : '' ?>>岐阜県</option>
+<option value="静岡県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '静岡県') ? 'selected' : '' ?>>静岡県</option>
+<option value="愛知県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '愛知県') ? 'selected' : '' ?>>愛知県</option>
+<option value="三重県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '三重県') ? 'selected' : '' ?>>三重県</option>
+<option value="滋賀県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '滋賀県') ? 'selected' : '' ?>>滋賀県</option>
+<option value="京都府" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '京都府') ? 'selected' : '' ?>>京都府</option>
+<option value="大阪府" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '大阪府') ? 'selected' : '' ?>>大阪府</option>
+<option value="兵庫県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '兵庫県') ? 'selected' : '' ?>>兵庫県</option>
+<option value="奈良県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '奈良県') ? 'selected' : '' ?>>奈良県</option>
+<option value="和歌山県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '和歌山県') ? 'selected' : '' ?>>和歌山県</option>
+<option value="鳥取県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '鳥取県') ? 'selected' : '' ?>>鳥取県</option>
+<option value="島根県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '島根県') ? 'selected' : '' ?>>島根県</option>
+<option value="岡山県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '岡山県') ? 'selected' : '' ?>>岡山県</option>
+<option value="広島県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '広島県') ? 'selected' : '' ?>>広島県</option>
+<option value="山口県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '山口県') ? 'selected' : '' ?>>山口県</option>
+<option value="徳島県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '徳島県') ? 'selected' : '' ?>>徳島県</option>
+<option value="香川県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '香川県') ? 'selected' : '' ?>>香川県</option>
+<option value="愛媛県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '愛媛県') ? 'selected' : '' ?>>愛媛県</option>
+<option value="高知県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '高知県') ? 'selected' : '' ?>>高知県</option>
+<option value="福岡県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '福岡県') ? 'selected' : '' ?>>福岡県</option>
+<option value="佐賀県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '佐賀県') ? 'selected' : '' ?>>佐賀県</option>
+<option value="長崎県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '長崎県') ? 'selected' : '' ?>>長崎県</option>
+<option value="熊本県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '熊本県') ? 'selected' : '' ?>>熊本県</option>
+<option value="大分県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '大分県') ? 'selected' : '' ?>>大分県</option>
+<option value="宮崎県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '宮崎県') ? 'selected' : '' ?>>宮崎県</option>
+<option value="鹿児島県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '鹿児島県') ? 'selected' : '' ?>>鹿児島県</option>
+<option value="沖縄県" <?= (isset($_POST['prefecture']) && $_POST['prefecture'] == '沖縄県') ? 'selected' : '' ?>>沖縄県</option>
+
+                        </select>
+                        <div class="error-message" id="prefecture-error"></div>
+                    </div>
+                    <div class="input-container">
+                        <label for="city">市区町村</label>
+                        <input type="text" id="city" name="city" placeholder="市区町村" value="<?= htmlspecialchars($_POST['city'] ?? '', ENT_QUOTES) ?>" />
+                        <div class="error-message" id="city-error"></div>
+                    </div>
+                    <div class="input-container">
+                        <label for="street">番地</label>
+                        <input type="text" id="street" name="street" placeholder="番地" value="<?= htmlspecialchars($_POST['street'] ?? '', ENT_QUOTES) ?>" />
+                        <div class="error-message" id="street-error"></div>
+                    </div>
+                    <div class="input-container">
+                        <label for="building-room">建物名・部屋番号</label>
+                        <input type="text" id="building-room" name="building-room" placeholder="建物名・部屋番号" value="<?= htmlspecialchars($_POST['building-room'] ?? '', ENT_QUOTES) ?>" />
+                        <div class="error-message" id="building-room-error"></div>
+                    </div>
+<div class=" checkbox_css">
+    <label for="no-building-room" class="checkbox_label">建物名・部屋番号無し</label>
+    <input type="checkbox"  id="no-building-room" name="no-building-room" class="checkbox_button">
 </div>
-<br><br>
-    </main>
-    </div>
-    <footer class="bg-light text-center text-lg-start border-top mt-auto">
-    <div class="container p-4">
-      <div class="row">
-        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-          <h5 class="text-uppercase">会社情報</h5>
-          <p>
-            ここに会社の説明文を入れます。お客様に対するメッセージや、会社のビジョンなど。
-          </p>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase">サポート</h5>
-          <ul class="list-unstyled mb-0">
-            <li>
-              <a href="#" class="text-dark">お問い合わせ</a>
-            </li>
-            <li>
-              <a href="#" class="text-dark">よくある質問</a>
-            </li>
-            <li>
-              <a href="#" class="text-dark">返品ポリシー</a>
-            </li>
-          </ul>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase">フォローする</h5>
-          <ul class="list-unstyled mb-0">
-            <li>
-              <a href="#" class="text-dark"><i class="bi bi-facebook"></i> Facebook</a>
-            </li>
-            <li>
-              <a href="#" class="text-dark"><i class="bi bi-twitter"></i> Twitter</a>
-            </li>
-            <li>
-              <a href="#" class="text-dark"><i class="bi bi-instagram"></i> Instagram</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-      © 2024 会社名
-    
-  </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
-</body>
-</html>
+
+                    <hr>
+
+                    <div class="button_layauto">
+                        <button type="submit">作成</button>
+                    </div>
+                    <div class="go_login">
+                        <p class="message">すでに登録済みですか？ <a href="rogin.php">サインイン</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- /コンテンツ　-->
+
+        <script>
+            // JavaScript でエラーメッセージを表示する
+            document.addEventListener("DOMContentLoaded", function() {
+                const errors = window.errors || {};
+                for (const field in errors) {
+                    if (errors.hasOwnProperty(field)) {
+                        const errorMessage = errors[field];
+                        document.getElementById(field + "-error").textContent = errorMessage;
+                    }
+                }
+                if (window.emailError) {
+                    document.getElementById("global-error").textContent = window.emailError;
+                }
+            });
+
+        </script>
+
+        <?php
+        //PHPブロック再開
+    }
+
+    //--------------------------------------------------------------------------------------
+    /*!
+       @brief	デストラクタ
+       */
+    //--------------------------------------------------------------------------------------
+    public function __destruct()
+    {
+        //親クラスのデストラクタを呼ぶ
+        parent::__destruct();
+    }
+}
+
+//ページを作成
+$page_obj = new cnode();
+//ヘッダ追加
+$page_obj->add_child(cutil::create('cheader'));
+//本体追加
+$page_obj->add_child($main_obj = cutil::create('cmain_node'));
+//フッタ追加
+$page_obj->add_child(cutil::create('cfooter'));
+//構築時処理
+$page_obj->create();
+//本体実行（表示前処理）
+$main_obj->execute();
+//ページ全体を表示
+$page_obj->display();
+
+?>
+<script src="js/sinkitouroku.js"></script>

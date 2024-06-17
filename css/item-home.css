@@ -1,7 +1,4 @@
-/* 商品カードのコンテナにクラスを追加 */
-.product-card-container {
-    /* 商品カードのスタイルを追加 */
-    /* Card Design Styles */
+
 
     .card-container * {
         margin: 0;
@@ -52,11 +49,16 @@
     .card-title {
         margin-bottom: 10px;
     }
+/* item-home.css */
 
-    .card-title {
-        text-align: left; /* Align card titles to the left */
-        font-size: 16px; /* Reduce font size */
-    }
+.card-title {
+    text-align: left; /* Align card titles to the left */
+    font-size: 16px; /* Reduce font size */
+    overflow: hidden; /* Hide overflow text */
+    white-space: nowrap; /* Prevent wrapping */
+    text-overflow: ellipsis; /* Add ellipsis for overflow text */
+    max-width: 100%; /* Adjust according to your layout */
+}
 
     .card-info {
         display: flex;
@@ -94,4 +96,3 @@
         color: #ff69b4
       }
       
-}
