@@ -139,7 +139,7 @@ class cmain_node extends cnode
                 $stmt->bind_param('sss', $mng_ans, $user_id, $cons_id);
 
                 if ($stmt->execute()) {
-                    // 更新が成功したら、soudan-detail-comp.phpに遷移
+                
                     header("Location: soudan-detail-comp.php");
                     exit();
                 } else {
