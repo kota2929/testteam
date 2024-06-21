@@ -13,76 +13,115 @@ $err_flag = 0;
 $page_obj = null;
 
 // 商品情報を取得
-$product_id = $_POST['product_id'];
-$product_name = $_POST['product_name'];
-$product_exp = $_POST['product_exp'];
-$product_price = $_POST['product_price'];
-$bland_name = $_POST['bland_name'];
-$genre_name = $_POST['genre_name'];
-$season_name = $_POST['season_name'];
-$category_name = $_POST['category_name'];
-$color_name = $_POST['color_name'];
+$product_id = $_POST['product_id'] ?? null;
+$product_name = $_POST['product_name'] ?? null;
+$product_exp = $_POST['product_exp'] ?? null;
+$product_price = $_POST['product_price'] ?? null;
+$bland_name = $_POST['bland_name'] ?? null;
+$genre_name = $_POST['genre_name'] ?? null;
+$season_name = $_POST['season_name'] ?? null;
+$category_name = $_POST['category_name'] ?? null;
+$color_name = $_POST['color_name'] ?? null;
 
 // 画像保存先のディレクトリを設定
-$upload_dir = "../../ProductImageFile/";
+$upload_dir = "../ProductImageFile/";
 
 // 画像アップロード処理
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['image1'], $_FILES['image2'], $_FILES['image3'])) {
-    $images = [$_FILES['image1'], $_FILES['image2'], $_FILES['image3']];
-    $image_paths = [];
-
-    // データベース接続を試みる 
-    $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-    if ($mysqli->connect_error) {
-        die("データベース接続失敗: " . $mysqli->connect_error);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $image_count = 0;
+    if (isset($_FILES['image1']) && $_FILES['image1']['error'] === UPLOAD_ERR_OK) {
+        $image_count++;
+    }
+    if (isset($_FILES['image2']) && $_FILES['image2']['error'] === UPLOAD_ERR_OK) {
+        $image_count++;
+    }
+    if (isset($_FILES['image3']) && $_FILES['image3']['error'] === UPLOAD_ERR_OK) {
+        $image_count++;
     }
 
-    // 色名から色IDを取得（プリペアドステートメント使用）
-    $query_color_id = "SELECT color_id FROM colors WHERE color_name = ?";
-    $stmt_color_id = $mysqli->prepare($query_color_id);
-    $stmt_color_id->bind_param("s", $color_name);
-    $stmt_color_id->execute();
-    $stmt_color_id->store_result();
+    // 少なくとも1つの画像が選択されているか確認
+    if ($image_count > 0) {
+        // 画像が選択されている場合の処理を行う
+        $images = [$_FILES['image1'], $_FILES['image2'], $_FILES['image3']];
+        $image_paths = [];
 
-    if ($stmt_color_id->num_rows > 0) {
-        $stmt_color_id->bind_result($color_id);
-        $stmt_color_id->fetch();
-    } else {
-        // カラーが見つからない場合の処理
-        die("Error: カラーが見つかりませんでした");
-    }
-
-    foreach ($images as $index => $image) {
-        if ($image['error'] == UPLOAD_ERR_OK) {
-            $img_name = "{$product_id}_{$color_name}_" . ($index + 1) . ".jpeg";
-            $img_path = $upload_dir . $img_name;
-
-            // ファイルをアップロードディレクトリに移動
-            if (move_uploaded_file($image['tmp_name'], $img_path)) {
-                $image_paths[] = $img_path;
-
-                // データベースに画像のパスを保存（プリペアドステートメント使用）
-                $img_path_db = "ProductImageFile/$img_name";
-                $query = "INSERT INTO images (product_id, color_id, img_path) VALUES (?, ?, ?)
-                          ON DUPLICATE KEY UPDATE img_path = ?";
-                $stmt = $mysqli->prepare($query);
-                $stmt->bind_param("iiss", $product_id, $color_id, $img_path_db, $img_path_db);
-                if ($stmt->execute()) {
-                    echo "新しいレコードを作成または更新しました";
-                } else {
-                    echo "エラー: " . $stmt->error;
-                }
-            } else {
-                echo "ファイルのアップロードに失敗しました";
+        // ディレクトリの存在を確認し、存在しない場合は作成
+        if (!is_dir($upload_dir)) {
+            if (!mkdir($upload_dir, 0777, true)) {
+                die("ディレクトリの作成に失敗しました: " . $upload_dir);
             }
         }
+
+        // データベース接続を試みる 
+        $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+        if ($mysqli->connect_error) {
+            die("データベース接続失敗: " . $mysqli->connect_error);
+        }
+
+        // 色名から色IDを取得（プリペアドステートメント使用）
+        $query_color_id = "SELECT color_id FROM colors WHERE color_name = ?";
+        $stmt_color_id = $mysqli->prepare($query_color_id);
+        if ($stmt_color_id === false) {
+            die("プリペアドステートメントの準備に失敗しました: " . $mysqli->error);
+        }
+        $stmt_color_id->bind_param("s", $color_name);
+        $stmt_color_id->execute();
+        $stmt_color_id->store_result();
+
+        if ($stmt_color_id->num_rows > 0) {
+            $stmt_color_id->bind_result($color_id);
+            $stmt_color_id->fetch();
+        } else {
+            // カラーが見つからない場合の処理
+            die("Error: カラーが見つかりませんでした");
+        }
+
+        // 各画像ごとに処理を行う
+        foreach ($images as $index => $image) {
+            if ($image['error'] == UPLOAD_ERR_OK) {
+                $img_name = "{$product_id}_{$color_id}_" . ($index + 1) . ".jpeg";
+                $img_path = $upload_dir . $img_name;
+
+                // ファイルをアップロードディレクトリに移動
+                if (move_uploaded_file($image['tmp_name'], $img_path)) {
+                    $image_paths[] = $img_path;
+
+                    // データベースに画像のパスを保存（プリペアドステートメント使用）
+                    $img_path_db = "ProductImageFile/$img_name";
+                    $query = "INSERT INTO images (product_id, color_id, img_pass) VALUES (?, ?, ?)
+                              ON DUPLICATE KEY UPDATE img_pass = VALUES(img_pass)";
+                    $stmt = $mysqli->prepare($query);
+                    if ($stmt === false) {
+                        die("プリペアドステートメントの準備に失敗しました: " . $mysqli->error);
+                    }
+                    $stmt->bind_param("iis", $product_id, $color_id, $img_path_db);
+
+                    // デバッグ用メッセージ
+                    echo "Executing statement for product_id={$product_id}, color_id={$color_id}, img_path_db={$img_path_db}<br>";
+
+                    if ($stmt->execute()) {
+                        echo "新しいレコードを作成または更新しました<br>";
+                    } else {
+                        echo "エラー: " . $stmt->error . "<br>";
+                    }
+                    $stmt->close();
+                } else {
+                    echo "ファイルのアップロードに失敗しました: " . $image['error'] . "<br>";
+                }
+            } else {
+                echo "アップロードエラー: " . $image['error'] . "<br>";
+            }
+        }
+
+        $stmt_color_id->close();
+        $mysqli->close();
+
+        // 処理がすべて完了したらリダイレクト
+        header("Location: item-image-list.php");
+        exit;
+    } else {
+        echo "少なくとも1つの画像ファイルを選択してください。";
     }
-
-    $mysqli->close();
-
-    // 処理がすべて完了したらリダイレクト
-    header("Location: item-image-list.php");
-    exit;
 }
 
 //--------------------------------------------------------------------------------------
