@@ -172,11 +172,11 @@ class cmain_node extends cnode {
         </div>
         <div class="form-group">
             <label for="image2">画像2</label>
-            <input type="file" name="image2" class="form-control-file" id="image2" required>
+            <input type="file" name="image2" class="form-control-file" id="image2">
         </div>
         <div class="form-group">
             <label for="image3">画像3</label>
-            <input type="file" name="image3" class="form-control-file" id="image3" required>
+            <input type="file" name="image3" class="form-control-file" id="image3" >
         </div>
         <br>
         <table class="table table-bordered">
