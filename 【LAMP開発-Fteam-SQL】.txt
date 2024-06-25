@@ -118,12 +118,14 @@ CREATE TABLE bodys (
 CREATE TABLE questions (
     user_id INT(128) NOT NULL,
     cons_id INT(128) NOT NULL,
+    cons_id INT(128) NOT NULL　AUTO_INCREMENT,
     cons_status TINYINT NOT NULL,
     ans_1 VARCHAR(128) NOT NULL,
     ans_2 VARCHAR(128) NOT NULL,
     ans_3 VARCHAR(128) NOT NULL,
     user_cons VARCHAR(256) NOT NULL,
     mng_ans VARCHAR(256) NOT NULL,
+    mng_ans VARCHAR(256),
     PRIMARY KEY (cons_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
@@ -194,12 +196,15 @@ CREATE TABLE images (
 
 CREATE TABLE cartitems (
     cart_item_id INT(128) NOT NULL,
+    cart_item_id INT(128) NOT NULL AUTO_INCREMENT,
     cart_id INT(128) NOT NULL,
     product_id INT(128) NOT NULL,
+    product_detail_id INT(128) NOT NULL,
     quantity INT(128) NOT NULL,
     PRIMARY KEY (cart_item_id),
     FOREIGN KEY (cart_id) REFERENCES carts(cart_id) ON DELETE CASCADE,
     FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE CASCADE
+    FOREIGN KEY (product_detail_id) REFERENCES details(product_detail_id) ON DELETE CASCADE
 );
 
 
