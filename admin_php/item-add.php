@@ -54,8 +54,9 @@ class cmain_node extends cnode
             $price = floatval($_POST['product_price']);
             $brand_id = intval($_POST['brand_id']);
             $category_id = intval($_POST['category_id']);
-            $color_id = intval($_POST['color_id']);
+            $color_ids = isset($_POST['color_ids']) ? $_POST['color_ids'] : [];
             $size_ids = isset($_POST['size_ids']) ? $_POST['size_ids'] : [];
+            $product_stock = isset($_POST['product_stock']) ? intval($_POST['product_stock']) : 0; // ここでproduct_stockの値をチェック
 
             // INSERTクエリを準備。クエリ実行でDB登録が完了する。
             $insert_query = "INSERT INTO products (product_name, product_exp, genre_id, season_id, product_price, bland_id, category_id) VALUES ('$product_name', '$product_exp', $genre_id, $season_id, $price, $brand_id, $category_id)";
@@ -67,11 +68,20 @@ class cmain_node extends cnode
                 // 直近の挿入で生成されたproduct_idを取得
                 $product_id = $mysqli->insert_id;
 
-                // 選択されたサイズに対してdetailsテーブルに情報を追加
-                foreach ($size_ids as $size_id) {
-                    $detail_insert_query = "INSERT INTO details (color_id, size_id, product_id) VALUES ($color_id, $size_id, $product_id)";
-                    if (!$mysqli->query($detail_insert_query)) {
-                        echo "detailsテーブルへの挿入エラー: " . $mysqli->error . "<br>";
+                // 選択された色とサイズに対してdetailsテーブルに情報を追加
+                foreach ($color_ids as $color_id) {
+                    foreach ($size_ids as $size_id) {
+                        $detail_insert_query = "INSERT INTO details (color_id, size_id, product_id) VALUES ($color_id, $size_id, $product_id)";
+                        if ($mysqli->query($detail_insert_query)) {
+                            $detail_id = $mysqli->insert_id;
+                            // stacksテーブルに在庫数を追加
+                            $stack_insert_query = "INSERT INTO stacks (product_detail_id, product_stock) VALUES ($detail_id, $product_stock)";
+                            if (!$mysqli->query($stack_insert_query)) {
+                                echo "stacksテーブルへの挿入エラー: " . $mysqli->error . "<br>";
+                            }
+                        } else {
+                            echo "detailsテーブルへの挿入エラー: " . $mysqli->error . "<br>";
+                        }
                     }
                 }
             } else {
@@ -132,7 +142,7 @@ class cmain_node extends cnode
             <main class="container mt-4">
                 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
                 <link rel="stylesheet" href="mng.css">
-                 <!-- 独自のスタイルシートを後にリンク -->
+                <!-- 独自のスタイルシートを後にリンク -->
 
                 <!--pageタイトル-->
                 <h1>商品の追加</h1>
@@ -182,20 +192,24 @@ class cmain_node extends cnode
                         </select><br><br>
 
                         <label>色</label><br>
-                        <select name="color_id" required>
-                            <option value="">　</option>
+                        <div class="form-check form-check-inline">
                             <?php foreach ($color_data as $color) : ?>
-                                <option value="<?php echo htmlspecialchars($color['color_id']); ?>"><?php echo htmlspecialchars($color['color_name']); ?></option>
+                                <input type="checkbox" class="form-check-input" name="color_ids[]" value="<?php echo htmlspecialchars($color['color_id']); ?>">
+                                <label class="form-check-label"><?php echo htmlspecialchars($color['color_name']); ?></label>
                             <?php endforeach; ?>
-                        </select><br><br>
+                        </div><br><br>
 
                         <label>サイズ</label><br>
-                        <?php foreach ($size_data as $size) : ?>
-                            <input type="checkbox" name="size_ids[]" value="<?php echo htmlspecialchars($size['size_id']); ?>">
-                            <?php echo htmlspecialchars($size['size_name']); ?><br>
-                        <?php endforeach; ?><br>
+                        <div class="form-check form-check-inline">
+                            <?php foreach ($size_data as $size) : ?>
+                                <input type="checkbox" class="form-check-input" name="size_ids[]" value="<?php echo htmlspecialchars($size['size_id']); ?>">
+                                <label class="form-check-label"><?php echo htmlspecialchars($size['size_name']); ?></label>
+                            <?php endforeach; ?>
+                        </div><br><br>
 
-                        <br>
+                        <label>在庫数</label><br>
+                        <input name="product_stock" type="number" size="30" required><br><br>
+
                         <button type="submit" class="btn btn-outline-success">商品を登録</button>
                     </div>
                     <br><br>
