@@ -6,7 +6,9 @@
 */
 
 //ライブラリをインクルード
-require_once("../common/libs.php");
+//require_once("../common/libs.php");
+//管理者用ライブラリをインクルード
+require_once("../Uru_test/URUCOMMON/common/libs.php");
 
 $err_array = array();
 $err_flag = 0;

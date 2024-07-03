@@ -6,7 +6,9 @@
 */
 
 //ライブラリをインクルード
-require_once("../common/libs.php");
+//require_once("../common/libs.php");
+//管理者のライブラリをインクルード
+require_once("../Uru_test/URUCOMMON/common/libs.php");
 
 $err_array = array();
 $err_flag = 0;
@@ -59,12 +61,12 @@ class cmain_node extends cnode
 
 		if ($mysqli->connect_error) {
 			die("データベース接続失敗: " . $mysqli->connect_error);
-		} else {
+		} else/* {
 			echo "データベース接続成功<br>";
-		}
+		}*/
 
-		// productsテーブルから全ての情報を取得するクエリを実行
-		$sql = "SELECT faq_id , question , answer 
+		// faqテーブルから全ての情報を取得するクエリを実行
+		$sql = "SELECT faq_id, question, answer 
                 FROM faq";
 
 		$result = $mysqli->query($sql);
@@ -74,50 +76,51 @@ class cmain_node extends cnode
 		}
 		//PHPブロック終了
 ?>
-
-		<!-- コンテンツ　-->
-		<div class="contents">
-			<main class="container mt-4">
-				<!--pageタイトル-->
-				<h1>FAQページ</h1>
-				<br><br>
-				<div class="center">
-					<?php
-					// 取得した情報をテーブル形式で表示
-					if ($result->num_rows > 0) {
-						// データがある場合はテーブルを表示
-						echo "<table border='1' id='productTable'>";
-						//項目
-						echo "<tr><th>FAQのID</th><th>質問内容</th><th>回答</th><th>編集する</th></tr>";
-						//カテゴリー順に並んでいる
-						while ($row = $result->fetch_assoc()) {
-							echo "<tr id='row_" . htmlspecialchars($row["faq_id"]) . "'>";
-							echo "<td>" . htmlspecialchars($row["question"]) . "</td>";
-							echo "<td>" . htmlspecialchars($row["answer"]) . "</td>";
-							echo "<td><button type='button' class='btn btn-outline-danger' onclick='deleteProduct(" . htmlspecialchars($row["product_id"]) . ")'>削除する</button></td>";
-							echo "<td><button type='button' onclick='window.location.href='FAQ-edit.php'' class='btn btn-outline-success'>編集する</button></td>";
-							echo "</tr>";
-						}
-						echo "</table>";
-					} else {
-						// データがない場合はメッセージを表示
-						echo "0件の結果";
+	<!-- コンテンツ　-->
+	<div class="contents">
+		<main class="container mt-4">
+			<!--pageタイトル-->
+			<h1>FAQページ</h1>
+			<br><br>
+			<div class="center">
+				<?php
+				// 取得した情報をテーブル形式で表示
+				if ($result->num_rows > 0) {
+					// データがある場合はテーブルを表示
+					echo "<table class='table table-bordered'>";
+					//項目
+					echo "<tr><th>FAQのID</th><th>質問内容</th><th>回答</th><th>削除する</th><th>編集する</th></tr>";
+					//カテゴリー順に並んでいる
+					while ($row = $result->fetch_assoc()) {
+						echo "<tr id='row_" . htmlspecialchars($row["faq_id"]) . "'>";
+						echo "<td>" . htmlspecialchars($row["faq_id"]) . "</td>";
+						echo "<td>" . nl2br(htmlspecialchars($row["question"])) . "</td>";
+						echo "<td>" . nl2br(htmlspecialchars($row["answer"])) . "</td>";
+						echo "<td><button type='button' class='btn btn-outline-danger' onclick='deleteProduct(" . htmlspecialchars($row["faq_id"]) . ")'>削除する</button></td>";
+						echo "<td><button type='button' onclick='window.location.href=\"FAQ-edit.php?faq_id=" . htmlspecialchars($row["faq_id"]) . "\"' class='btn btn-outline-success'>編集する</button></td>";
+						echo "</tr>";
 					}
-					// データベース接続を閉じる
-					$mysqli->close();
-					//php終了
-					?>
+					echo "</table>";
+				} else {
+					// データがない場合はメッセージを表示
+					echo "0件の結果";
+				}
+				// データベース接続を閉じる
+				$mysqli->close();
+				//php終了
+				?>
 
-					<p>
-						<button type="button" onclick="window.location.href='FAQ-edit.php'" class="btn btn-outline-success">新しいFAQを登録する</button>
-					</p>
-					<br>
-				</div>
+				<p>
+					<button type="button" onclick="window.location.href='FAQ-add.php'" class="btn btn-outline-success">新しいFAQを登録する</button>
+				</p>
+				<br>
+			</div>
 
-			</main>
+		</main>
 
-		</div>
-		<!-- /コンテンツ　-->
+	</div>
+	<!-- /コンテンツ　-->
+
 <?php
 		//PHPブロック再開
 	}

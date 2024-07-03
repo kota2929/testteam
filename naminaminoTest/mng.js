@@ -1,35 +1,55 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // 1ページ戻る関数
-    function BackForm(){
-        document.getElementById('backButton').addEventListener('click', function () {
-            window.history.back();
-        });
+document.addEventListener('DOMContentLoaded', function () {
+    // 1ページ戻る
+    function backOnePage() {
+        window.history.back();
     }
 
-    // 2ページ戻る関数
-    function BackForm2(){
-        document.getElementById('2backButton').addEventListener('click', function () {
-            window.history.back();
-            window.history.back();
-        });
+    // イベントリスナーを追加
+    var button1 = document.getElementById('backButton');
+    if (button1) {
+        // イベントリスナーが重複しないように、一度だけ追加する
+        button1.removeEventListener('click', backOnePage); // 既存のリスナーを削除
+        button1.addEventListener('click', backOnePage);
     }
 
-    // 関数を呼び出してイベントリスナーを設定
-    BackForm();
-    BackForm2();
+
+    // 2ページ戻る
+    function backTwoPages() {
+        window.history.go(-2);
+    }
+
+    // 3ページ戻る
+    function backThreePages() {
+        window.history.go(-3);
+    }
+
+    // イベントリスナーを追加
+    var button1 = document.getElementById('backButton');
+    if (button1) {
+        button1.addEventListener('click', backOnePage);
+    }
+
+    var button2 = document.getElementById('2backButton');
+    if (button2) {
+        button2.addEventListener('click', backTwoPages);
+    }
+
+    var button3 = document.getElementById('3backButton');
+    if (button3) {
+        button3.addEventListener('click', backThreePages);
+    }
 });
 
 
-
-    function deleteProduct(productId) {
-        if (confirm('本当にこの商品を削除しますか？')) {
-            fetch('delete_product.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: 'product_id=' + productId,
-            })
+function deleteProduct(productId) {
+    if (confirm('本当にこの商品を削除しますか？')) {
+        fetch('delete_product.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'product_id=' + productId,
+        })
             .then(response => response.text())
             .then(data => {
                 alert(data);
@@ -37,5 +57,5 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.getElementById('row_' + productId).remove();
             })
             .catch(error => console.error('Error:', error));
-        }
     }
+}

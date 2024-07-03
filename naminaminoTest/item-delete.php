@@ -3,7 +3,7 @@
 @file hinagata.php
 @brief ページ作成の雛形ファイル
 */
-
+//編集ボタンから編集するか削除するか
 //ライブラリをインクルード
 require_once("../common/libs.php");
 
@@ -68,6 +68,7 @@ class cmain_node extends cnode
         
             // DBのproductsテーブルから該当の商品を削除するクエリを実行
             $sql = "DELETE FROM products WHERE product_id = ?";
+            /////
             $stmt = $mysqli->prepare($sql);
             $stmt->bind_param("i", $product_id);
         
@@ -119,6 +120,7 @@ class cmain_node extends cnode
             die("クエリ実行エラー: " . $mysqli->error);
         }
 ?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -153,6 +155,7 @@ class cmain_node extends cnode
                         echo "<td>" . htmlspecialchars($row["season_name"]) . "</td>";
                         echo "<td>" . htmlspecialchars($row["bland_name"]) . "</td>";
                         echo "<td>" . htmlspecialchars($row["category_name"]) . "</td>";
+                        //削除ボタンにIDをつけてステータスを指定できるようにするとDBから削除できるやも
                         echo "<td><button type='button' class='btn btn-outline-danger' onclick='deleteProduct(" . htmlspecialchars($row["product_id"]) . ")'>削除する</button></td>";
                         echo "</tr>";
                     }

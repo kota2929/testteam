@@ -6,7 +6,7 @@
 */
 
 //ライブラリをインクルード
-require_once("../common/libs.php");
+require_once("../Uru_test/URUCOMMON/common/libs.php");
 
 $err_array = array();
 $err_flag = 0;
@@ -54,9 +54,9 @@ class cmain_node extends cnode {
 
         if ($mysqli->connect_error) {
             die("データベース接続失敗: " . $mysqli->connect_error);
-        } else {
+        } /*else {
             echo "データベース接続成功<br>";
-        }
+        }*/
 
         // productsテーブルから全ての情報を取得するクエリを実行
         $sql = "SELECT products.product_id, products.product_name, products.product_exp, products.product_price, 

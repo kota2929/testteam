@@ -5,8 +5,8 @@
 @copyright Copyright (c) 2024 Yamanoi Yasushi.
 */
 
-//ライブラリをインクルード
-require_once("../common/libs.php");
+// 管理者ライブラリをインクルード
+require_once("../Uru_test/URUCOMMON/common/libs.php");
 
 $err_array = array();
 $err_flag = 0;
@@ -62,7 +62,9 @@ class cmain_node extends cnode {
 	<button type="button" onclick="window.location.href='otoi-admin.php'" class="btn btn-outline-success">お問い合わせ一覧</button>
 	<button type="button" onclick="window.location.href='FAQ-admin.php'" class="btn btn-outline-success">FAQ登録</button>
 	<button type="button" onclick="window.location.href='soudan-list.php'" class="btn btn-outline-success">相談閲覧</button>
+	<button type="button" onclick="window.location.href='item-image-list.php'" class="btn btn-outline-success">商品画像追加</button>
 	<button type="button" onclick="window.location.href='item-admin.php'" class="btn btn-outline-success">商品とブランドの登録・削除</button>
+	<button type="button" onclick="window.location.href='Inventory-management.php'" class="btn btn-outline-success">商品在庫管理</button>
 	<button type="button" onclick="window.location.href='item-detail.php'" class="btn btn-outline-success">商品一覧</button>
 	<button type="button" onclick="window.location.href='user-admin.php'" class="btn btn-outline-success">ユーザー管理</button>
 	<button type="button" onclick="window.location.href='order-admin.php'" class="btn btn-outline-success">注文管理</button>

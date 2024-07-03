@@ -6,7 +6,7 @@
 */
 
 //ライブラリをインクルード
-require_once("../common/libs.php");
+require_once("../Uru_test/URUCOMMON/common/libs.php");
 
 $err_array = array();
 $err_flag = 0;
@@ -16,13 +16,15 @@ $page_obj = null;
 //--------------------------------------------------------------------------------------
 ///	本体ノード
 //--------------------------------------------------------------------------------------
-class cmain_node extends cnode {
+class cmain_node extends cnode
+{
 	//--------------------------------------------------------------------------------------
 	/*!
 	@brief	コンストラクタ
 	*/
 	//--------------------------------------------------------------------------------------
-	public function __construct() {
+	public function __construct()
+	{
 		//親クラスのコンストラクタを呼ぶ
 		parent::__construct();
 	}
@@ -32,7 +34,8 @@ class cmain_node extends cnode {
 	@return なし
 	*/
 	//--------------------------------------------------------------------------------------
-	public function execute(){
+	public function execute()
+	{
 	}
 	//--------------------------------------------------------------------------------------
 	/*!
@@ -40,7 +43,8 @@ class cmain_node extends cnode {
 	@return	なし
 	*/
 	//--------------------------------------------------------------------------------------
-	public function create(){
+	public function create()
+	{
 	}
 	//--------------------------------------------------------------------------------------
 	/*!
@@ -48,41 +52,44 @@ class cmain_node extends cnode {
 	@return なし
 	*/
 	//--------------------------------------------------------------------------------------
-	public function display(){
-//PHPブロック終了
+	public function display()
+	{
+		//PHPブロック終了
 ?>
-<!-- コンテンツ　-->
-<div class="contents">
-	
-    <main class="container mt-4">
-    <!-- 外部JavaScriptファイルのリンク -->
-    <script src="mng.js" defer></script>
-        <!--pageタイトル-->
-      <h1>送信しました</h1>
-<br><br>
-    <div class="center">
-        <p>
-		  <button onclick="window.location.href='mypage-admin.php'" class="btn btn-outline-success">管理者マイページへ戻る</button>
-        </p>
-        <p>
-			<button id="2backButton" class="btn btn-outline-success">一覧ページへ戻る</button>
-        </p>
-    </div>
-<br>
+		<!-- コンテンツ　-->
+		<div class="contents">
 
-    </main>
+			<main class="container mt-4">
+				<!-- 外部JavaScriptファイルのリンク -->
+				<script src="mng.js"></script>
 
-</div>
-<!-- /コンテンツ　-->
-<?php 
-//PHPブロック再開
+				<!--pageタイトル-->
+				<h1>送信しました</h1>
+				<br><br>
+				<div class="center">
+					<p>
+						<button onclick="window.location.href='mypage-admin.php'" class="btn btn-outline-success">管理者マイページへ戻る</button>
+					</p>
+					<button id="3backButton" class="btn btn-outline-success">管理者マイページへ戻る</button>
+					<button id="2backButton" class="btn btn-outline-success">ziken一覧ページへ戻る</button>
+
+				</div>
+				<br>
+
+			</main>
+
+		</div>
+		<!-- /コンテンツ　-->
+<?php
+		//PHPブロック再開
 	}
 	//--------------------------------------------------------------------------------------
 	/*!
 	@brief	デストラクタ
 	*/
 	//--------------------------------------------------------------------------------------
-	public function __destruct(){
+	public function __destruct()
+	{
 		//親クラスのデストラクタを呼ぶ
 		parent::__destruct();
 	}

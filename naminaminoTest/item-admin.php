@@ -6,7 +6,7 @@
 */
 
 //ライブラリをインクルード
-require_once("../common/libs.php");
+require_once("../Uru_test/URUCOMMON/common/libs.php");
 
 $err_array = array();
 $err_flag = 0;
@@ -60,9 +60,6 @@ class cmain_node extends cnode {
 <div class="center">
 <p>
 	<button type="button" onclick="window.location.href='item-add.php'" class="btn btn-outline-success">商品の登録</button>
-</p>
-<p>
-	<button type="button" onclick="window.location.href='item-delete.php'" class="btn btn-outline-success">商品の削除</button>
 </p>
 <p>
 	<button type="button" onclick="window.location.href='item-brand.php'" class="btn btn-outline-success">ブランドの登録</button>

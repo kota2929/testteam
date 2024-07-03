@@ -1,44 +1,761 @@
- /*商品管理・*/
- .center{
-  text-align: center;
-  top: 50%;                /* 上端を中央に配置 */
-  left: 50%;               /* 左端を中央に配置 */
-  margin: auto;            /* 自動でマージンを設定して中央に配置 */
- }
- /**/
- .FAQ_title{
-  font-size: 20px;
-  text-align: center;
-  border: solid ;
-  color: #555555;
-  padding: 5px 25px; /* 上下10px、左右20pxのbutton余白 */
-  width: 60%;
-  height: 80px;
-  top: 50%;                /* 上端を中央に配置 */
-  left: 50%;               /* 左端を中央に配置 */
-  margin: auto;            /* 自動でマージンを設定して中央に配置 */
- }
- /**/
- .wide{
-  font-size: 16px;
-  border: solid ;
-  color: #555555;
-  width: 90%;
-  height: 200px;
-  justify-content: center; /* 水平方向の中央揃え */
-  align-items: center;     /* 垂直方向の中央揃え */
-  margin: auto;            /* 自動でマージンを設定して中央に配置 */
-  top: 50%;                /* 上端を中央に配置 */
-  left: 50%;               /* 左端を中央に配置 */
-  /*position: absolute;      /* 絶対位置を使用 */
-  /*display: flex;*/
-  /*transform: translate(-50%, -50%); /* 要素の中央を基準に移動 */
- }
- 
- /*buton*/
-/*bottom-back*/
-  .btn-back{
-    padding: 100px 50px;
-    background: gray;
+*{
+    text-size-adjust: 15;
+}
+/*ふーー*/
+/*ふーー*/
+
+/* ページ中央にコンテンツを持ってくる */
+.center {
+    display: flex;
+    /* Flexboxを使用するために必要 */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    margin: auto;
+    /* 自動でマージンを設定して中央に配置 */
+    top: 50%;
+    /* 上端を中央に配置 */
+    left: 50%;
+    /* 左端を中央に配置 */
+}
+/* メインコンテンツエリアのスタイル */
+.main-content {
+    flex: 1; /* メインコンテンツがフレックスコンテナの残りの空間をすべて占めます */
+    margin-top: 100px; /* ヘッダーとコンテンツの間に余白を追加します */
+    padding-bottom: 100px; /* フッターとコンテンツの間に余白を追加します */
+}
+/*フッターを一番下に持っていきたい*/
+.content-inside {
+    padding: 20px;
+    padding-bottom: 50px;
   }
-  
+
+/* フレックスボックスのコンテナとして設定 */
+/*.container {
+    display: flex; /* コンテナをフレックスボックスにします */
+  /*  flex-direction: column; /* フレックスアイテムを縦方向に並べます */
+  /*  min-height: 100vh; /* コンテナの最小高さを100%のビューポートの高さにします */
+/*}*/
+
+/*ヘッダーフッター*/
+/* ヘッダースタイル */
+.custom-header {
+    background-color: #496b92;
+    color: white;
+    text-align: center;
+    /*padding: 20px;*/
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.custom-header .header-content {
+    display: flex;
+    /*flex-direction: column;*/
+    /* フレックスコンテナ内の子要素を縦方向（コラム方向）に並べます。
+    これにより、子要素が縦に積み重なるように配置されます。 */
+    align-items: center;
+}
+.custom-header nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+.custom-header nav ul li {
+    display: inline;
+}
+.custom-header nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+.custom-header nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* フッタースタイル */
+.custom-footer {
+    background-color: #496b92; /* 背景色を設定します */
+    color: white; /* テキスト色を白に設定します */
+    text-align: center; /* テキストを中央揃えにします */
+    padding: 20px; /* 内側に20pxのパディングを追加します */
+    width: 100%; /* フッターをページの全幅に設定します */
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1); /* 上に影を付けて浮いているように見せます */
+    /*position: fixed;*/
+    bottom: 0;
+}
+
+.custom-footer .footer-content {
+    display: flex; /* フレックスボックスとして子要素を配置します */
+    flex-direction: column; /* 子要素を縦方向に並べます */
+    align-items: center; /* 子要素を縦方向の中央に揃えます */
+}
+
+.custom-footer nav ul {
+    list-style-type: none; /* リストのデフォルトのスタイルを除去します */
+    padding: 0; /* 内側のパディングを0にします */
+    display: flex; /* フレックスボックスでリスト項目を並べます */
+    gap: 20px; /* リスト項目の間に20pxの間隔を追加します */
+}
+.custom-footer nav ul li {
+    display: inline; /* リスト項目をインライン要素として表示します */
+}
+.custom-footer nav ul li a {
+    color: white; /* リンクのテキスト色を白にします */
+    text-decoration: none; /* リンクの下線を除去します */
+}
+.custom-footer nav ul li a:hover {
+    text-decoration: underline; /* ホバー時にリンクに下線を表示します */
+}
+
+/* フッターのSNS系のスタイル */
+
+
+.footer-mb-4 {
+    margin-bottom: 10px; /* 下に10pxのマージンを追加します */
+}
+
+.footer-text-dark {
+    --footer-bs-text-opacity: 1; /* テキストの不透明度を設定します */
+    color: rgba(33, 37, 41, var(--footer-bs-text-opacity)); /* テキスト色をRGBA形式で設定します */
+    margin-top: 1%; /* 上に1%のマージンを追加します */
+    margin-bottom: 2%; /* 下に2%のマージンを追加します */
+}
+/* ページ中央にコンテンツを持ってくる */
+.footer-center {
+        display: flex; /* フレックスボックスとして子要素を配置します */
+        justify-content: center; /* 子要素を水平方向の中央に揃えます */
+        align-items: center; /* 子要素を垂直方向の中央に揃えます */
+        text-align: center; /* テキストを中央揃えにします */
+        margin: auto; /* 自動で外側のマージンを設定して中央に配置します */
+        top: 50%; /* 上端を中央に配置します */
+        left: 50%; /* 左端を中央に配置します */
+    }
+/*ここまでフッター*/
+
+/* メインコンテンツのスタイル */
+.main-content {
+    margin-top: 100px;
+    /* ヘッダーとオーバーラップしないように */
+    padding-bottom: 100px;
+    /* フッターとオーバーラップしないように */
+}
+/*///ヘッダーフッター〆*/
+
+/* テーブル */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width:575.98px) {
+    .table-responsive-sm {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+@media (max-width:767.98px) {
+    .table-responsive-md {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+@media (max-width:991.98px) {
+    .table-responsive-lg {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+@media (max-width:1199.98px) {
+    .table-responsive-xl {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+@media (max-width:1399.98px) {
+    .table-responsive-xxl {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/*button*/
+.button {
+    border-radius: 20px;
+
+}
+
+/* .btn-outline-danger */
+.btn-outline-danger {
+    color: #dc3545; /* ボタンの文字色 */
+    border-color: #dc3545; /* ボタンの境界線の色 */
+    background-color: transparent; /* ボタンの背景色 */
+    padding: 15px;
+    border-radius: 30%; /*丸み*/
+}
+
+.btn-outline-danger:hover {
+    color: #fff; /* ホバー時の文字色 */
+    background-color: #dc3545; /* ホバー時の背景色 */
+    border-color: #dc3545; /* ホバー時の境界線の色 */
+}
+
+.btn-outline-danger:focus {
+    box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.5);
+    /* フォーカス時のシャドウ */
+}
+
+.btn-outline-danger:active {
+    color: #fff; /* アクティブ時の文字色 */
+    background-color: #dc3545; /* アクティブ時の背景色 */
+    border-color: #dc3545; /* アクティブ時の境界線の色 */
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    /* アクティブ時のシャドウ */
+}
+
+.btn-outline-danger:disabled {
+    color: #dc3545;
+    /* 無効時の文字色 */
+    background-color: transparent;
+    /* 無効時の背景色 */
+    border-color: #dc3545;
+    /* 無効時の境界線の色 */
+}
+
+/* .btn-outline-success */
+.btn-outline-success {
+    color: #198754; /* ボタンの文字色 */
+    border-color: #198754; /* ボタンの境界線の色 */
+    background-color: transparent; /* ボタンの背景色 */
+    padding: 15px;
+    border-radius: 30%; /*丸み*/
+}
+
+.btn-outline-success:hover {
+    color: #fff; /* ホバー時の文字色 */
+    background-color: #198754; /* ホバー時の背景色 */
+    border-color: #198754; /* ホバー時の境界線の色 */
+}
+
+.btn-outline-success:focus {
+    box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.5);
+    /* フォーカス時のシャドウ */
+}
+
+.btn-outline-success:active {
+    color: #fff; /* アクティブ時の文字色 */
+    background-color: #198754; /* アクティブ時の背景色 */
+    border-color: #198754; /* アクティブ時の境界線の色 */
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    /* アクティブ時のシャドウ */
+}
+
+.btn-outline-success:disabled {
+    color: #198754; /* 無効時の文字色 */
+    background-color: transparent; /* 無効時の背景色 */
+    border-color: #198754; /* 無効時の境界線の色 */
+}
+
+/* テーブルの基本スタイル */
+table {
+    width: 100%;
+    margin-bottom: 1rem;
+    border-collapse: collapse;
+    /* 罫線を結合して表示 */
+    border: 1px solid #dee2e6;
+    /* テーブルの外枠の罫線 */
+    caption-side: bottom;
+    vertical-align: top;
+}
+
+/* テーブルの罫線スタイル */
+.table> :not(caption)>*>* {
+    padding: .5rem .5rem;
+    /* セルのパディング */
+    color: #212529;
+    /* デフォルトのテキスト色 */
+    background-color: #fff;
+    /* デフォルトの背景色 */
+    border: 1px solid #dee2e6;
+    /* 各セルの罫線 */
+}
+
+/* 境界線付きのテーブル */
+.table-bordered> :not(caption)>*>* {
+    border: 1px solid #dee2e6;
+    /* 各セルの縦横の境界線 */
+}
+
+.table-bordered> :not(caption)>* {
+    border: 1px solid #dee2e6;
+    /* 行の境界線 */
+}
+
+/* 境界線なしテーブル */
+/*
+.table-borderless > :not(caption) > * > * {
+    border: none; /* 境界線なし */
+/*}*/
+
+/* ストライプスタイル */
+/*
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: rgba(0, 0, 0, 0.05); /* 奇数行の背景色 */
+/*}
+
+.table-striped-columns > :not(caption) > tr > :nth-child(2n) {
+    background-color: rgba(0, 0, 0, 0.05); /* 偶数列の背景色 */
+/*}*/
+
+/* ホバースタイル */
+/*
+.table-hover > tbody > tr:hover > * {
+    color: #212529; /* ホバー行のテキスト色 */
+/*    background-color: rgba(0, 0, 0, 0.075); /* ホバー行の背景色 */
+/*}*/
+
+/* テーブルのスタイル：プライマリ */
+/*.table-primary {
+    color: #000;
+    background-color: #cfe2ff;
+    border-color: #bacbe6;
+}
+
+.table-primary.table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: #c5d7f2;
+}
+
+.table-primary.table-hover > tbody > tr:hover > * {
+    background-color: #bfd1ec;
+}*/
+
+/* テーブルのスタイル：セカンダリ */
+/*.table-secondary {
+    color: #000;
+    background-color: #e2e3e5;
+    border-color: #cbccce;
+}
+
+.table-secondary.table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: #d7d8da;
+}
+
+.table-secondary.table-hover > tbody > tr:hover > * {
+    background-color: #d1d2d4;
+}*/
+
+/* テーブルのスタイル：成功 */
+/*.table-success {
+    color: #000;
+    background-color: #d1e7dd;
+    border-color: #bcd0c7;
+}
+
+.table-success.table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: #c7dbd2;
+}
+
+.table-success.table-hover > tbody > tr:hover > * {
+    background-color: #c1d6cc;
+}*/
+
+/* テーブルのスタイル：情報 */
+/*
+.table-info {
+    color: #000;
+    background-color: #cff4fc;
+    border-color: #badce3;
+}
+
+.table-info.table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: #c5e8ef;
+}
+
+.table-info.table-hover > tbody > tr:hover > * {
+    background-color: #bfe2e9;
+}*/
+
+/* テーブルのスタイル：警告 */
+/*
+.table-warning {
+    color: #000;
+    background-color: #fff3cd;
+    border-color: #e6dbb9;
+}
+
+.table-warning.table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: #f2e7c3;
+}
+
+.table-warning.table-hover > tbody > tr:hover > * {
+    background-color: #ece1be;
+}
+*/
+
+/* テーブルのスタイル：危険 */
+/*.table-danger {
+    color: #000;
+    background-color: #f8d7da;
+    border-color: #dfc2c4;
+}
+
+.table-danger.table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: #eccccf;
+}
+
+.table-danger.table-hover > tbody > tr:hover > * {
+    background-color: #e5c7ca;
+}*/
+
+/* テーブルのスタイル：ライト */
+/*.table-light {
+    color: #000;
+    background-color: #f8f9fa;
+    border-color: #dfe0e1;
+}
+
+.table-light.table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: #ecedee;
+}
+
+.table-light.table-hover > tbody > tr:hover > * {
+    background-color: #e5e6e7;
+}*/
+
+/* テーブルのスタイル：ダーク */
+/*.table-dark {
+    color: #fff;
+    background-color: #212529;
+    border-color: #373b3e;
+}
+
+.table-dark.table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: #2c3034;
+}
+
+.table-dark.table-hover > tbody > tr:hover > * {
+    background-color: #323539;
+}*/
+
+/* テーブルのレスポンシブ性 */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 575.98px) {
+    .table-responsive-sm {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .table-responsive-md {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .table-responsive-lg {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+@media (max-width: 1199.98px) {
+    .table-responsive-xl {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+@media (max-width: 1399.98px) {
+    .table-responsive-xxl {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+
+/*
+.btn-outline-danger {
+    --bs-btn-color: #dc3545;
+    --bs-btn-border-color: #dc3545;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #dc3545;
+    --bs-btn-hover-border-color: #dc3545;
+    --bs-btn-focus-shadow-rgb: 220, 53, 69;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #dc3545;
+    --bs-btn-active-border-color: #dc3545;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #dc3545;
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: #dc3545;
+    --bs-gradient: none
+}
+
+.btn-outline-success {
+    --bs-btn-color: #198754;
+    --bs-btn-border-color: #198754;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #198754;
+    --bs-btn-hover-border-color: #198754;
+    --bs-btn-focus-shadow-rgb: 25, 135, 84;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #198754;
+    --bs-btn-active-border-color: #198754;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #198754;
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: #198754;
+    --bs-gradient: none
+}
+*/
+/*
+table {
+    caption-side: bottom;
+    border-collapse: collapse
+}
+
+.table {
+    --bs-table-color-type: initial;
+    --bs-table-bg-type: initial;
+    --bs-table-color-state: initial;
+    --bs-table-bg-state: initial;
+    --bs-table-color: var(--bs-body-color);
+    --bs-table-bg: var(--bs-body-bg);
+    --bs-table-border-color: var(--bs-border-color);
+    --bs-table-accent-bg: transparent;
+    --bs-table-striped-color: var(--bs-body-color);
+    --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
+    --bs-table-active-color: var(--bs-body-color);
+    --bs-table-active-bg: rgba(0, 0, 0, 0.1);
+    --bs-table-hover-color: var(--bs-body-color);
+    --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
+    width: 100%;
+    margin-bottom: 1rem;
+    vertical-align: top;
+    border-color: var(--bs-table-border-color)
+}
+
+.table>:not(caption)>*>* {
+    padding: .5rem .5rem;
+    color: var(--bs-table-color-state, var(--bs-table-color-type, var(--bs-table-color)));
+    background-color: var(--bs-table-bg);
+    border-bottom-width: var(--bs-border-width);
+    box-shadow: inset 0 0 0 9999px var(--bs-table-bg-state, var(--bs-table-bg-type, var(--bs-table-accent-bg)))
+}
+
+.table>tbody {
+    vertical-align: inherit
+}
+
+.table>thead {
+    vertical-align: bottom
+}
+
+.table-group-divider {
+    border-top: calc(var(--bs-border-width) * 2) solid currentcolor
+}
+
+.caption-top {
+    caption-side: top
+}
+
+.table-sm>:not(caption)>*>* {
+    padding: .25rem .25rem
+}
+
+.table-bordered>:not(caption)>* {
+    border-width: var(--bs-border-width) 0
+}
+
+.table-bordered>:not(caption)>*>* {
+    border-width: 0 var(--bs-border-width)
+}
+
+.table-borderless>:not(caption)>*>* {
+    border-bottom-width: 0
+}
+
+.table-borderless>:not(:first-child) {
+    border-top-width: 0
+}
+
+.table-striped>tbody>tr:nth-of-type(odd)>* {
+    --bs-table-color-type: var(--bs-table-striped-color);
+    --bs-table-bg-type: var(--bs-table-striped-bg)
+}
+
+.table-striped-columns>:not(caption)>tr>:nth-child(2n) {
+    --bs-table-color-type: var(--bs-table-striped-color);
+    --bs-table-bg-type: var(--bs-table-striped-bg)
+}
+
+.table-active {
+    --bs-table-color-state: var(--bs-table-active-color);
+    --bs-table-bg-state: var(--bs-table-active-bg)
+}
+
+.table-hover>tbody>tr:hover>* {
+    --bs-table-color-state: var(--bs-table-hover-color);
+    --bs-table-bg-state: var(--bs-table-hover-bg)
+}
+
+.table-primary {
+    --bs-table-color: #000;
+    --bs-table-bg: #cfe2ff;
+    --bs-table-border-color: #bacbe6;
+    --bs-table-striped-bg: #c5d7f2;
+    --bs-table-striped-color: #000;
+    --bs-table-active-bg: #bacbe6;
+    --bs-table-active-color: #000;
+    --bs-table-hover-bg: #bfd1ec;
+    --bs-table-hover-color: #000;
+    color: var(--bs-table-color);
+    border-color: var(--bs-table-border-color)
+}
+
+.table-secondary {
+    --bs-table-color: #000;
+    --bs-table-bg: #e2e3e5;
+    --bs-table-border-color: #cbccce;
+    --bs-table-striped-bg: #d7d8da;
+    --bs-table-striped-color: #000;
+    --bs-table-active-bg: #cbccce;
+    --bs-table-active-color: #000;
+    --bs-table-hover-bg: #d1d2d4;
+    --bs-table-hover-color: #000;
+    color: var(--bs-table-color);
+    border-color: var(--bs-table-border-color)
+}
+
+.table-success {
+    --bs-table-color: #000;
+    --bs-table-bg: #d1e7dd;
+    --bs-table-border-color: #bcd0c7;
+    --bs-table-striped-bg: #c7dbd2;
+    --bs-table-striped-color: #000;
+    --bs-table-active-bg: #bcd0c7;
+    --bs-table-active-color: #000;
+    --bs-table-hover-bg: #c1d6cc;
+    --bs-table-hover-color: #000;
+    color: var(--bs-table-color);
+    border-color: var(--bs-table-border-color)
+}
+
+.table-info {
+    --bs-table-color: #000;
+    --bs-table-bg: #cff4fc;
+    --bs-table-border-color: #badce3;
+    --bs-table-striped-bg: #c5e8ef;
+    --bs-table-striped-color: #000;
+    --bs-table-active-bg: #badce3;
+    --bs-table-active-color: #000;
+    --bs-table-hover-bg: #bfe2e9;
+    --bs-table-hover-color: #000;
+    color: var(--bs-table-color);
+    border-color: var(--bs-table-border-color)
+}
+
+.table-warning {
+    --bs-table-color: #000;
+    --bs-table-bg: #fff3cd;
+    --bs-table-border-color: #e6dbb9;
+    --bs-table-striped-bg: #f2e7c3;
+    --bs-table-striped-color: #000;
+    --bs-table-active-bg: #e6dbb9;
+    --bs-table-active-color: #000;
+    --bs-table-hover-bg: #ece1be;
+    --bs-table-hover-color: #000;
+    color: var(--bs-table-color);
+    border-color: var(--bs-table-border-color)
+}
+
+.table-danger {
+    --bs-table-color: #000;
+    --bs-table-bg: #f8d7da;
+    --bs-table-border-color: #dfc2c4;
+    --bs-table-striped-bg: #eccccf;
+    --bs-table-striped-color: #000;
+    --bs-table-active-bg: #dfc2c4;
+    --bs-table-active-color: #000;
+    --bs-table-hover-bg: #e5c7ca;
+    --bs-table-hover-color: #000;
+    color: var(--bs-table-color);
+    border-color: var(--bs-table-border-color)
+}
+
+.table-light {
+    --bs-table-color: #000;
+    --bs-table-bg: #f8f9fa;
+    --bs-table-border-color: #dfe0e1;
+    --bs-table-striped-bg: #ecedee;
+    --bs-table-striped-color: #000;
+    --bs-table-active-bg: #dfe0e1;
+    --bs-table-active-color: #000;
+    --bs-table-hover-bg: #e5e6e7;
+    --bs-table-hover-color: #000;
+    color: var(--bs-table-color);
+    border-color: var(--bs-table-border-color)
+}
+
+.table-dark {
+    --bs-table-color: #fff;
+    --bs-table-bg: #212529;
+    --bs-table-border-color: #373b3e;
+    --bs-table-striped-bg: #2c3034;
+    --bs-table-striped-color: #fff;
+    --bs-table-active-bg: #373b3e;
+    --bs-table-active-color: #fff;
+    --bs-table-hover-bg: #323539;
+    --bs-table-hover-color: #fff;
+    color: var(--bs-table-color);
+    border-color: var(--bs-table-border-color)
+}
+
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch
+}
+
+@media (max-width:575.98px) {
+    .table-responsive-sm {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch
+    }
+}
+
+@media (max-width:767.98px) {
+    .table-responsive-md {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch
+    }
+}
+
+@media (max-width:991.98px) {
+    .table-responsive-lg {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch
+    }
+}
+
+@media (max-width:1199.98px) {
+    .table-responsive-xl {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch
+    }
+}
+
+@media (max-width:1399.98px) {
+    .table-responsive-xxl {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch
+    }
+}
+*/

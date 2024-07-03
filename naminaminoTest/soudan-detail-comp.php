@@ -5,8 +5,9 @@
 @copyright Copyright (c) 2024 Yamanoi Yasushi.
 */
 
-//ライブラリをインクルード
-require_once("../common/libs.php");
+//管理者用ライブラリをインクルード
+require_once("../Uru_test/URUCOMMON/common/libs.php");
+//mng.jsはcommonのcontents_nodes.phpに読み込むよう書いてある
 
 $err_array = array();
 $err_flag = 0;
@@ -16,13 +17,15 @@ $page_obj = null;
 //--------------------------------------------------------------------------------------
 ///	本体ノード
 //--------------------------------------------------------------------------------------
-class cmain_node extends cnode {
+class cmain_node extends cnode
+{
 	//--------------------------------------------------------------------------------------
 	/*!
 	@brief	コンストラクタ
 	*/
 	//--------------------------------------------------------------------------------------
-	public function __construct() {
+	public function __construct()
+	{
 		//親クラスのコンストラクタを呼ぶ
 		parent::__construct();
 	}
@@ -32,7 +35,8 @@ class cmain_node extends cnode {
 	@return なし
 	*/
 	//--------------------------------------------------------------------------------------
-	public function execute(){
+	public function execute()
+	{
 	}
 	//--------------------------------------------------------------------------------------
 	/*!
@@ -40,7 +44,8 @@ class cmain_node extends cnode {
 	@return	なし
 	*/
 	//--------------------------------------------------------------------------------------
-	public function create(){
+	public function create()
+	{
 	}
 	//--------------------------------------------------------------------------------------
 	/*!
@@ -48,49 +53,46 @@ class cmain_node extends cnode {
 	@return なし
 	*/
 	//--------------------------------------------------------------------------------------
-	public function display(){
-//PHPブロック終了
+	public function display()
+	{
+		//PHPブロック終了
 ?>
-<!-- コンテンツ　-->
-<div class="contents">
-	
 
-    <!-- コンテンツ -->
-    <main class="container mt-4">
-        <!--pageタイトル-->
-      <h1>この相談は解決済みです</h1>
-<br><br>
-      <div class="wide">
-質問内容
-      </div>
-<br>
-        <div class="wide">
-回答記入欄
-        </div>
-<br><br>
-    <div class="center">
-        <p>
-		  <button type="button" onclick="window.location.href='mypage-admin.php'" class="btn btn-outline-success">管理者マイページへ戻る</button>
-        </p>
-        <p>
-		  <button type="button" onclick="history.back(); return false;" class="btn btn-outline-success">相談一覧ページへ戻る</button>
-        </p>
-    </div>
-<br>
-    </main>
+		<!-- コンテンツ　-->
+		<div class="contents">
+			<main class="container mt-4">
+				<!--pageタイトル-->
+				<h1>回答が送信されました</h1>
+
+				<div class="center">
+					<p>
+						<button type="button" onclick="window.location.href='mypage-admin.php'" class="btn btn-outline-success">管理者マイページへ戻る</button>
+					</p>
+					<!-- 修正後 -->
+					<p>
+						<button id="2backButton" class="btn btn-outline-success">相談一覧ページへ戻る</button>
+					</p>
+					<p>
+						<button id="3backButton" class="btn btn-outline-success">管理者マイページへ戻る</button>
+					</p>
+
+				</div>
+				<br>
+			</main>
 
 
-</div>
-<!-- /コンテンツ　-->
-<?php 
-//PHPブロック再開
+		</div>
+		<!-- /コンテンツ　-->
+<?php
+		//PHPブロック再開
 	}
 	//--------------------------------------------------------------------------------------
 	/*!
 	@brief	デストラクタ
 	*/
 	//--------------------------------------------------------------------------------------
-	public function __destruct(){
+	public function __destruct()
+	{
 		//親クラスのデストラクタを呼ぶ
 		parent::__destruct();
 	}

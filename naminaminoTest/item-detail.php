@@ -5,7 +5,7 @@
 */
 
 //ライブラリをインクルード
-require_once("../common/libs.php");
+require_once("../Uru_test/URUCOMMON/common/libs.php");
 
 $err_array = array();
 $err_flag = 0;
@@ -56,29 +56,29 @@ class cmain_node extends cnode
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["product_id"])) {
             $product_id = intval($_POST["product_id"]);
-        
+
             // データベース接続を試みる 
             $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-        
+
             if ($mysqli->connect_error) {
                 die("データベース接続失敗: " . $mysqli->connect_error);
             }
-        
+
             // DBのproductsテーブルから該当の商品を削除するクエリを実行
             $sql = "DELETE FROM products WHERE product_id = ?";
             $stmt = $mysqli->prepare($sql);
             $stmt->bind_param("i", $product_id);
-        
+
             if ($stmt->execute()) {
                 echo "商品ID " . htmlspecialchars($product_id) . " を削除しました。";
             } else {
                 echo "エラーが発生しました: " . $stmt->error;
             }
-        
+
             // データベース接続を閉じる
             $stmt->close();
             $mysqli->close();
-            
+
             // POSTリクエストの後にリダイレクトする（ページリロード）
             header("Location: " . $_SERVER['PHP_SELF']);
             exit;
@@ -87,19 +87,17 @@ class cmain_node extends cnode
 
     //--------------------------------------------------------------------------------------
     /*!
-    @brief 表示(継承して使用)
-    @return なし
+    @brief 商品情報の取得
+    @return array 商品情報の配列
     */
     //--------------------------------------------------------------------------------------
-    public function display()
+    public function get_products()
     {
         // データベース接続を試みる 
         $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
         if ($mysqli->connect_error) {
             die("データベース接続失敗: " . $mysqli->connect_error);
-        } else {
-            echo "データベース接続成功<br>";
         }
 
         // productsテーブルから全ての情報を取得するクエリを実行
@@ -116,69 +114,90 @@ class cmain_node extends cnode
         if (!$result) {
             die("クエリ実行エラー: " . $mysqli->error);
         }
+
+        $products = $result->fetch_all(MYSQLI_ASSOC);
+
+        // データベース接続を閉じる
+        $mysqli->close();
+
+        return $products;
+    }
+
+    //--------------------------------------------------------------------------------------
+    /*!
+    @brief 表示(継承して使用)
+    @return なし
+    */
+    //--------------------------------------------------------------------------------------
+    public function display()
+    {
+        //商品情報を取得
+        $products = $this->get_products();
         //PHPブロック終了
 ?>
 
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>商品の削除</title>
-    <link rel="stylesheet" href="mng.css"> <!-- スタイルシートをリンク -->
-    <script src="mng.js" defer></script> <!-- JavaScriptファイルをリンク -->
-</head>
-<body>
-    <!-- コンテンツ　-->
-    <div class="contents">
-        <main class="container mt-4">
-            <!--pageタイトル-->
-            <h1>商品の一覧</h1>
-            <br><br>
-            <div class="center">
-                <?php
-                // 取得した情報をテーブル形式で表示
-                if ($result->num_rows > 0) {
-                    // データがある場合はテーブルを表示
-                    echo "<table border='1' id='productTable'>";
-                    echo "<tr><th>商品ID</th><th>商品名</th><th>説明</th><th>値段</th><th>ジャンル</th><th>季節</th><th>ブランド</th><th>カテゴリー</th><th>削除</th></tr>";
-                    //カテゴリー順に並んでいる
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<tr id='row_" . htmlspecialchars($row["product_id"]) . "'>";
-                        echo "<td>" . htmlspecialchars($row["product_id"]) . "</td>";
-                        echo "<td>" . htmlspecialchars($row["product_name"]) . "</td>";
-                        echo "<td>" . htmlspecialchars($row["product_exp"]) . "</td>";
-                        echo "<td>" . htmlspecialchars($row["product_price"]) . "</td>";
-                        echo "<td>" . htmlspecialchars($row["genre_name"]) . "</td>";
-                        echo "<td>" . htmlspecialchars($row["season_name"]) . "</td>";
-                        echo "<td>" . htmlspecialchars($row["bland_name"]) . "</td>";
-                        echo "<td>" . htmlspecialchars($row["category_name"]) . "</td>";
-                        echo "<td><button type='button' class='btn btn-outline-danger' onclick='deleteProduct(" . htmlspecialchars($row["product_id"]) . ")'>削除する</button></td>";
-                        echo "<td><button type='button' onclick='window.location.href='item-edit.php'' class='btn btn-outline-success'>編集する</button></td>";
-                        echo "</tr>";
-                    }
-                    echo "</table>";
-                } else {
-                    // データがない場合はメッセージを表示
-                    echo "0件の結果";
-                }
+        <!DOCTYPE html>
+        <html lang="ja">
 
-                // データベース接続を閉じる
-                $mysqli->close();
-                ?>
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>商品の削除</title>
+            <link rel="stylesheet" href="mng.css"> <!-- スタイルシートをリンク -->
+            <script src="mng.js" defer></script> <!-- JavaScriptファイルをリンク -->
+        </head>
 
-
-                <br><br>
-                <p><a href="#" class="btn btn-outline-success" onclick="history.back(); return false;">
-                        戻る
-                    </a>
-                </p>
+        <body>
+            <!-- コンテンツ　-->
+            <div class="contents">
+                <main class="container mt-4">
+                    <!--pageタイトル-->
+                    <h1>商品の一覧</h1>
+                    <br><br>
+                    <div class="center">
+                        <?php if (count($products) > 0) : ?>
+                            <table border='1' id='productTable' class="table table-bordered">
+                                <tr>
+                                    <th>商品ID</th>
+                                    <th>商品名</th>
+                                    <th>説明</th>
+                                    <th>値段</th>
+                                    <th>ジャンル</th>
+                                    <th>季節</th>
+                                    <th>ブランド</th>
+                                    <th>カテゴリー</th>
+                                    <th>編集・削除</th>
+                                </tr>
+                                <?php foreach ($products as $product) : ?>
+                                    <tr id='row_<?php echo htmlspecialchars($product["product_id"]); ?>'>
+                                        <td><?php echo htmlspecialchars($product["product_id"]); ?></td>
+                                        <td><?php echo htmlspecialchars($product["product_name"]); ?></td>
+                                        <td><?php echo htmlspecialchars($product["product_exp"]); ?></td>
+                                        <td><?php echo htmlspecialchars($product["product_price"]); ?></td>
+                                        <td><?php echo htmlspecialchars($product["genre_name"]); ?></td>
+                                        <td><?php echo htmlspecialchars($product["season_name"]); ?></td>
+                                        <td><?php echo htmlspecialchars($product["bland_name"]); ?></td>
+                                        <td><?php echo htmlspecialchars($product["category_name"]); ?></td>
+                                        <td>
+                                            <button type='button' onclick="window.location.href='item-edit-delete.php?product_id=<?php echo htmlspecialchars($product['product_id']); ?>'" class='btn btn-outline-success'>編集・削除</button>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </table>
+                        <?php else : ?>
+                            <p>0件の結果</p>
+                        <?php endif; ?>
+                        <br><br>
+                        <p>
+                            <button type="button" onclick="window.location.href='mypage-admin.php'" class="btn btn-outline-success">管理者マイページへ戻る</button>
+                        </p>
+                    </div>
+                    <br><br>
+                </main>
             </div>
-            <br><br>
-        </main>
-    </div>
-</body>
-</html>
+        </body>
+
+        </html>
 
 <?php
         //PHPブロック再開
