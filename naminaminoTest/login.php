@@ -33,7 +33,7 @@ class cmain_node extends cnode {
             }
 
             // SQLクエリの準備
-            $stmt = $mysqli->prepare("SELECT user_id, user_pass FROM users WHERE user_email = ?");
+            $stmt = $mysqli->prepare("SELECT mng_id, mng_pass FROM mngs WHERE mng_email = ?");
             $stmt->bind_param("s", $accountID);
             $stmt->execute();
             $stmt->store_result();
@@ -44,11 +44,11 @@ class cmain_node extends cnode {
 
                 if (password_verify($password, $hashed_password)) {
                     // パスワードが正しい場合、セッションにユーザー情報を保存
-                    $_SESSION['user_email'] = $accountID;
-                    $_SESSION['user_id'] = $user_id;
+                    $_SESSION['mng_email'] = $accountID;
+                    $_SESSION['mng_id'] = $user_id;
 
                     // ログイン成功後にリダイレクト
-                    header("Location: item-home copy 2(yogiver).php");
+                    header("Location: mypage-admin.php");
                     exit();
                 } else {
                     echo "パスワードが間違っています。";
@@ -82,15 +82,7 @@ class cmain_node extends cnode {
                 <div class="form-group">
                     <input class="loginbtn" type="submit" value="ログイン" onclick="" />
                 </div>
-                <div class="login-text">
-                    <a class="forget-pass">パスワードをお忘れの方</a>
-                </div>
-                <div class="new-user">
-                    <label>初めてのご利用になる方</label>
-                </div>
-                <div class="form-group">
-                    <button class="regist-btn" type="button" onclick="location.href='sinnkitouroku.php'">新規登録</button>
-                </div>
+                
             </form>
         </div>
         </div>

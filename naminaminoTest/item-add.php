@@ -153,8 +153,8 @@ class cmain_node extends cnode
                         <label>商品名</label><br>
                         <input name="product_name" size="30" required><br><br>
 
-                        <label>商品の説明</label><br>
-                        <input name="product_exp" size="30" required><br><br>
+                        <label for="product_exp">商品の説明</label><br>
+                        <textarea name="product_exp" id="product_exp" rows="10" cols="50" required></textarea><br><br>
 
                         <label>ジャンル</label><br>
                         <select name="genre_id" required>
